@@ -1,0 +1,126 @@
+.order_in{
+    width: 35vw;
+    height: 50px;
+    background-color: rgb(219,219, 219);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius:15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
+    
+}
+
+div.order_user{
+    
+    background: rgb(255, 255, 255);
+    height: 100vh;
+    width: 80%;
+    overflow-y:scroll;
+    float: right;  
+    max-height: 100vw;
+}
+.order_user::-webkit-scrollbar { 
+   display: none;  /* Safari and Chrome */
+}
+.order_user p{
+    color: black;
+}
+.order_main p{
+   
+   margin-left: 20px;
+   margin-bottom: 0;
+   margin-right: 20px;
+   
+   
+}
+.order_main {
+   margin-left: 100px;
+   margin-top: 50px;
+  display:flex ;
+  flex-direction: column;
+ }
+ .getdetailmain{
+    display: flex;
+    
+ }
+ .getdetail-02{
+    margin-left: 15px;
+    margin-bottom: 15px ;
+    display: flex;
+ }
+ .getdetail-03{
+    
+    margin-top: 10px ;
+    margin-bottom: 11px;
+
+ }
+ .order_out_main{
+    border-radius: 15px;
+    margin-top: 5px;
+    width: 35vw;
+    max-height: 50vw;
+    background-color: rgb(236, 234, 234);
+    overflow-y:auto;
+    
+    /* border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px; */
+ }
+ .order_out:hover{
+   overflow-y: scroll;
+   
+}
+.order_out::-webkit-scrollbar {
+   display: block;
+   width: 3px;
+   
+}
+
+   
+.order_out::-webkit-scrollbar-thumb {
+   background-color: black;
+   border-right: none;
+   border-left: none;
+   
+   
+}
+
+.order_out::-webkit-scrollbar-track-piece:end {
+   background: transparent;
+   margin-bottom:30px; 
+}
+
+.order_out::-webkit-scrollbar-track-piece:start {
+   background: transparent;
+   margin-top:30px;
+}
+details summary::-webkit-details-marker,
+details summary::marker {
+ display: none; 
+ content: "";
+}
+
+#order-status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    min-width: 150px;
+    height: 20px;
+    
+   
+}
+.order-left{
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.myorder-total{
+   display: flex;
+ margin-bottom: 10px;
+ justify-content: space-around;
+}
