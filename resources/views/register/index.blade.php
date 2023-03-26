@@ -42,17 +42,17 @@
                 {{$error}}
              </div>
              @endif
-            <p>First name</p>
+            <p class="greyy">First name</p>
             <input type="text" class=textbox name="firstname" required>
-            <p>Last name</p>
+            <p class="greyy">Last name</p>
             <input type="text" class=textbox name="lastname" required>
-            <p>Phone number</p>
+            <p class="greyy">Phone number</p>
             <input type="text" class=textbox name="phonenumber" required>
-            <p>Username</p>
+            <p class="greyy">Username</p>
             <input type="text" class=textbox name="username" required>
-            <p>Password</p>
+            <p class="greyy">Password</p>
             <input type="password" class=textbox name="password" required>
-            <p>Comfirm password</p>
+            <p class="greyy">Comfirm password</p>
             <input type="text" class=textbox name="c_password" required>
             <div class="head">
                 <hr>
@@ -60,17 +60,17 @@
                 <hr>
 
             </div>
-            <p>Address</p>
+            <p class="greyy">Address</p>
             <input type="text" class=textbox name="address" required>
-            <p>Region</p>
+            <p class="greyy">Region</p>
             <input type="text" class=textbox name="region" required>
-            <p>City</p>
+            <p class="greyy">City</p>
             <input type="text" class=textbox name="city" required>
-            <p>Postcode</p>
+            <p class="greyy">Postcode</p>
             <input type="text" class=textbox name="postcode" required>
             <br>
             <br>
-            <p>Profile Picture:<input type="file" class="" name="picture"></p>
+            <p class="greyy">Profile Picture:<input type="file" class="" name="picture"></p>
            
             <br>
             <input class=btn-submit type=submit name="signup" value="Sign UP">
@@ -78,10 +78,59 @@
     </div>
         </form>
         
-        
-</body>
-<footer>
+          <!-- Site footer -->
+  <footer class="footer-distributed">
 
-</footer>
+    <div class="footer-left">
+
+      <h3><span>T</span>-<span>BRAND</span></h3>
+
+      <p class="footer-links">
+        <a href="#" class="link-1">Home</a>
+        
+        <a href="#">Blog</a>
+      
+        
+
+      <p class="footer-company-name">Company Name © 2015</p>
+    </div>
+
+    <div class="footer-center">
+
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+      </div>
+
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>099-9999999</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p>T-BRAND@gmail.com</p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      
+
+      <div class="footer-icons">
+
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-twitter"></i></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+       
+
+      </div>
+
+    </div>
+
+  </footer>
+</body>
+
 
 </html>

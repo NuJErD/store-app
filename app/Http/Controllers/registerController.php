@@ -43,7 +43,7 @@ class registerController extends Controller
         $username = $request->username;
         $password = $request->password;
         $usernamecheck = DB::table('users')->where('username', $username)->value('username');
-        if($usernamecheck == $request->username){
+        if(isset($usernamecheck)){
           $request->session()->flash('error','username นี้มีอยู่ในระบบแล้ว');
             return view('register.index');
             

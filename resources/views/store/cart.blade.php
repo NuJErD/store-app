@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
 </head>
 <script src="js/store.js"></script>
 
@@ -34,13 +35,12 @@
             
             <li><a href="{{ route('logout') }}">Logout</a></li>
         </ul>
-    </nav>@if ($error = Session::get('error'))
-        <div class="alert alert-danger">
-           {{$error}}
-        </div>
-        @endif
+    </nav>
+   
         
         @if ($orderID)
+        
+        
         <div class="container-cart">
 
        
@@ -50,7 +50,11 @@
                 <div>
                     <h2>MY CART</h2>
                 </div>
-               
+                @if ($error = Session::get('error'))
+                <div class="alerterror">
+                   {{$error}}
+                </div>
+                @endif
                 @foreach ($orderde as $item)
                     <div calss="">
                         <div class="">

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" >
+       
 </head>
 <script src="js/store.js"></script>
 
@@ -43,6 +44,7 @@
                 <div class="order-list"> 
                     <li><a href="{{route('myorder.index')}}"><p style="color: white">Myorder</p></a></li>
                 </div>
+                
            
             @endif
             @if(!$orderID)
@@ -54,25 +56,43 @@
                 <li><a href="{{route('myorder.index')}}"><p style="color: white">Myorder</p></a></li>
             </div>
             @endif
+            <div class="order-list"> 
+              <li><a href="{{route('user.edit',Session('user'))}}"><p style="color: white">Profile</p></a></li>
+          </div>
 
+
+            <li>
+              @if($profile)
+              <img  src="uploadpic/uploadpicProfile/{{$profile}}" width="40px" height="40px">
+              @endif
+              @if(!$profile)
+              <img  src="http://bootdey.com/img/Content/avatar/avatar1.png" width="40px" height="40px">
+              @endif
+            </li>
            
-            <li><a href="{{ route('logout') }}"><p style="color: white">Logout</p></a></li>
+            {{-- <li><a href="{{ route('logout') }}"><p style="color: white">Logout</p></a></li> --}}
         </ul>
     </nav>
+    
     <div class="container-shop">
+      
         <div class="menu-item">
-            <input type="text" class="sidebar-serch" placeholder="Serch">
+            <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
 
 
             </ul>
 
         </div>
+        <div class="main">
+          @if ($error = Session::get('error'))
+      <div class="alertmain">
+          <div class="alerterror" >
+        {{$error}}
+       </div>
+      </div>
+      @endif
         <div class="items">
-            @if ($error = Session::get('error'))
-            <div class="alert alert-danger">
-               {{$error}}
-            </div>
-            @endif
+         
             @foreach ($products as $item)
                 <div class="itemslist" onclick="myFunction('{{ $item->id }}')">
 
@@ -95,7 +115,7 @@
             @endforeach
 
         </div>
-
+    </div>
         <div id="modalopen" class="modal" style="display: none" >
             <div class="modal-bg"></div>
             <div class="modal-page">
@@ -119,6 +139,7 @@
         </form>
         </div>
     </div>
+   
     </div>
    
   <!-- Site footer -->

@@ -49,6 +49,7 @@
     
        
         <td><h5>เลขคำสั่งซื้อ</h5></td>
+        <td><h5>เลขพัสดุ</h5></td>
         <td><h5>วันที่สั่งซื้อ</h5></td>
         <td><h5>ชื่อลูกค้า</h5></td>
         <td><h5>จำนวนเงิน</h5></td>
@@ -64,6 +65,12 @@
             <tr>
             
             <td> {{$or->id}}   </td>
+        <div class="">
+            <td id='input-tracking{{$or->id}}' >
+            <div class="input-tracking">{{$or->tracking}}
+                <button type="button" class="btn btn-warning" onclick="tracking('{{$or->id}}')" >แก้ไข</button></td>
+            </div>
+        </div>
             <td> {{$or->created_at}}   </td>
             <td> {{$or->firstname}} &nbsp; {{$or->lastname}}  </td>
             <td> {{$or->total}}       </td>
@@ -71,7 +78,16 @@
             <td>
                 <select id="status{{$or->id}}" onchange="updatestatus('{{$or->id}}')">
                 <option value="{{$or->status}}">{{$or->detail}}</option>
+                @if($or->status == '1' ) 
                 <option value="2">จัดส่งแล้ว</option>
+                @endif
+                @if($or->status == '2' ) 
+                <option value="3">ได้รับสินค้าเรียบร้อย</option>
+                @endif
+                   
+            
+               
+                
                 </select>
             </td>
             

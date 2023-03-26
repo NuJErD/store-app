@@ -59,6 +59,10 @@
                 
                </summary>
                <div class="order_out_main">
+                <div class="order-track" >
+                  <h5><p>เลขพัสดุ: {{$or->tracking}} </p></h5>
+                 
+                   </div>
                 <div class="order_out" id="order_out{{$or->id}}" >
                     
                    
@@ -69,7 +73,7 @@
                  <br>
                  <div class="myorder-total" >
                     <p>Total: {{$or->total}} THB</p>
-                    <button>ยืนยันการรับสินค้า</button>
+                    <button  class="order-cf1" onclick="order_cf('{{$or->id}}')"><p>ยืนยันการรับสินค้า</p></button>
                      </div>
                 </div>
                 
@@ -84,6 +88,18 @@
                     </script>
             @endforeach  
                </div> 
+               <div  class="modal" style="display: none" >
+                <div class="modal-bg"></div>
+                <div class="modal-page">
+                  
+                    <div class="order-cf-d">
+                      <p><h5>คุณได้รับสินค้าและได้ตรวจสอบสินค้าเรียบร้อยแล้ว</h5></p>
+                    </div>
+                   <div class="order-cf-cf"> 
+                    
+                  </div>                          
+            </div>
+        </div>
          </div>
         
          <!-- Site footer -->

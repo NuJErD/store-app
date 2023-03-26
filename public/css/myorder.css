@@ -124,3 +124,44 @@ details summary::marker {
  margin-bottom: 10px;
  justify-content: space-around;
 }
+.order-track{
+   display: flex;
+   margin-top: 20px;
+}
+.order-cf-main{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.order-cf-d{
+   margin-bottom: 120px;
+}
+.order-cf-cf{
+   display: flex;
+   justify-content: space-around;
+}
+.order-cf2{
+   width: 100px;
+   height: 50px;
+   border-radius: 20px;
+   background-color: black;
+  
+   align-items: center;
+}
+.order-cf2 p{
+  color: white;
+  margin: 0;
+}
+.order-cf1{
+   width: 150px;
+   height: 50px;
+   border-radius: 20px;
+   background-color: black;
+  
+   align-items: center;
+}
+.order-cf1 p{
+   color: white;
+   margin: 0;
+ }

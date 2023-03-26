@@ -127,7 +127,7 @@ class OrderController extends Controller
               $orderdeatail->save();
           }
        }else{
-        session()->flash('error','สินค้าหมดแล้ววว');
+        session()->flash('error','สินค้าหมดแล้ว');
        }
         
         
@@ -293,6 +293,8 @@ class OrderController extends Controller
                  $orderckeck->update([
                 'amount' => $amount
             ]);
+            }else{
+                session()->flash('error','สินค้าเหลือ'.$stock.'ชิ้น');
             }
            
         }else if($request->type == "delete"){
@@ -317,6 +319,23 @@ class OrderController extends Controller
         return response()->json("success");
      }
     
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    
+     public function addtrack(Request $request, Order $order){
+        $affected = DB::table('orders')
+         ->where('id', $order->id)
+         ->update([
+               'tracking' => $request->track
+                   ]);
+         
+        return response()->json("success");
+     }
     /**
      * Remove the specified resource from storage.
      *

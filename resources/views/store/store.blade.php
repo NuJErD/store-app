@@ -40,9 +40,9 @@
             <li><a href="{{ route('login.index') }}">Login</a></li>
         </ul>
     </nav>
-    <div class="container">
+    <div class="container-shop">
         <div class="menu-item">
-            <input type="text" class="sidebar-serch" placeholder="Serch">
+            <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
 
 
             </ul>
@@ -96,7 +96,7 @@
         </form>
         </div>
     </div>
-
+    </div>
         
      <!-- Site footer -->
   <footer class="footer-distributed">

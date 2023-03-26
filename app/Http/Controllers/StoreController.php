@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use App\Models\Order;
+use App\Models\products;
+use App\Models\users;
+
 class StoreController extends Controller
 {
     /**
@@ -36,10 +39,11 @@ class StoreController extends Controller
     }
     public function shopindex()
     {
+        $profile = users::where('id',Session('user'))->value('picture');
         $products =  DB::table('products')->get();
         $orderID =Order::where('u_id',Session('user'))->where('status',0)->value('id');
        
-         return view('store.customer',compact('products','orderID'));
+         return view('store.customer',compact('products','orderID','profile'));
        
     }
     public function data()
@@ -56,6 +60,26 @@ class StoreController extends Controller
       //  $item = DB::table('products')->where('id',$id)->first();
       return view('register.index');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        if(isset($search) && $search != ''){
+            $product = products::where('name','like','%'. $search . '%')->get();
+        } else{
+            $product =products::all();
+        }
+        
+        return response()->json($product);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

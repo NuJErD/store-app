@@ -9,6 +9,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MyOrderController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::resource('orders',OrderController::class);
 Route::resource('cart',CartController::class);
 Route::resource('checkout',CheckoutController::class);
 Route::resource('myorder',MyOrderController::class);
+Route::resource('user',UserController::class);
+
 
 
 // Route::get('/edit/{id}',[ItemsController::class,'edit'])->name('edit');
@@ -40,11 +43,18 @@ Route::get('/cartget',[OrderController::class,'CartJS'],)->name('cart');
 Route::post('/login/cf',[LoginController::class,'login'])->name('logincheck');
 Route::put('/order/{order}',[OrderController::class,'update'])->name('orderup');
 Route::put('/orderup2/{order}',[OrderController::class,'updatecart']);
+Route::put('/cf_order/{order}',[MyOrderController::class,'cf_order']);
+Route::put('/track/{order}',[OrderController::class,'addtrack']);
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::get('/shop',[StoreController::class,'shopindex'])->name('shop');
 Route::get('/store/detail',[StoreController::class,'itemDetail'])->name('detail');
 Route::get('/getdetail/{id?}',[MyOrderController::class,'getorder_detail']);
 Route::get('/test',[StoreController::class,'test'])->name('test');
+Route::get('/search/{search?}',[StoreController::class,'search']);
+Route::get('/checkpw/{pw?}',[UserController::class,'checkpw']);
+Route::post('/newpw',[UserController::class,'newpw']);
+//Route::get('/editpro',[UserController::class,'edit'])->name('editpro');
+
 
 
 

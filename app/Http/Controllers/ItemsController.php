@@ -133,7 +133,7 @@ class ItemsController extends Controller
      */
     public function destroy(Request $request,products $item)
     {
-         echo('sss');
+         
         unlink("./uploadpic/".$item->picture);
         DB::table('products')->where('id', $item->id)->delete();
         return redirect('items');

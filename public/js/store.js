@@ -1,9 +1,11 @@
 
+
+
 function myFunction(id) {
     $("#modalopen").css('display', 'flex')
     $("#modalopen-store").css('display', 'flex')
     var $id = id
-    console.log($id)
+    
     //;
     $.ajax({
         
@@ -13,8 +15,8 @@ function myFunction(id) {
         success: function (response) {
             // $('#modal-list').empty();        
             var data = response.data[0];
-
-            //console.log(response.data[0])
+            
+            console.log(response)
 
             var detail = '';
             detail += `<div class="modal-content">
@@ -26,7 +28,7 @@ function myFunction(id) {
             <input type="hidden"  name="name" value="${data.name}" > 
             <p class="text-modal">festival: ${data.festival}</p>
             <input type="hidden"  name="festival" value="${data.festival}" >
-            <p class="text-modal">price:    ${data.price}</p> 
+            <p class="text-modal">price:    ${data.price} THB</p> 
             <input type="hidden"  name="price" value="${data.price}" >
             <p class="text-modal">brand:    ${data.brand}</p>
             <input type="hidden"  name="brand" value="${data.brand}" >
@@ -249,21 +251,21 @@ function closemodalslip() {
 
 }
 function updatestatus(id) {
-    var status =document.getElementById('status'+id).value
+    
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         url: '/orderup2/'+ id,
         type: 'put',
-        data: {status:status },
         dataType: 'json',
         success: function(data){
             //console.log(data)
-            location.reload();
+            location.reload()
             
         }
     })
+    
     
 }
 
@@ -276,4 +278,230 @@ function closemodalqrcode() {
    
     $(".qrcode").css('display', 'none')
 
+}
+
+function tracking(id){
+    var id = id
+    input = `<input type="text" class="track-inp" id="trackdata`+id+`">
+    <button type="button" class="btn btn-danger" onclick="cancel()" >ยกเลิก</button>
+    <button type="button" class="btn btn-success" onclick="tracksuccess('`+id+`',document.getElementById('trackdata`+id+`').value)" >บันทึก</button>`
+    $("#input-tracking"+id).html(input)
+     
+}
+function tracksuccess(id,data){
+    
+    var datatrack =data
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/track/'+ id,
+        data: {track:datatrack},
+        type: 'put',
+        dataType: 'json',
+        success: function(response){
+          
+            location.reload()
+        }
+    })
+  
+    
+}
+function cancel(){
+    location.reload()
+}
+function closemodal_order() {
+    
+    $(".modal").css('display', 'none')
+
+    
+}
+function order_cf(id){
+    $(".modal").css('display', 'flex')
+    var data = `<button class="order-cf2" onclick="closemodal_order()"><p>ยกเลิก</p></button>
+    <button class="order-cf2" onclick="cf_order(`+id+`)"><p>ยืนยัน</p></button>`
+    $(".order-cf-cf").html(data)
+}
+
+function cf_order(id){
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/cf_order/'+ id,
+        type: 'put',
+        dataType: 'json',
+        success: function(data){
+            location.reload()
+            
+            
+        }
+    })
+   
+}
+
+function search(search){
+    var search = search
+    $.ajax({
+        url: '/search/',
+        type: 'get',
+        data: { search:search},
+        dataType: 'json',
+        success: function(data){
+             
+           
+            if(Object.keys(data).length > 0){
+                var items =  data.map(function(product){
+                    return `<div class="itemslist" onclick="myFunction('${product.id}')">
+
+                    <div class="itemslist">
+
+
+
+                        <input type="hidden" value="${product.id}" name="itemId">
+                        <img src="uploadpic/${product.picture}" width="150px" height="150px"><br>
+                        <h2>${product.name}</h2>
+                        <p>${product.festival}</p>
+                        <p >size:    ${product.size}</p>
+                        <p>stock:   ${product.stock}</p>
+
+
+
+                    </div>
+
+                </div>`
+                })  
+                console.log(items)
+                $(".items").html('')
+                $.each(items, function(indexInArray,valueOfitems){
+                    $(".items").append(valueOfitems)
+                })
+            }else{ 
+                $(".items").html('')
+                $(".items").append('<div class="searchnull"><h3>ไม่พบสินค้า</h3></div>')
+            }
+           // console.log(response.data)
+            
+        }
+    })
+    
+}
+
+function changePW_add(){
+    $("#card-body-detail").html('')
+
+    resetPW = `<div class="mb-3 row gx-3">
+    <!-- Form Group (first name)-->
+    <div class="col-md-6">
+        <label class="mb-1 small" >Old Password</label>
+        <input class="form-control" name="oldpassword" type="password" id="oldpassword" placeholder="Enter your Old Password" >
+    </div>
+</div>
+<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> Submit</button>
+`
+    $("#card-body-detail").html(resetPW)
+}
+
+
+function checkPW(oldpw){
+ 
+     let newpw = `<div class="mb-3 row gx-3">
+    <!-- Form Group (first name)-->
+    <div class="col-md-6">
+        <label class="mb-1 small" >New Password</label>
+        <input class="form-control" name="newpassword" type="password" id="newpassword" placeholder="Enter your New Password" >
+    </div>
+    
+</div>
+<div class="mb-3 row gx-3">
+    <!-- Form Group (first name)-->
+    <div class="col-md-6">
+        <label class="mb-1 small" >Confirm Password</label>
+        <input class="form-control" name="cfpassword" type="password" id="cfpassword" placeholder="Enter Confirm Password" >
+    </div>
+    
+</div>
+<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> Submit</button>
+`
+
+let resetPW = `<div class="mb-3 row gx-3">
+    
+    <div class="alert alert-danger" id="errorpassword"  >
+    รหัสผ่านเดิมไม่ถูกต้อง
+    </div>
+
+    <!-- Form Group (first name)-->
+    <div class="col-md-6">
+        <label class="mb-1 small" >Old Password</label>
+        <input class="form-control" name="oldpassword" type="password" id="oldpassword" placeholder="Enter your Old Password" >
+    </div>
+</div>
+<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> Submit</button>
+`
+    $.ajax({
+        
+        url: '/checkpw/'+oldpw,
+        type: 'get',
+        dataType: 'json',
+        success: function(data){
+             
+            
+            console.log(data)
+
+            
+           if(data == 'success'){
+            $("#card-body-detail").html(newpw)
+           }else{
+            //$("#errorpassword").css('display','flex')
+            $("#card-body-detail").html(resetPW)
+           }
+           
+        }
+    })
+    
+}
+
+function changePW(newpw,cfpw){
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/newpw',
+        type: 'post',
+        data:{
+            newpw:newpw,
+            cfpw:cfpw
+        },
+        dataType: 'json',
+        success: function(data){
+
+            let newpw = `<div class="mb-3 row gx-3">
+            <div class="alert alert-danger" id="errorpassword"  >
+               ${data}
+                </div>
+
+    <!-- Form Group (first name)-->
+    <div class="col-md-6">
+        <label class="mb-1 small" >New Password</label>
+        <input class="form-control" name="newpassword" type="password" id="newpassword" placeholder="Enter your New Password" >
+    </div>
+    
+</div>
+<div class="mb-3 row gx-3">
+    <!-- Form Group (first name)-->
+    <div class="col-md-6">
+        <label class="mb-1 small" >Confirm Password</label>
+        <input class="form-control" name="cfpassword" type="password" id="cfpassword" placeholder="Enter Confirm Password" >
+    </div>
+    
+</div>
+<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> Submit</button>
+`
+        if(data == 'success'){
+              location.reload()
+        }else
+        $("#card-body-detail").html(newpw)
+            
+        }
+    })
 }

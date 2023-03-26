@@ -42,7 +42,7 @@
          
 
         <div class="forgot">
-            <label><input type="checkbox">  Keep me logged in</label>
+           
         <label class="forgot"></label>
         <a href=#>Forgot password</a>
     </div>

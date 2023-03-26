@@ -60,6 +60,22 @@ class MyOrderController extends Controller
         return response()->json($response);
     }
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cf_order(Request $request, Order $order)
+    {
+        $affected = DB::table('orders')
+         ->where('id', $order->id)
+         ->update([
+               'status' => '3'
+                   ]);
+                   return response()->json("success");
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
