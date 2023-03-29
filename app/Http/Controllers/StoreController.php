@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\products;
 use App\Models\users;
+use App\Models\brand;
 
 class StoreController extends Controller
 {
@@ -42,8 +43,8 @@ class StoreController extends Controller
         $profile = users::where('id',Session('user'))->value('picture');
         $products =  DB::table('products')->get();
         $orderID =Order::where('u_id',Session('user'))->where('status',0)->value('id');
-       
-         return view('store.customer',compact('products','orderID','profile'));
+        $brand = brand::get();
+         return view('store.customer',compact('products','orderID','profile','brand'));
        
     }
     public function data()
@@ -71,7 +72,11 @@ class StoreController extends Controller
     {
         $search = $request->search;
         if(isset($search) && $search != ''){
-            $product = products::where('name','like','%'. $search . '%')->get();
+            $product = products::where(function($query) use($search){
+                
+                $query->where('name','like','%'. $search . '%')
+                ->orwhere('festival','like','%'. $search . '%');
+            })->get();
         } else{
             $product =products::all();
         }

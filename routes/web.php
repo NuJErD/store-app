@@ -10,6 +10,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BrandController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,33 +36,44 @@ Route::resource('cart',CartController::class);
 Route::resource('checkout',CheckoutController::class);
 Route::resource('myorder',MyOrderController::class);
 Route::resource('user',UserController::class);
+Route::resource('brand',BrandController::class);
+
 
 
 
 // Route::get('/edit/{id}',[ItemsController::class,'edit'])->name('edit');
 Route::get('/modal/{id?}',[ItemsController::class,'ItemJS'],)->name('modal');
+Route::get('/additems',[ItemsController::class,'addindex'],)->name('indexadditems');
+Route::get('/resetpw',[LoginController::class,'viewresetpw'],)->name('resetpw');
 Route::get('/cartget',[OrderController::class,'CartJS'],)->name('cart');
 Route::post('/login/cf',[LoginController::class,'login'])->name('logincheck');
 Route::put('/order/{order}',[OrderController::class,'update'])->name('orderup');
 Route::put('/orderup2/{order}',[OrderController::class,'updatecart']);
 Route::put('/cf_order/{order}',[MyOrderController::class,'cf_order']);
-Route::put('/track/{order}',[OrderController::class,'addtrack']);
+Route::put('/track/{order}',[OrderController::class,'addtrack'])->name('addtrack');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::get('/shop',[StoreController::class,'shopindex'])->name('shop');
 Route::get('/store/detail',[StoreController::class,'itemDetail'])->name('detail');
 Route::get('/getdetail/{id?}',[MyOrderController::class,'getorder_detail']);
 Route::get('/test',[StoreController::class,'test'])->name('test');
 Route::get('/search/{search?}',[StoreController::class,'search']);
+Route::get('/searchorder/{search?}',[OrderController::class,'searchorder']);
 Route::get('/checkpw/{pw?}',[UserController::class,'checkpw']);
 Route::post('/newpw',[UserController::class,'newpw']);
+
 //Route::get('/editpro',[UserController::class,'edit'])->name('editpro');
 
 
+Route::get('/test2',[ItemsController::class,'index2'],)->name('index2');
 
 
-Route::get('/additems',function (){
+
+Route::get('',function (){
     return view('items.additems');
-})->name('indexadditems');
+})->name('');
+Route::get('/addbrand',function (){
+  return view('items.addbrand');
+})->name('addbrand');
 
 //Route::get('/shop',function (){
   //  return view('store.customer');

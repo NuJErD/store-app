@@ -9,20 +9,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"/>
     <title>Document</title>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="js/store.js"></script>
+       
+       
 </head>
 <body>
-<nav>
+<nav class="navbar">
         <div class ="logo">
-         <h1><a href="{{route('store.index')}}">T - B R A N D</a></h1>
+         <h3><a href="{{route('store.index')}}">T - B R A N D</a></h3>
         </div>
         <ul class="menu">
         
@@ -30,61 +34,93 @@
      </ul>
         
     </nav>
+
+    
     <div id="frame">
         <div class="menu">
             <ul class="navadmin">
             
-            <a href="{{route('items.index')}}"><li>จัดการร้านค้า  </li> </a>
+            <a href="{{route('items.index')}}"><li>จัดการสินค้า </li> </a>
           
             <a href="{{route('orders.index')}}">
             <li>คำสั่งซื้อ</li></a>
+            
+            
+            
            
            
         </ul>
             </div>
+            
         </div>  
         
         <div class="order">
-     <table class="table table-striped">
-    
-       
-        <td><h5>เลขคำสั่งซื้อ</h5></td>
-        <td><h5>เลขพัสดุ</h5></td>
-        <td><h5>วันที่สั่งซื้อ</h5></td>
-        <td><h5>ชื่อลูกค้า</h5></td>
-        <td><h5>จำนวนเงิน</h5></td>
+     <table class="table table-bordered">
+      <div class="col-md-2 my-3">
+        <div class="rounded input-group custom2">
+            <input type="search" class="rounded form-control custom2" placeholder="ค้นหาคำสั่งซื้อ" aria-label="Search" aria-describedby="search-addon" onkeyup="searchorder(this.value)" />
+            
+          </div>
+   </div>
+    <thead class="thead-light">
+       <tr>
+        <th><h5>เลขคำสั่งซื้อ</h5></th>
+        <th><h5>เลขพัสดุ</h5></th>
+        <th><h5>วันที่สั่งซื้อ</h5></th>
+        <th><h5>ชื่อลูกค้า</h5></th>
+        <th><h5>จำนวนเงิน</h5></th>
         
         
         <td><h5>สถานะ</h5></td>
         <td><h5>สลิป</h5></td>
-     
-        
+     </tr>
+    </thead>
+       
       
-       <tbody>
+        
+       <tbody id="order-detail">
+    
         @foreach($order as $or)
             <tr>
             
-            <td> {{$or->id}}   </td>
-        <div class="">
-            <td id='input-tracking{{$or->id}}' >
-            <div class="input-tracking">{{$or->tracking}}
-                <button type="button" class="btn btn-warning" onclick="tracking('{{$or->id}}')" >แก้ไข</button></td>
-            </div>
+            <td> {{$or->ordernumber}}   </td>
+        
+            <td id='input-tracking{{$or->id}}'>
+                
+                <div class="input-tracking">
+                     <div class="input-tracking2">
+                @if($or->tracking != '-')
+                <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button>
+                @else
+                   {{$or->tracking}} 
+                @endif
+                     </div>
+               </div>
+               <form  action="{{route('addtrack',$or->id)}}" class="was-validated"  method="POST" enctype="multipart/form-data">
+                @csrf
+                @method("PUT")
+                <div id="tracking{{$or->id}}">
+
+                </div>
+                 {{-- <button type="button" class="btn btn-warning"><input type="file">แก้ไข</button> --}}
+                </form>
+                </td>
+            
         </div>
             <td> {{$or->created_at}}   </td>
             <td> {{$or->firstname}} &nbsp; {{$or->lastname}}  </td>
             <td> {{$or->total}}       </td>
            
             <td>
-                <select id="status{{$or->id}}" onchange="updatestatus('{{$or->id}}')">
+                {{-- <select id="status{{$or->id}}" onchange="updatestatus('{{$or->id}}')">
                 <option value="{{$or->status}}">{{$or->detail}}</option>
                 @if($or->status == '1' ) 
                 <option value="2">จัดส่งแล้ว</option>
                 @endif
                 @if($or->status == '2' ) 
                 <option value="3">ได้รับสินค้าเรียบร้อย</option>
-                @endif
-                   
+                @endif --}}
+                {{$or->detail}}
             
                
                 
@@ -93,22 +129,22 @@
             
             <td>
             {{$or->updated_at}}&nbsp; 
-            <button type="button" class="btn btn-info" onclick="showslip('{{$or->slip}}')">สลิป</button>
-        </td>
             
-            
-            
-           
-            
-           
                
-          
-            </tr>
+               
+         
+            <button type="button" class="btn btn-info" onclick="showslip('{{$or->slip}}')">สลิป</button>
+            <button type="button" class="btn btn-warning" onclick="tracking('{{$or->id}}')">แก้ไข</button>
+        
+        </td>
+        
+        </tr>
         @endforeach     
        
       </tbody>
     
     </table>
+    {{ $order->links('pagination::bootstrap-4') }}
         </div>
         <div  class="slip" style="display:  none" >
             <div class="modal-bg"></div>
@@ -126,7 +162,7 @@
         
         </div>
     </div>
-       
+    
  
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

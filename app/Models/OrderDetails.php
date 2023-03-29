@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DateTimeInterface;
 
 class OrderDetails extends Model
 {
@@ -11,7 +12,9 @@ class OrderDetails extends Model
     
     protected $guarded = [];  
 
-    
+    protected function serializeDate(DateTimeInterface $date){
+        return $date->format('Y-m-d h:i:s');
+    }
 }
 
 

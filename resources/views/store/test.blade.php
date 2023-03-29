@@ -11,11 +11,11 @@
 </head>
 <body>
     
-  
-        <i class="fas fa-list-dropdown"></i>
-        <i class="fas fa-filter-list"></i>
+    <i class="bi bi-trash3-fill"></i>
         
-       <i class="fas fa-regular fa-cart-shopping" ></i>
+        <i class="fas fa-regular fa-cart-shopping" ></i>
+        <i class="fa-solid fa-trash"></i>
+        
 
 </body>
 </html>

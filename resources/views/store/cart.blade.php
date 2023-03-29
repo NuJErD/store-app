@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <link rel="stylesheet" href="{{ url('css/cart.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -24,9 +25,9 @@
 <script src="js/store.js"></script>
 
 <body>
-    <nav>
+    <nav class="navbar">
         <div class="logo">
-            <h1><a href="{{ route('shop') }}">T - B R A N D</a></h1>
+            <h3><a href="{{ route('shop') }}">T - B R A N D</a></h3>
         </div>
 
         <ul class="menu">

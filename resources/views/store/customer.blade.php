@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
@@ -24,9 +26,9 @@
 <script src="js/store.js"></script>
 
 <body>
-    <nav >
+    <nav class="navbar" >
         <div class="logo">
-            <h1><a href="{{ route('shop') }}"><span>T</span>-<span>BRAND</span></a></h1>
+            <h1><a href="{{ route('shop') }}">T-BRAND</a></h1>
         </div>
 
         <ul class="menu" >
@@ -73,10 +75,13 @@
             {{-- <li><a href="{{ route('logout') }}"><p style="color: white">Logout</p></a></li> --}}
         </ul>
     </nav>
-    
+  
     <div class="container-shop">
       
         <div class="menu-item">
+          
+            
+      
             <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
 
 

@@ -21,12 +21,13 @@ class OrderController extends Controller
     public function index()
     {   
         
-         $order =Order::join('statuses', 'status','=','statuses.idst')
+         $order =Order::where('status','!=',0)
+         ->join('statuses', 'status','=','statuses.idst')
          ->join('users','u_id','users.id')
          ->select('orders.*','statuses.detail','users.firstname','users.lastname')
-         ->get();
-         
-        
+         ->paginate(10);
+       
+      
         
         return view('orders.index',compact('order',$order));
     }
@@ -56,6 +57,31 @@ class OrderController extends Controller
         // Fetch all records
         
        
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchorder(Request $request)
+    {    
+        $search = $request->search;
+        if(isset($search) && $search != ''){
+            $order =Order::join('statuses', 'status','=','statuses.idst')
+        ->join('users','u_id','users.id')
+        ->select('orders.*','statuses.detail','users.firstname','users.lastname')
+        ->where('ordernumber','like','%'. $search . '%')->get();
+        
+    
+         } else{
+            $order =Order::join('statuses', 'status','=','statuses.idst')
+            ->join('users','u_id','users.id')
+            ->select('orders.*','statuses.detail','users.firstname','users.lastname')
+            ->where('status','!=',0)->get();
+        }
+         
+        return response()->json($order);
     }
 
     /**
@@ -328,13 +354,26 @@ class OrderController extends Controller
      */
     
      public function addtrack(Request $request, Order $order){
+        $picture = $request->file('picture');
+        $name_gen = hexdec((uniqid())); 
+        $name_type = strtolower($picture->getClientOriginalExtension());
+        $picname = $name_gen.'.'.$name_type;
+        
+        if($order->tracking == '-'){
+            $picture->move(public_path('uploadpic/tracking'), $picname); //set uploat floder path
+        } else{
+            unlink("uploadpic/tracking/".$order->tracking);
+            $picture->move(public_path('uploadpic/tracking'), $picname);
+        }   
+       
+        
         $affected = DB::table('orders')
          ->where('id', $order->id)
          ->update([
-               'tracking' => $request->track
+               'tracking' => $picname
                    ]);
          
-        return response()->json("success");
+        return redirect()->route('orders.index');
      }
     /**
      * Remove the specified resource from storage.

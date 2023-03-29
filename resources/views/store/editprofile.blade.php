@@ -10,6 +10,7 @@
             <meta name="csrf-token" content="{{ csrf_token() }}">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="{{ url('css/style.css') }}">
+            <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"/>
             <link rel="stylesheet" href="{{ url('css/myorder.css') }}">
             <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
                 crossorigin="anonymous"></script>
@@ -21,9 +22,9 @@
         </head>
         <script src="../../js/store.js"></script>
         <body>
-        <nav>
+        <nav class="navbar">
                 <div class ="logo">
-                 <h1><a href="{{route('shop')}}">T - B R A N D</a></h1>
+                 <h3><a href="{{route('shop')}}">T - B R A N D</a></h3>
                 </div>
                 
                 
@@ -110,11 +111,7 @@
                                             <input class="form-control" name="address" type="text" placeholder="Enter your Address" value="{{$user->address}}">
                                         </div>
                                     </div>
-                                     {{-- Form Group (email address) --}}
-                                    <div class="mb-3">
-                                        <label class="mb-1 small" >Email address</label>
-                                        <input class="form-control" name="Email" type="email" placeholder="Enter your email address" value="{{$user->email}}">
-                                    </div> 
+                                     
                                     <!-- Form Row-->
                                     <div class="mb-3 row gx-3">
                                         <!-- Form Group (phone number)-->
@@ -135,9 +132,10 @@
                                     <!-- Save changes button-->
                                     <button class="btn btn-primary" type="submit">Save changes</button>
                                    
-                                    <button class="btn btn-danger"  > <a href="{{route('logout')}}" >Log Out</a></button>
+                                    
                                 </form>
                                 <button class="btn btn-warning" onclick="changePW_add()" > Change Password</button>
+                                <button class="btn btn-danger"  > <a href="{{route('logout')}}" >Log Out</a></button>
                             </div>
                             </div>
                         </div>

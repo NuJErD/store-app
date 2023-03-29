@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\products;
@@ -15,10 +16,32 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $products =  DB::table('products')->get();
+    {   
+        
+        $products =  DB::table('products')->paginate(5);
         
         return view('items.index',compact('products'));
+       
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addindex()
+    {   
+        
+       $brand = brand::get();
+        
+        return view('items.additems',compact('brand'));
+       
+    }
+    public function index2()
+    {
+        // $products =  DB::table('products')->get();
+        
+        // return view('items.index',compact('products'));
+        return view('items.index2');
     }
     public function ItemJS(Request $request)
     {

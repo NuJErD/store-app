@@ -7,14 +7,15 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"/>
     <title>Document</title>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 </head>
 
 <body>
-    <nav>
+    <nav class="navbar">
         <div class="logo">
-        <h1><a href="shop">T - B R A N D</a></h1>
+        <h3><a href="shop">T - B R A N D</a></h3>
         </div>
 
         <ul class="menu">

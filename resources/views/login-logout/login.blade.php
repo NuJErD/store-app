@@ -7,16 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"/>
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         <div class ="logo">
-         <h1><a href="{{route('store.index')}}">T - B R A N D</a></h1>
+         <h3><a href="{{route('store.index')}}">T - B R A N D</a></h3>
         </div>
 
         <ul class = "menu">
-            <li><a href="login.php">Chat with me</a></li>
-            <li><a href="{{route('register.index')}}">register</a></li>
+            
+           
         </ul>
     </nav>
 <div class="login">
@@ -43,8 +44,7 @@
 
         <div class="forgot">
            
-        <label class="forgot"></label>
-        <a href=#>Forgot password</a>
+        
     </div>
         
        

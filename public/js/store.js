@@ -86,6 +86,7 @@ function total() {
             console.log(total)
            // document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"
             document.getElementById("total").innerHTML = "Total:" + ' ' + total + ".00" + " THB"
+            
             document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"  
         }
     })
@@ -218,24 +219,7 @@ function getorder_detail(id){
    })
 }
 
-function order_status(id){
-    var id = id
-   if (id == 1){
-    $(".status-color"+id).css('color','red')
-    $(".order-status"+id).css('border-radius', '25px')
-    $(".order-status"+id).css('min-width', '20px')
-    
-    
-    console.log(id)
-   }else{
-    $(".status-color"+id).css('color','green')
-    $(".order-status"+id).css('border-radius', '25px')
-    $(".order-status"+id).css('min-width', '20px')
-    
-    console.log(id)
-   }
-   
-}
+
 function showslip(picname){
 $(".slip").css('display', 'flex')
  console.log(picname)
@@ -245,29 +229,30 @@ $(".slip").css('display', 'flex')
     $('.slippic').html(data)
 }
 
+
 function closemodalslip() {
    
     $(".slip").css('display', 'none')
 
 }
-function updatestatus(id) {
+// function updatestatus(id) {
     
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/orderup2/'+ id,
-        type: 'put',
-        dataType: 'json',
-        success: function(data){
-            //console.log(data)
-            location.reload()
+//     $.ajax({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         url: '/orderup2/'+ id,
+//         type: 'put',
+//         dataType: 'json',
+//         success: function(data){
+//             //console.log(data)
+//             location.reload()
             
-        }
-    })
+//         }
+//     })
     
     
-}
+// }
 
 function qrcode(){
     $(".qrcode").css('display', 'flex')
@@ -282,31 +267,48 @@ function closemodalqrcode() {
 
 function tracking(id){
     var id = id
-    input = `<input type="text" class="track-inp" id="trackdata`+id+`">
+    input = `
+    
+    <input type="file" class="form-control " name="picture" id="trackdata`+id+`" required><br>
     <button type="button" class="btn btn-danger" onclick="cancel()" >ยกเลิก</button>
-    <button type="button" class="btn btn-success" onclick="tracksuccess('`+id+`',document.getElementById('trackdata`+id+`').value)" >บันทึก</button>`
-    $("#input-tracking"+id).html(input)
+    <button type="submit" class="btn btn-success"  >บันทึก</button>
+    
+    `
+    $(".input-tracking").html('')
+    $("#tracking"+id).html(input)
      
 }
-function tracksuccess(id,data){
+function showtrack(picname){
+    $(".slip").css('display', 'flex')
+     console.log(picname)
+      var data=''
+      data=`<td><img src="../../uploadpic/tracking/${picname}" width=500px" height="500px" ></td>`
+      
+        $('.slippic').html(data)
+    }
+
+function upload(picture){
+   console.log(picture)
+}
+// function tracksuccess(id,data){
     
-    var datatrack =data
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/track/'+ id,
-        data: {track:datatrack},
-        type: 'put',
-        dataType: 'json',
-        success: function(response){
+//     var datatrack =data
+//     $.ajax({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         url: '/track/'+ id,
+//         data: {track:datatrack},
+//         type: 'put',
+//         dataType: 'json',
+//         success: function(response){
           
-            location.reload()
-        }
-    })
+//             location.reload()
+//         }
+//     })
   
     
-}
+
 function cancel(){
     location.reload()
 }
@@ -338,6 +340,58 @@ function cf_order(id){
         }
     })
    
+}
+function searchorder(search){
+    var search = search
+    $.ajax({
+        url: '/searchorder/',
+        type: 'get',
+        data: { search:search},
+        dataType: 'json',
+        success: function(data){
+            console.log(data)
+           
+             if(Object.keys(data).length > 0){
+                 var order =  data.map(function(order){
+                    let tracking =''
+                    if(order.tracking != '-'){
+                        tracking = `<button type="button" class="btn btn-info" onclick="showtrack('${order.tracking}')">กดดู</button>`
+                    }else{
+                        tracking = '-'
+                    }
+                     return `<tr>            
+                     <td> ${order.ordernumber}   </td>
+                 
+                    <td>`+tracking+`</td>
+                     
+                 
+                     <td> ${order.created_at}   </td>
+                     <td> ${order.firstname} &nbsp; ${order.lastname}  </td>
+                     <td> ${order.total}    </td>           
+                     <td>
+                     ${order.detail}             
+                         </select>
+                     </td>
+                     <td>
+                     ${order.updated_at}&nbsp; 
+                     <button type="button" class="btn btn-info" onclick="showslip('${order.slip}')">สลิป</button>
+                 </td>
+                 </tr>`
+                 })  
+                 
+                $("#order-detail").html('')
+                 $.each(order, function(indexInArray,valueOforder){
+                     $("#order-detail").append(valueOforder)
+                 })
+             }else{ 
+                 $("#order-detail").html('')
+               $("#order").append('<div class="searchnull"><h6>ไม่พบคำสั่งซื้อ</h6></div>')
+             }
+            console.log()
+            
+        }
+    })
+    
 }
 
 function search(search){
