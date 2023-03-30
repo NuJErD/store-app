@@ -165,3 +165,8 @@ details summary::marker {
    color: white;
    margin: 0;
  }
+ .myorder-main{
+   width: 90%;
+   float: right;
+   background-color: white;
+ }

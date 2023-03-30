@@ -39,12 +39,19 @@ class StoreController extends Controller
        
     }
     public function shopindex()
-    {
+    {   
         $profile = users::where('id',Session('user'))->value('picture');
         $products =  DB::table('products')->get();
-        $orderID =Order::where('u_id',Session('user'))->where('status',0)->value('id');
+         $orderID =Order::where('u_id',Session('user'))->where('status',0)->value('id');
+        if((Session()->has('user'))){
+           $user =users::where('id',session('user'))->value('id');
+        }else{
+            $user = 0;
+        }
+       
+       
         $brand = brand::get();
-         return view('store.customer',compact('products','orderID','profile','brand'));
+         return view('store.customer',compact('products','orderID','profile','brand','user'));
        
     }
     public function data()
@@ -75,7 +82,8 @@ class StoreController extends Controller
             $product = products::where(function($query) use($search){
                 
                 $query->where('name','like','%'. $search . '%')
-                ->orwhere('festival','like','%'. $search . '%');
+                ->orwhere('festival','like','%'. $search . '%')
+                ->orwhere('brand','like','%'. $search . '%');
             })->get();
         } else{
             $product =products::all();

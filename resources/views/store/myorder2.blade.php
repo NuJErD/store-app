@@ -23,7 +23,7 @@
         <body>
         <nav class="navbar px-4 py-0">
                 <div class ="logo">
-                 <h3 class="mb-0"><a href="{{route('shop')}}">T-BRAND</a></h3>
+                 <h3 class="mb-0" z><a href="{{route('shop')}}">T-BRAND</a></h3>
                 </div>
                 <ul class="menu">
                 
@@ -71,11 +71,9 @@
                <div class="order_out_main">
                 <div class="order-track" >
                   <h5><p>เลขพัสดุ: 
-                    @if($or->status == 2)
+                   
                     <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button> </p></h5>
-                    @else
-                    -
-                    @endif
+                   
                    </div>
                 <div class="order_out" id="order_out{{$or->id}}" >
                     
@@ -87,9 +85,9 @@
                  <br>
                  <div class="myorder-total" >
                     <p>Total: {{$or->total}} THB</p>
-                    @if($or->status == 2)
+                   
                     <button  class="order-cf1" onclick="order_cf('{{$or->id}}')"><p>ยืนยันการรับสินค้า</p></button>
-                    @endif
+                  
                   </div>
                 </div>
                 

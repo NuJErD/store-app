@@ -1,7 +1,7 @@
 @if (!Session::has('admin'))
    <script>window.location = "/login";</script>
              
-        @endif
+@endif
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +16,9 @@
     <title>Document</title>
 </head>
 <body> 
-<nav class="navbar">
+<nav class="navbar px-4 py-0">
         <div class ="logo">
-         <h3><a href="{{route('items.index')}}">T - B R A N D</a></h3>
+         <h3 class="mb-0"><a>T - B R A N D</a></h3>
         </div>
     </nav>
 <div id="frame">

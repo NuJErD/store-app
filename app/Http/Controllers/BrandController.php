@@ -45,6 +45,7 @@ class BrandController extends Controller
         $brand = new brand();
         $brand->name = $request->name;
         $brand->save();
+        return redirect()->route('brand.index');
     }
 
     /**

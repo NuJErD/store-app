@@ -109,7 +109,8 @@ class UserController extends Controller
      */
     public function edit($id)
     { 
-        $user =users::where('id', session('user'))->first();
+        $user = users::where('id',Session('user'))->first();
+      
         $profile = users::where('id',Session('user'))->value('picture');
         
        
@@ -129,7 +130,7 @@ class UserController extends Controller
     {   
        
         $usercheck = users::where('username',$request->username)->value('username');
-        
+       
         if(isset($request->picture)){
            if(isset($user->picture)){
            
@@ -193,6 +194,42 @@ class UserController extends Controller
         }
         
 
+         /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deletepic(Request $request)
+    {  $pic =$request->pic;
+        if(isset($pic)){
+             
+            unlink("./uploadpic/uploadpicProfile/".$pic);
+        $affected = DB::table('users')
+        ->where('picture', $pic)
+        ->update([
+            'picture' => null          
+                  ]);
+            session()->flash('succcess',' ลบรูปภาพเรียบร้อย');
+        }else{
+             session()->flash('error','ไม่มีรูปภาพ');
+        }
+            
+        
+        // unlink("./uploadpic/uploadpicProfile/".$pic);
+        // $affected = DB::table('users')
+        // ->where('picture', $pic)
+        // ->update([
+        //     'picture' => null
+           
+
+        //           ]);
+        
+        return response()->json();
+       // if(isset($pic)){
+
+       // }
+    }
     /**
      * Remove the specified resource from storage.
      *

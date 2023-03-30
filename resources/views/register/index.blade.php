@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar px-4 py-0">
         <div class="logo">
         <h3><a href="shop">T - B R A N D</a></h3>
         </div>

@@ -43,6 +43,23 @@ class MyOrderController extends Controller
     }
     
 /** 
+ * /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ordersuccess()
+    {
+        $order =Order::where('u_id',Session('user'))
+        ->join('statuses', 'status','=','statuses.idst')
+        ->where('status','=','3') 
+        ->get();
+         
+          
+        return view('store.myorder2',compact('order'));
+    }
+    
+/** 
      
      *
      * @param  \Illuminate\Http\Request  $request

@@ -21,6 +21,7 @@ body nav{
     padding: 0 2rem;
 }
 .navbar {
+    width: 100%;
     font-family: 'Kanit';
     background:rgb(0, 0, 0);
     
@@ -34,6 +35,11 @@ body nav{
 .main-page{
     min-width: 60vw;
     height: 100vw;
+}
+.list-brand:hover{
+    color: #ff8e8e;
+    cursor: pointer;
+    font-size: 18px;
 }
 .main{
     
@@ -450,7 +456,7 @@ p.de{
     width: 90vw;
     background: rgb(255, 255, 255);
     display: flex;
-    
+   
     max-height: 1000vw;
     min-height: 45vw;
     
@@ -480,6 +486,7 @@ div.menu-item{
     width: 17%;
     margin-right: 50px;
     float: left;
+
 }
 a{
     text-decoration: none;

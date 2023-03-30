@@ -1,4 +1,4 @@
-@if (!Session()->has('user') && !Session()->has('admin'))
+@if (!Session()->has('user') )
     <script>
         window.location = "/login";
     </script>
@@ -25,15 +25,15 @@
 <script src="js/store.js"></script>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar px-4 py-0">
         <div class="logo">
-            <h3><a href="{{ route('shop') }}">T-BRAND</a></h3>
+            <h3 class="mb-0"><a href="{{ route('shop') }}">T-BRAND</a></h3>
         </div>
 
         <ul class="menu">
 
 
-            <li><a href="">chat with me</a></li>
+            
             <li><a href="{{ route('logout') }}">Logout</a></li>
         </ul>
     </nav>
@@ -84,8 +84,8 @@
             </div>
             <input type="hidden"  name="checkout" value="checkout">
             <div class="add-slip-1">
-              <input type="file">
-            {{-- <h2>Add Slip</h2> --}}
+              <input type="file" name="picture">
+            
             </div>
            
 

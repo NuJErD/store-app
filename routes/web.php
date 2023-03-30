@@ -60,6 +60,9 @@ Route::get('/search/{search?}',[StoreController::class,'search']);
 Route::get('/searchorder/{search?}',[OrderController::class,'searchorder']);
 Route::get('/checkpw/{pw?}',[UserController::class,'checkpw']);
 Route::post('/newpw',[UserController::class,'newpw']);
+Route::post('/deletepic',[UserController::class,'deletepic']);
+
+Route::get('/ordersuccess',[MyOrderController::class,'ordersuccess'])->name('ordersuccess');
 
 //Route::get('/editpro',[UserController::class,'edit'])->name('editpro');
 
@@ -68,9 +71,7 @@ Route::get('/test2',[ItemsController::class,'index2'],)->name('index2');
 
 
 
-Route::get('',function (){
-    return view('items.additems');
-})->name('');
+
 Route::get('/addbrand',function (){
   return view('items.addbrand');
 })->name('addbrand');

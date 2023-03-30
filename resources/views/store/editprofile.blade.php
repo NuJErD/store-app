@@ -1,7 +1,7 @@
-{{-- @if (!Session::has('admin'))
+@if (!Session::has('user'))
    <script>window.location = "/login";</script>
              
-        @endif --}}
+        @endif
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -22,9 +22,9 @@
         </head>
         <script src="../../js/store.js"></script>
         <body>
-        <nav class="navbar">
+        <nav class="navbar px-4 py-0">
                 <div class ="logo">
-                 <h3><a href="{{route('shop')}}">T - B R A N D</a></h3>
+                 <h3 class="mb-0"><a href="{{route('shop')}}">T - B R A N D</a></h3>
                 </div>
                 
                 
@@ -50,7 +50,7 @@
                                 <img  src="../../uploadpic/uploadpicProfile/{{$profile}}" width="200px" height="200px">
                                  @endif
                                 @if(!$profile)
-                                <img  src="http://bootdey.com/img/Content/avatar/avatar1.png" width="200px" height="2000px">
+                                <img  src="http://bootdey.com/img/Content/avatar/avatar1.png" width="200px" height="200px">
                                 @endif
                                 <!-- Profile picture help block-->
                                 <div class="mb-4 small font-italic text-muted">JPG or PNG no larger than 5 MB</div>
@@ -60,9 +60,14 @@
                                     @method("PUT")
                                 <label for="upload">
                                    
-                                <span class="btn btn-primary" type="button"> Upload new image</span>
+                                <span class="btn btn-primary" type="button"> Upload New Image</span>
                                 <input type="file" id="upload" name="picture" style="display:none">
                                 </label>
+                                <label >
+                                   
+                                    <span class="btn btn-danger" type="button" onclick="deletepic('{{$user->picture}}')"> Delete image</span>
+                                   
+                                    </label>
                             </div>
                         </div>
                     </div>
@@ -75,7 +80,12 @@
                             <div class="alert alert-success" id="errorpassword"  >
                                {{$error}}
                             </div>
+                            @elseif($error = Session::get('error'))
+                            <div class="alert alert-danger" id="errorpassword"  >
+                                {{$error}}
+                             </div>
                             @endif
+                            
                             
                             <div class="card-body" id="card-body-detail">
                                 

@@ -24,9 +24,9 @@
        
 </head>
 <body>
-<nav class="navbar">
+<nav class="navbar px-4 py-0">
         <div class ="logo">
-         <h3><a href="{{route('store.index')}}">T - B R A N D</a></h3>
+         <h3 class="mb-0"><a href="{{route('store.index')}}">T - B R A N D</a></h3>
         </div>
         <ul class="menu">
         
@@ -87,8 +87,8 @@
         
             <td id='input-tracking{{$or->id}}'>
                 
-                <div class="input-tracking">
-                     <div class="input-tracking2">
+                <div class="input-tracking{{$or->id}}">
+                     <div class="input-tracking">
                 @if($or->tracking != '-')
                 <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button>
                 @else

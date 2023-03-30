@@ -130,8 +130,17 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, products $item)
-    {
-        
+    {   
+        $picname = $item->picture;
+       if(isset($request->picture)){
+        unlink("./uploadpic/product/".$picname);
+
+        $picture = $request->file('picture');
+        $name_gen = hexdec((uniqid())); 
+        $name_type = strtolower($picture->getClientOriginalExtension());
+        $picname = $name_gen.'.'.$name_type;
+        $picture->move(public_path('uploadpic/product'), $picname); //set uploat floder path
+       }
         $affected = DB::table('products')
               ->where('id', $item->id)
               ->update([
@@ -142,7 +151,8 @@ class ItemsController extends Controller
                     'size' => $request->size,
                     'chest' => $request->chest,
                     'lenght' => $request->lenght,
-                    'color' => $request->color
+                    'color' => $request->color,
+                    'picture' => $picname
                 ]);
 
         return redirect()->route('items.index');
@@ -157,7 +167,7 @@ class ItemsController extends Controller
     public function destroy(Request $request,products $item)
     {
          
-        unlink("./uploadpic/".$item->picture);
+        unlink("./uploadpic/product".$item->picture);
         DB::table('products')->where('id', $item->id)->delete();
         return redirect('items');
     }

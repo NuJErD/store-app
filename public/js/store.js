@@ -20,7 +20,7 @@ function myFunction(id) {
 
             var detail = '';
             detail += `<div class="modal-content">
-        <img src="../../uploadpic/${data.picture}" width="200px" height="200px" ></img>
+        <img src="../../uploadpic/product/${data.picture}" width="200px" height="200px" ></img>
         
         <div class="modal-detail"> 
             <input type="hidden"  name="id" value="${data.id}" >
@@ -274,7 +274,7 @@ function tracking(id){
     <button type="submit" class="btn btn-success"  >บันทึก</button>
     
     `
-    $(".input-tracking").html('')
+    $(".input-tracking"+id).html('')
     $("#tracking"+id).html(input)
      
 }
@@ -413,7 +413,7 @@ function search(search){
 
 
                         <input type="hidden" value="${product.id}" name="itemId">
-                        <img src="uploadpic/${product.picture}" width="150px" height="150px"><br>
+                        <img src="uploadpic/product/${product.picture}" width="150px" height="150px"><br>
                         <h2>${product.name}</h2>
                         <p>${product.festival}</p>
                         <p >size:    ${product.size}</p>
@@ -559,3 +559,25 @@ function changePW(newpw,cfpw){
         }
     })
 }
+
+function deletepic(pic){
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/deletepic',
+        type: 'post',
+        data:{
+           pic:pic
+        },
+        dataType: 'json',
+        success: function(data){
+            console.log(data)
+            location.reload()
+        }
+    })
+   
+}
+
+

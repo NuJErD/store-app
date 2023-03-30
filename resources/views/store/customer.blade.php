@@ -1,4 +1,4 @@
-@if (!Session()->has('user') && !Session()->has('admin'))
+@if (!Session::has('user') )
     <script>
         window.location = "/login";
     </script>
@@ -26,7 +26,7 @@
 <script src="js/store.js"></script>
 
 <body>
-    <nav class="navbar" >
+    <nav class="navbar " >
         <div class="logo">
             <h1><a href="{{ route('shop') }}">T-BRAND</a></h1>
         </div>
@@ -58,9 +58,11 @@
                 <li><a href="{{route('myorder.index')}}"><p style="color: white">Myorder</p></a></li>
             </div>
             @endif
+           
             <div class="order-list"> 
-              <li><a href="{{route('user.edit',Session('user'))}}"><p style="color: white">Profile</p></a></li>
+              <li><a href="{{route('user.edit',$user )}}"><p style="color: white">Profile</p></a></li>
           </div>
+         
 
 
             <li>
@@ -78,17 +80,19 @@
   
     <div class="container-shop">
       
-        <div class="menu-item">
-          
-            
-      
+        <div class="menu-item">      
             <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
-
-
-            </ul>
-
-        </div>
+            <br><br>
+            <h1>Brands</h1>
+            <div class="" >
+              <li class="list-brand"  onclick="search()">ALL</li>
+              @foreach($brand as $b)
+                <li class="list-brand" onclick="search('{{$b->name}}')" >{{$b->name}}</li>
+              @endforeach
+          </div>
+          </div>
         <div class="main">
+          
           @if ($error = Session::get('error'))
       <div class="alertmain">
           <div class="alerterror" >
@@ -106,7 +110,7 @@
 
 
                         <input type="hidden" value="{{ $item->id }}" name="itemId">
-                        <img src="uploadpic/{{ $item->picture }}" width="150px" height="150px"><br>
+                        <img src="uploadpic/product/{{ $item->picture }}" width="150px" height="150px"><br>
                         <h2>{{ $item->name }}</h2>
                         <p>{{ $item->festival }}</p>
                         <p >size:    {{$item->size}}</p>
@@ -120,6 +124,7 @@
             @endforeach
 
         </div>
+      
     </div>
         <div id="modalopen" class="modal" style="display: none" >
             <div class="modal-bg"></div>
@@ -146,6 +151,7 @@
     </div>
    
     </div>
+    
    
   <!-- Site footer -->
   <footer class="footer-distributed">

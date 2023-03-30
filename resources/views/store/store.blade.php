@@ -1,8 +1,4 @@
-@if (Session()->has('user'))
-    <script>
-        window.location = "/shop";
-    </script>
-@endif
+
 
 <!DOCTYPE html>
 <html lang="en">

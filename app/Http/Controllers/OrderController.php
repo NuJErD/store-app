@@ -370,7 +370,8 @@ class OrderController extends Controller
         $affected = DB::table('orders')
          ->where('id', $order->id)
          ->update([
-               'tracking' => $picname
+               'tracking' => $picname,
+               'status'   => 2
                    ]);
          
         return redirect()->route('orders.index');

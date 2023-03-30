@@ -65,6 +65,7 @@ class LoginController extends Controller
             if (Hash::check($request->password, $password)) {
                if($role == 'user'){
                 session()->put('user', $user->id);
+              
                 return redirect('shop');
                 }elseif($role == 'admin'){
                     session()->put('admin', $user->id);
@@ -88,9 +89,16 @@ class LoginController extends Controller
     }
 
     public function logout()
-    {
-        session()->forget('user');
-        session()->forget('admin');
+    { 
+       
+        if(session()->has('user')){
+              session()->forget('user');
+         }
+        else if(session()->has('admin')){
+             session()->forget('admin');
+        }
+      
+        
         return redirect()->route('login.index');
     }
     /**

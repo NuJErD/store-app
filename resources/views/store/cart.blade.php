@@ -25,9 +25,9 @@
 <script src="js/store.js"></script>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar px-4 py-0">
         <div class="logo">
-            <h3><a href="{{ route('shop') }}">T - B R A N D</a></h3>
+            <h1><a href="{{ route('shop') }}">T-BRAND</a></h1>
         </div>
 
         <ul class="menu">

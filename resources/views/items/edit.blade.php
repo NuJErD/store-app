@@ -17,19 +17,19 @@
     <title>Document</title>
 </head>
 <body> 
-<nav class="navbar">
+<nav class="navbar px-4 py-0">
         <div class ="logo">
-         <h3><a href="{{route('items.index')}}">T - B R A N D</a></h3>
+         <h3 class="mb-0"><a>T - B R A N D</a></h3>
         </div>
     </nav>
 <div id="frame">
     <div class="menu">
         <ul class="navadmin">
         <li>
-        <a href>จัดการร้านค้า</a>
+        <a href="{{route('items.index')}}">จัดการร้านค้า</a>
         </li>
         <li>
-        <a href>คำสั่งซื้อ</a> </li>
+        <a href="{{route('orders.index')}}">คำสั่งซื้อ</a> </li>
        
        
     </ul>
@@ -37,12 +37,14 @@
     </div>
     <div class="additems">
        
-    
-        
+        <div class="col-xl-4 mt-2">
+            <div class="mb-4 card">
+                <div class="card-header"><h4>เพิ่มข้อมูลสินค้า</h4></div>
+                <div class="card-body">
         <form class="was-validated" action="{{route('items.update',$item->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-         <h1>เพิ่มข้อมูล</h1> 
+        
         <div class="inputtext">
             <div class="col-md-5">
         <div class="inputtext-de">
@@ -126,7 +128,7 @@
     </div>
         
         <p>Picture</p>
-        <img src="../../uploadpic/{{$item->picture}}" width="100px" height="100px" ><br>
+        <img src="../../uploadpic/product/{{$item->picture}}" width="100px" height="100px" ><br><br>
         <input type="file" class="form-control " name="picture" >
         <div class="invalid-feedback">Please fill out this field.</div>
     
@@ -134,7 +136,10 @@
 
     
         </form>
+                </div>
  </div>
+</div>
+    </div>
 </div>
     
 </body>
