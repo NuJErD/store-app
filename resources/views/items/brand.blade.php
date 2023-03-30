@@ -16,7 +16,7 @@
 <body>
 <nav class="navbar px-4 py-0">
         <div class ="logo">
-         <h3 class="mb-0"><a >T - B R A N D</a></h3>
+         <h3 class="mb-0"><a href="{{route('store.index')}}" >T - B R A N D</a></h3>
         </div>
         <ul class="menu">
         
@@ -40,24 +40,31 @@
             </div>
         
  <div class="table-items">
- <table class="table  table-bordered">
+    <div class="" style="width: 30%">
+ <table class="table table-hover table-bordered">
     
        
-       
-        <td><h5>brand</h5></td>
-        <td><a href="addbrand" class="btn btn-dark">เพิ่มแบรนด์</a></td>
-       
+    <thead class="table-dark">
+      
+        <td class="w-50"><h5>brand</h5></td>
+        
+        <td  class="w-25">
+            <div class="d-flex justify-content-center">
+            <a href="addbrand" class="btn btn-primary">เพิ่มแบรนด์</a>
+        </div>
+    </td>
+    </thead>
        <tbody>
          @foreach ($brand as $b)
-            <tr>
+            <tr >
             
-            <td>{{$b->name}}</td>
+            <td >{{$b->name}}</td>
             
-            <td>
-                <div class="col-md-3">
+            <td class="d-flex flex-column align-items-center">
+                <div class=" mb-2">
                <a href="{{route('brand.edit',$b->id)}}" class="btn btn-warning custom">edit</a>
             </div>
-               <br>
+               
                <form method="post" action="{{ route('brand.destroy',$b->id) }}">                 
                   @csrf
                   @method('DELETE')                 
@@ -74,6 +81,7 @@
       </tbody>
     
  </table>
+</div>
 </div>
 
  

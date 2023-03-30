@@ -25,8 +25,8 @@ class MyOrderController extends Controller
             $query->where('status', '1')
                   ->orwhere('status','2');
              
-        }) ->get();
-           
+        })->get();
+       
         
     
          
@@ -37,7 +37,9 @@ class MyOrderController extends Controller
         //         $response['data'] = $orderde;
         //         dd($orderde);
         //    }
-         
+        // if(isset($order)){
+            
+        // }
           
         return view('store.myorder',compact('order'));
     }

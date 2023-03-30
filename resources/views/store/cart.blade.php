@@ -61,7 +61,7 @@
                         <div class="">
                             <div class="cart-items">
                                 <div class="cart-de">
-                                    <img src="../../uploadpic/{{ $item->picture }}" width="100px" height="100px"></img>
+                                    <img src="../../uploadpic/product/{{ $item->picture }}" width="100px" height="100px"></img>
                                     
                                     
                                 </div>

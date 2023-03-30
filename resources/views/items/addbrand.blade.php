@@ -24,11 +24,11 @@
 <div id="frame">
     <div class="menu">
         <ul class="navadmin">
-        <li>
-        <a href>จัดการร้านค้า</a>
-        </li>
-        <li>
-        <a href>คำสั่งซื้อ</a> </li>
+            <a href="{{route('items.index')}}"><li>จัดการสินค้า </li> </a>
+          
+            <a href="{{route('orders.index')}}">
+            <li>จัดการคำสั่งซื้อ</li></a>
+            <a href="{{route('brand.index')}}"><li>จัดการแบรนด์สินค้า  </li> </a>
        
        
     </ul>

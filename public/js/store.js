@@ -195,7 +195,7 @@ function getorder_detail(id){
         <div class="getdetail" id="getdetailmain">
             <div class="getdetail-02">
                 <div class="getdetail-03">
-                    <img src="../../uploadpic/${data[i].picture}" width="100px" height="100px" ></img>
+                    <img src="../../uploadpic/product/${data[i].picture}" width="100px" height="100px" ></img>
                 </div>
                 <div class="getdetail-03">   
                 <p>name ${data[i].product_name}</p>
@@ -282,7 +282,7 @@ function showtrack(picname){
     $(".slip").css('display', 'flex')
      console.log(picname)
       var data=''
-      data=`<td><img src="../../uploadpic/tracking/${picname}" width=500px" height="500px" ></td>`
+      data=`<td><img src="../../uploadpic/tracking/${picname}" width250px" height="200px" ></td>`
       
         $('.slippic').html(data)
     }

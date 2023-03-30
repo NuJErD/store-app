@@ -43,13 +43,24 @@
              
           </ul>
               </div>
-  
+              <div class="myorder-main ">
+               
+              </div>
        
             <div class="myorder-main">
              
+              @if($order == "[]")
+              <div class="position-absolute top-50 start-50 translate-middle">
+                
+              <div class="ms-5 " >
+              <div class="">ไม่มีรายการคำสั่งซื้อ</div>
+              <div class="d-flex justify-content-center"><a href="{{route('shop')}}"><button class="btn btn-dark">ไปหน้าร้านค้า</button></a></div>
+            </div>
+          </div>
+              @endif
                 
               <div class="order_user" >
-               
+
                 @foreach($order as $or)
               
                  

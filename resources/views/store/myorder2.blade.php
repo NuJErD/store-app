@@ -86,7 +86,7 @@
                  <div class="myorder-total" >
                     <p>Total: {{$or->total}} THB</p>
                    
-                    <button  class="order-cf1" onclick="order_cf('{{$or->id}}')"><p>ยืนยันการรับสินค้า</p></button>
+                    
                   
                   </div>
                 </div>

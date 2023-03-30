@@ -43,7 +43,8 @@
             <a href="{{route('items.index')}}"><li>จัดการสินค้า </li> </a>
           
             <a href="{{route('orders.index')}}">
-            <li>คำสั่งซื้อ</li></a>
+            <li>จัดการคำสั่งซื้อ</li></a>
+            <a href="{{route('brand.index')}}"><li>จัดการแบรนด์สินค้า  </li> </a>
             
             
             
@@ -55,14 +56,14 @@
         </div>  
         
         <div class="order">
-     <table class="table table-bordered">
+     <table class="table table-bordered table-hover">
       <div class="col-md-2 my-3">
         <div class="rounded input-group custom2">
             <input type="search" class="rounded form-control custom2" placeholder="ค้นหาคำสั่งซื้อ" aria-label="Search" aria-describedby="search-addon" onkeyup="searchorder(this.value)" />
             
           </div>
    </div>
-    <thead class="thead-light">
+   <thead class="table-dark">
        <tr>
         <th><h5>เลขคำสั่งซื้อ</h5></th>
         <th><h5>เลขพัสดุ</h5></th>
@@ -150,7 +151,7 @@
             <div class="modal-bg"></div>
             <div class="modal-page">
                 <div class="modal-menu">
-                 <h5>slip</h5>
+                 
                 <div class="close" onclick="closemodalslip()">
                    <i class="fa-solid fa-xmark"></i>
                 </div>

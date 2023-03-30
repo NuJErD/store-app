@@ -612,7 +612,7 @@ align-items: center;
 
 .modal-menu{
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
 }
 
 .modal-btn{

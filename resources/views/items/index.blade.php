@@ -17,7 +17,7 @@
     
 <nav class="navbar px-4 py-0">
         <div class ="logo">
-         <h3 class="mb-0"><a >T-BRAND</a></h3>
+         <h3 class="mb-0"><a href="{{route('store.index')}}">T-BRAND</a></h3>
         </div>
         <ul class="menu mb-0">
         
@@ -41,7 +41,7 @@
             </div>
         
  <div class="table-items">
- <table class="table table-striped">
+ <table class="table table-striped table-hover">
     
     <thead class="table-dark">
         <td><h5>Picture</h5></td>
