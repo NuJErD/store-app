@@ -131,24 +131,7 @@ class UserController extends Controller
        
         $usercheck = users::where('username',$request->username)->value('username');
        
-        if(isset($request->picture)){
-           if(isset($user->picture)){
-           
-            unlink("./uploadpic/uploadpicProfile/".$user->picture);
-            
-            
-           }
-            $picture = $request->file('picture');
-            $name_gen = hexdec((uniqid())); 
-            $name_type = strtolower($picture->getClientOriginalExtension());
-            $picname = $name_gen.'.'.$name_type;
-            
-            
-            $user->picture = $picname;
-            $user->save();    
-            $picture->move(public_path('uploadpic/uploadpicProfile'), $picname); //set uploat floder path
-           
-        }
+        
         
     if($user->username == $request->username){
         $affected = DB::table('users')
@@ -194,6 +177,44 @@ class UserController extends Controller
         }
         
 
+                /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editpic(Request $request, users $user)
+    {  
+        
+        $oldpic = users::where('id',$user->id)->value('picture');
+            
+            if(isset($oldpic)){
+                unlink("./uploadpic/uploadpicProfile/".$oldpic);
+            }
+            
+            
+             
+             
+           
+             $picture = $request->file('picture');
+             $name_gen = hexdec((uniqid())); 
+             $name_type = strtolower($picture->getClientOriginalExtension());
+             $picname = $name_gen.'.'.$name_type;
+             $affected = DB::table('users')
+             ->where('id', $user->id)
+             ->update([
+                 'picture' => $picname
+                
+     
+                       ]);
+             
+               
+             $picture->move(public_path('uploadpic/uploadpicProfile'), $picname); //set uploat floder path
+             session()->flash('success','อัพโหลดรูปเรียบร้อย');
+             return redirect()->route('user.edit',$user->id);   
+        
+       
+    }
          /**
      * Remove the specified resource from storage.
      *

@@ -65,9 +65,11 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(brand $brand)
+    {   $name =$brand->name;
+        $id = $brand->id;
+        
+      return view('items.editbrand',compact('name','id'));
     }
 
     /**
@@ -77,9 +79,15 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, brand $brand)
     {
-        //
+        $affected = DB::table('brands')
+        ->where('id', $brand->id)
+        ->update([
+              'name' => $request->name,
+              
+          ]);
+          return redirect()->route('brand.index');
     }
 
     /**
@@ -88,8 +96,9 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(brand $brand)
     {
-        //
+        DB::table('brands')->where('id', $brand->id)->delete();
+        return redirect('brand');
     }
 }

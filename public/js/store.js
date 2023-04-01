@@ -449,10 +449,13 @@ function changePW_add(){
     <div class="col-md-6">
         <label class="mb-1 small" >Old Password</label>
         <input class="form-control" name="oldpassword" type="password" id="oldpassword" placeholder="Enter your Old Password" >
+        <input class="form-control" name="repw" value="repw" type="hidden" >
     </div>
 </div>
-<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> Submit</button>
+<button class="btn btn-danger" onclick="cancel()"> cancel</button>
+<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> submit</button>
 `
+    $(".formcontrol").css('display','flex')
     $("#card-body-detail").html(resetPW)
 }
 
@@ -475,6 +478,7 @@ function checkPW(oldpw){
     </div>
     
 </div>
+<button class="btn btn-danger" onclick="cancel()"> cancel</button>
 <button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> Submit</button>
 `
 
@@ -578,6 +582,27 @@ function deletepic(pic){
         }
     })
    
+}
+
+function editpic(){
+   var button = `<button class="btn btn-success"  type="submit">Save Change</button>`
+//    $("#editupload").attr('class', 'btn btn-success');
+//    $("#editupload").attr('type', 'submit');
+    $("#editupload").attr('style', "display:none");
+   $("#newpic").html(button)
+   
+   
+}
+
+function AddSavebtn(){
+     let savebtn =`<button class="btn btn-success me-1" type="submit" >Save changes</button>`
+    $(".SaveEdit").html(savebtn)
+    $(".form-control").css('display', 'flex')
+   
+    $(".showedit").css('display', 'none')
+    $("#deletepic").css('display', 'flex')
+    $("#newpic").css('display', 'flex')
+    
 }
 
 

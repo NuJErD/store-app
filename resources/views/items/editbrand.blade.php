@@ -40,20 +40,21 @@
     </ul>
         
     </div>
-    <div class="additems">
+    <div class="additems" >
        
         <div class="mt-4 mb-4 card" style="height:270px">
             <div class="card-header"><h4>เพิ่มแบรนด์</h4></div>
             <div class="card-body">
-                <form class="was-validated" action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+                <form class="was-validated" action="{{route('brand.update',$id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                  
                 <div class="inputtext">
                     <div class="col-md-9">
                 <div class="inputtext-de">
                     <p>Brand:</p>
                 
-                    <input class="form-control " type="text" class="form-control" name="name"  required>
+                    <input class="form-control " type="text" class="form-control" name="name" value="{{$name}}" required>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="mt-4 d-flex">

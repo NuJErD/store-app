@@ -15,13 +15,13 @@
 </head>
 <body>
     
-<nav class="navbar px-4 py-0">
+<nav class="px-4 py-0 navbar">
         <div class ="logo">
          <h3 class="mb-0"><a href="{{route('store.index')}}">T-BRAND</a></h3>
         </div>
-        <ul class="menu mb-0">
+        <ul class="mb-0 menu">
         
-         <li><a href="{{route('logout')}}">Logout</a></li>
+        
      </ul>
         
     </nav>
@@ -35,11 +35,11 @@
             <a href="{{route('orders.index')}}">
             <li>จัดการคำสั่งซื้อ</li></a>
             <a href="{{route('brand.index')}}"><li>จัดการแบรนด์สินค้า  </li> </a>
-           
+            <a href="{{route('logout')}}"><li>ออกจากระบบ</li></a>
            
         </ul>
             </div>
-        
+    
  <div class="table-items">
  <table class="table table-striped table-hover">
     
@@ -98,9 +98,10 @@
       </tbody>
     
  </table>
+ {{ $products->links('pagination::bootstrap-4') }}
+ </div>
+
  
- 
-</div>
 
 
 

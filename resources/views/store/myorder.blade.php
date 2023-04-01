@@ -21,18 +21,18 @@
         </head>
         <script src="js/store.js"></script>
         <body>
-        <nav class="navbar px-4 py-0">
+        <nav class="px-4 py-0 navbar">
                 <div class ="logo">
                  <h3 class="mb-0"><a href="{{route('shop')}}">T-BRAND</a></h3>
                 </div>
                 <ul class="menu">
                 
-                 <li><a href="{{route('logout')}}">Logout</a></li>
+                 <li><a href="{{route('shop')}}">Home</a></li>
              </ul>
                 
             </nav>
             <div class="menu " >
-              <ul class="mt-3  navadmin">
+              <ul class="mt-3 navadmin">
               
                 <h3 style="color: white " class="mb-5">My Orders</h3>
             

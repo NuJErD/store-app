@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar px-4 py-0">
+<nav class="px-4 py-0 navbar">
         <div class ="logo">
          <h3 class="mb-0"><a href="{{route('store.index')}}" >T - B R A N D</a></h3>
         </div>
@@ -34,7 +34,8 @@
             <a href="{{route('orders.index')}}">
             <li>จัดการคำสั่งซื้อ</li></a>
             <a href="{{route('brand.index')}}"><li>จัดการแบรนด์สินค้า  </li> </a>
-           
+            <a href="{{route('logout')}}"><li>ออกจากระบบ</li></a>
+       
            
         </ul>
             </div>
@@ -61,7 +62,7 @@
             <td >{{$b->name}}</td>
             
             <td class="d-flex flex-column align-items-center">
-                <div class=" mb-2">
+                <div class="mb-2 ">
                <a href="{{route('brand.edit',$b->id)}}" class="btn btn-warning custom">edit</a>
             </div>
                

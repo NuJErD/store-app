@@ -38,6 +38,7 @@ class registerController extends Controller
      */
     public function store(Request $request)
     {
+       
         $user = new users;
         $urole = 'user';
         $username = $request->username;

@@ -24,7 +24,7 @@
        
 </head>
 <body>
-<nav class="navbar px-4 py-0">
+<nav class="px-4 py-0 navbar">
         <div class ="logo">
          <h3 class="mb-0"><a href="{{route('store.index')}}">T - B R A N D</a></h3>
         </div>
@@ -45,7 +45,8 @@
             <a href="{{route('orders.index')}}">
             <li>จัดการคำสั่งซื้อ</li></a>
             <a href="{{route('brand.index')}}"><li>จัดการแบรนด์สินค้า  </li> </a>
-            
+            <a href="{{route('logout')}}"><li>ออกจากระบบ</li></a>
+       
             
             
            
@@ -57,7 +58,7 @@
         
         <div class="order">
      <table class="table table-bordered table-hover">
-      <div class="col-md-2 my-3">
+      <div class="my-3 col-md-2">
         <div class="rounded input-group custom2">
             <input type="search" class="rounded form-control custom2" placeholder="ค้นหาคำสั่งซื้อ" aria-label="Search" aria-describedby="search-addon" onkeyup="searchorder(this.value)" />
             
@@ -107,7 +108,7 @@
                 </form>
                 </td>
             
-        </div>
+        
             <td> {{$or->created_at}}   </td>
             <td> {{$or->firstname}} &nbsp; {{$or->lastname}}  </td>
             <td> {{$or->total}}       </td>

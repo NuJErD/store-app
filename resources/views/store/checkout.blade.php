@@ -25,7 +25,7 @@
 <script src="js/store.js"></script>
 
 <body>
-    <nav class="navbar px-4 py-0">
+    <nav class="px-4 py-0 navbar">
         <div class="logo">
             <h3 class="mb-0"><a href="{{ route('shop') }}">T-BRAND</a></h3>
         </div>
@@ -34,7 +34,7 @@
 
 
             
-            <li><a href="{{ route('logout') }}">Logout</a></li>
+            <li><a href="{{ route('shop') }}">Home</a></li>
         </ul>
     </nav>
     <div class="cck">

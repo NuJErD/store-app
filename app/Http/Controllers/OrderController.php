@@ -29,7 +29,7 @@ class OrderController extends Controller
        
       
         
-        return view('orders.index',compact('order',$order));
+        return view('orders.index',compact('order'));
     }
 
 

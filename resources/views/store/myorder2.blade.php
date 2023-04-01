@@ -21,7 +21,7 @@
         </head>
         <script src="js/store.js"></script>
         <body>
-        <nav class="navbar px-4 py-0">
+        <nav class="px-4 py-0 navbar">
                 <div class ="logo">
                  <h3 class="mb-0" z><a href="{{route('shop')}}">T-BRAND</a></h3>
                 </div>
@@ -32,7 +32,7 @@
                 
             </nav>
             <div class="menu " >
-              <ul class="mt-3  navadmin">
+              <ul class="mt-3 navadmin">
               
                 <h3 style="color: white " class="mb-5">My Orders</h3>
             
@@ -119,7 +119,7 @@
           <div class="modal-bg"></div>
           <div class="modal-page">
               <div class="modal-menu">
-               <h5>slip</h5>
+               
               <div class="close" onclick="closemodalslip()">
                  <i class="fa-solid fa-xmark"></i>
               </div>

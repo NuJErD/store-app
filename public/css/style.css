@@ -20,6 +20,15 @@ body *{
     font-size: 14px;
     margin-top:5px;
 }
+.form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"], .was-validated .form-select:valid:not([multiple]):not([size]), .was-validated .form-select:valid:not([multiple])[size="1"]{
+    background-image:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+   
+}
+.form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"], .was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"]{
+    background-image:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+   
+}
+
 .form-control.is-invalid,.form-control.is-invalid:focus, .was-validated .form-control:valid {
     background-image: none;
    
@@ -34,15 +43,18 @@ body *{
     background-image: none;
    
   }
+  .form-select.is-invalid, .was-validated .form-select:invalid {
+    background-image: none;
+   
+  }
+
 
 
 input {
    
     font-size: 17px;
 }
-body nav{
-    padding: 0 2rem;
-}
+
 .navbar {
     width: 100%;
     font-family: 'Kanit';
@@ -348,6 +360,9 @@ input.textboxadd{
 .inputtext-de p{
 margin: 0%;
 }
+.pagination{
+margin-right: 20px;
+}
 
 input.textboxaddmin{
     
@@ -369,7 +384,17 @@ input.textboxaddmin{
         border-radius: 20px;
         
     }
-
+    input.btn-cancel{ 
+    
+        color: rgb(255, 255, 255);
+        background: #dc3545;
+        border: none; 
+       margin-top: 20px;
+        height: 45px;
+        width: 150px;   
+        border-radius: 20px;
+        
+    }
 
 ul.navadmin{
     margin-top: 50px;
@@ -387,6 +412,7 @@ ul.navadmin li{
     text-decoration: none;
 }
 ul.navadmin li:hover{
+    font-size: 18px;
    color: #727272;
 }
 ul.navadmin  a{

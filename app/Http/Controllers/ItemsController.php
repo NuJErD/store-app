@@ -18,7 +18,8 @@ class ItemsController extends Controller
     public function index()
     {   
         
-        $products =  DB::table('products')->paginate(5);
+        $products =  DB::table('products')->paginate(6);
+        
         
         return view('items.index',compact('products'));
        
@@ -92,7 +93,7 @@ class ItemsController extends Controller
             
             
             $items->picture = $picname;    
-            $picture->move(public_path('uploadpic'), $picname); //set uploat floder path
+            $picture->move(public_path('uploadpic/product/'), $picname); //set uploat floder path
             $items->save();
             return redirect('items');
             
@@ -167,7 +168,7 @@ class ItemsController extends Controller
     public function destroy(Request $request,products $item)
     {
          
-        unlink("./uploadpic/product".$item->picture);
+        unlink("./uploadpic/product/".$item->picture);
         DB::table('products')->where('id', $item->id)->delete();
         return redirect('items');
     }

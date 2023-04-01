@@ -11,25 +11,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 
-    <link rel="stylesheet" href="{{url('css/style.css')}}">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url('css/style.css')}}">
 </head>
 <body> 
-<nav class="navbar px-4 py-0">
-        <div class ="logo">
-         <h3 class="mb-0"><a>T - B R A N D</a></h3>
+    <nav class="px-4 py-0 navbar">
+        <div class="logo">
+        <h3><a href="shop">T - B R A N D</a></h3>
         </div>
+
+        <ul class="menu">
+           
+           
+        </ul>
     </nav>
-<div id="frame">
+
     <div class="menu">
         <ul class="navadmin">
-        <li>
-        <a href="{{route('items.index')}}">จัดการร้านค้า</a>
-        </li>
-        <li>
-        <a href="{{route('orders.index')}}">คำสั่งซื้อ</a> </li>
+        
+            <a href="{{route('items.index')}}"><li>จัดการสินค้า  </li> </a>
+          
+            <a href="{{route('orders.index')}}">
+            <li>จัดการคำสั่งซื้อ</li></a>
+            <a href="{{route('brand.index')}}"><li>จัดการแบรนด์สินค้า  </li> </a>
+            <a href="{{route('logout')}}"><li>ออกจากระบบ</li></a>
        
        
     </ul>
@@ -37,7 +45,7 @@
     </div>
     <div class="additems">
        
-        <div class="col-xl-4 mt-2">
+        <div class="mt-2 col-xl-4">
             <div class="mb-4 card">
                 <div class="card-header"><h4>เพิ่มข้อมูลสินค้า</h4></div>
                 <div class="card-body">
@@ -131,8 +139,8 @@
         <img src="../../uploadpic/product/{{$item->picture}}" width="100px" height="100px" ><br><br>
         <input type="file" class="form-control " name="picture" >
         <div class="invalid-feedback">Please fill out this field.</div>
-    
-        <input type="submit" value="เพิ่มสินค้า" class="btn-submitadd" name="items">
+        <a href="{{route('items.index')}}"><input type="button" value="ยกเลิก" class="btn-cancel" name="items"></a>
+        <input type="submit" value="ยืนยัน" class="btn-submitadd" name="items">
 
     
         </form>
