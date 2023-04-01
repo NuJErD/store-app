@@ -61,6 +61,7 @@ Route::get('/searchorder/{search?}',[OrderController::class,'searchorder']);
 Route::get('/checkpw/{pw?}',[UserController::class,'checkpw']);
 Route::post('/newpw',[UserController::class,'newpw']);
 Route::post('/deletepic',[UserController::class,'deletepic']);
+Route::get('/checkuser',[registerController::class,'checkusername']);
 
 Route::get('/ordersuccess',[MyOrderController::class,'ordersuccess'])->name('ordersuccess');
 

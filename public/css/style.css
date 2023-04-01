@@ -11,6 +11,29 @@ body *{
     -moz-box-sizing:border-box;
     box-sizing:border-box;
 }
+.feedback{
+    color: rgb(236, 43, 43);
+    font-size: 14px;
+}
+#usercheck{
+    color: rgb(236, 43, 43);
+    font-size: 14px;
+    margin-top:5px;
+}
+.form-control.is-invalid,.form-control.is-invalid:focus, .was-validated .form-control:valid {
+    background-image: none;
+   
+  }
+  .form-control.is-valid:focus, .was-validated .form-control:valid:focus{
+   
+    box-shadow: none;
+  }
+ 
+  
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none;
+   
+  }
 
 
 input {
@@ -204,7 +227,7 @@ p.greyy{
 div.register{
    
     background: rgb(219, 219, 219);
-    
+    min-height: 40vw;
     max-height: 100vw;
     width: 100%;
     display: flex;
@@ -212,7 +235,7 @@ div.register{
     
 }
 form.register h1{
-    
+    margin-bottom: 20px;
     text-align: center;
     font-size: 3rem;
     margin: 20px;
@@ -973,7 +996,7 @@ div.order{
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1;
-    color: #69707a;
+    color: #000000;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #c5ccd6;

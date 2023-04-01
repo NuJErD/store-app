@@ -55,7 +55,7 @@
 
 
                         <input type="hidden" value="{{ $item->id }}" name="itemId">
-                        <img src="uploadpic/{{ $item->picture }}" width="150px" height="150px"><br>
+                        <img src="uploadpic/product/{{ $item->picture }}" width="150px" height="150px"><br>
                         <h2>{{ $item->name }}</h2>
                         <p>{{ $item->festival }}</p>
                         <p >size:    {{$item->size}}</p>

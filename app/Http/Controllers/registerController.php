@@ -87,6 +87,29 @@ class registerController extends Controller
        
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function checkusername(Request $request)
+    {  
+        
+        $username = users::where('username',$request->name)->first();
+        if(isset($username)){
+            return response()->json('fail');
+          
+        }else if(isset($request->name)){
+            return response()->json('success');
+           
+        }else{
+            return response()->json('null');
+        }
+      
+        
+    }
     /**
      * Display the specified resource.
      *
