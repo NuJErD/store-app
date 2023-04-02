@@ -33,7 +33,7 @@
 
     <div class="register" >
       
-        <form class="was-validated" action="{{route('register.store')}}" method="POST">
+        <form class="was-validated" action="{{route('register.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             
             

@@ -68,14 +68,14 @@
                                 </label> 
                                 <label for="upload">
                                  
-                                <span  id="editupload" class="btn btn-primary"  type="button">Upload New Image</span>
+                                <span  id="editupload" class="btn btn-primary"  type="button">อัปโหลดรูป</span>
                                 
                                 
                                 <input type="file" id="upload" name="picture" style="display:none" onchange="editpic()" >
                                 </label>
                                 <label >
                                     
-                                    <span id="deletepic" class="btn btn-danger"  type="button" onclick="deletepic('{{$user->picture}}')"> Delete image</span>
+                                    <span id="deletepic" class="btn btn-danger"  type="button" onclick="deletepic('{{$user->picture}}')">ลบรูป</span>
                                    
                                     </label>
                             </div>
@@ -105,21 +105,22 @@
                                 
                                     <!-- Form Group (username)-->
                                     <div class="mb-3">
-                                        <label class="mb-1 small" for="inputUsername">Username</label>
-                                        <input class="form-control" style="display:none" name="username" type="text" placeholder="Enter your username" value="{{$user->username}}" onkeyup="checkuser(this.value)" required>
+                                        <label class="mb-1 small" for="inputUsername">ชื่อผู้ใช้งาน</label>
+                                        <input class="form-control" style="display:none" name="username" type="text" placeholder="Enter your username" value="{{$user->username}}" onkeyup="checkuserEdit(this.value)" required>
+                                        <div id="usercheckedit"  style="color:#dc3545"></div>
                                         <p class="showedit">{{$user->username}}</p>
                                     </div>
                                     <!-- Form Row-->
                                     <div class="mb-3 row gx-3">
                                         <!-- Form Group (first name)-->
                                         <div class="col-md-6">
-                                            <label class="mb-1 small" >First name</label>
+                                            <label class="mb-1 small" >ชื่อ</label>
                                             <p class="showedit">{{$user->firstname}}</p>
                                             <input class="form-control" style="display:none" name="firstname" type="text" placeholder="Enter your first name" value="{{$user->firstname}}">
                                         </div>
                                         <!-- Form Group (last name)-->
                                         <div class="col-md-6">
-                                            <label class="mb-1 small" >Last name</label>
+                                            <label class="mb-1 small" >นามสกุล</label>
                                             <p class="showedit">{{$user->lastname}}</p>
                                             <input class="form-control" style="display:none" name="lastname" type="text" placeholder="Enter your last name" value="{{$user->lastname}}">
                                         </div>
@@ -128,13 +129,13 @@
                                     <div class="mb-3 row gx-3">
                                         <!-- Form Group (organization name)-->
                                         <div class="col-md-6">
-                                            <label class="mb-1 small" >Phone</label>
+                                            <label class="mb-1 small" >เบอร์โทร</label>
                                             <p class="showedit">{{$user->phonenumber}}</p>
                                             <input class="form-control" style="display:none" name="phonenumber" type="text" placeholder="Enter your Phone" value="{{$user->phonenumber}}">
                                         </div>
                                         <!-- Form Group (location)-->
                                         <div class="col-md-6">
-                                            <label class="mb-1 small" >Address</label>
+                                            <label class="mb-1 small" >ที่อยู่</label>
                                             <p class="showedit">{{$user->address}}</p>
                                             <input class="form-control" style="display:none" name="address" type="text" placeholder="Enter your Address" value="{{$user->address}}">
                                         </div>
@@ -144,32 +145,34 @@
                                     <div class="mb-3 row gx-3">
                                         <!-- Form Group (phone number)-->
                                         <div class="col-md-6">
-                                            <label class="mb-1 small" >City</label>
-                                            <p class="showedit">{{$user->city}}</p>
-                                            <input class="form-control" style="display:none" name="city" type="tel" placeholder="Enter your phone city" value="{{$user->city}}">
-                                        </div>
-                                        <!-- Form Group (birthday)-->
-                                        <div class="col-md-6">
-                                            <label class="mb-1 small" >Region</label>
+                                            <label class="mb-1 small" >จังหวัด</label>
                                             <p class="showedit">{{$user->region}}</p>
                                             <input class="form-control" style="display:none" name="region" type="tel" placeholder="Enter your region" value="{{$user->region}}">
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="mb-1 small" >Postcode</label>
+                                            <label class="mb-1 small" >อำเภอ</label>
+                                            <p class="showedit">{{$user->city}}</p>
+                                            <input class="form-control" style="display:none" name="city" type="tel" placeholder="Enter your phone city" value="{{$user->city}}">
+                                        </div>
+                                        <!-- Form Group (birthday)-->
+                                       
+                                        <div class="col-md-6">
+                                            <label class="mb-1 small" >รหัสไปรษณีย์</label>
                                             <p class="showedit">{{$user->postcode}}</p>
                                             <input class="form-control" style="display:none" name="postcode" type="tel" placeholder="Enter your phone number" value="{{$user->postcode}}">
                                         </div>
+                                        
                                     </div>
                                     <!-- Save changes button-->
                                     <div class="b-all d-flex ">
                                         <div class="SaveEdit">
-                                    <button class="btn btn-primary me-1" type="botton" onclick="AddSavebtn()">Edit Profile</button>
+                                    <button class="btn btn-primary me-1" type="botton" onclick="AddSavebtn()">แก้ไขโปรไฟล์</button>
                                 </div>
                             </form>    
                                 
                                     <div class="">
-                                <button class="btn btn-warning" onclick="changePW_add()" > Change Password</button>    
-                                <button class="btn btn-danger"  > <a href="{{route('logout')}}" >Log Out</a></button>
+                                <button class="btn btn-warning" onclick="changePW_add()" > เปลี่ยนรหัสผ่าน</button>    
+                                <button class="btn btn-danger"  > <a href="{{route('logout')}}" >ออกจากระบบ</a></button>
                                 </div>
                             </div>
                        

@@ -661,7 +661,7 @@ align-items: center;
 
 .modal-menu{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 .modal-btn{

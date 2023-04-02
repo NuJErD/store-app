@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\users;
 use Illuminate\Support\Facades\Hash;
 use session;
-
+use Illuminate\Support\Str;
 class registerController extends Controller
 {
     /**
@@ -57,11 +57,12 @@ class registerController extends Controller
          return view('register.index');
        }
         else{ 
+           
         $passwordhashed = Hash::make($password);
         $user->firstname = $request->firstname ;
         $user->lastname = $request->lastname ;
         $user->phonenumber = $request->phonenumber ;
-        $user->username = $request->username ;
+        $user->username = Str::lower($request->username);
         $user->password = $passwordhashed ;
         $user->address = $request->address ;
         $user->region = $request->region ;
@@ -69,7 +70,7 @@ class registerController extends Controller
         $user->postcode = $request->postcode;
         $user->urole = $urole;
         if(isset($request->picture)){
-        $picture = $request->file('picture');
+         $picture = $request->file('picture');
             $name_gen = hexdec((uniqid())); 
             $name_type = strtolower($picture->getClientOriginalExtension());
             $picname = $name_gen.'.'.$name_type;
@@ -97,8 +98,9 @@ class registerController extends Controller
      */
     public function checkusername(Request $request)
     {  
+        //$userold = users::where('id',session('user'))->value('username');
+        $username = users::where('id','!=',session('user'))->where('username',$request->name)->first();
         
-        $username = users::where('username',$request->name)->first();
         if(isset($username)){
             return response()->json('fail');
           

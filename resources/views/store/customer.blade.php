@@ -81,7 +81,7 @@
     <div class="container-shop">
       
         <div class="menu-item">      
-            <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
+            <input type="text" class="sidebar-serch" placeholder="Search" onkeyup="search(this.value)">
             <br><br>
             <h1>Brands</h1>
             <div class="" >
@@ -129,7 +129,7 @@
         <div id="modalopen" class="modal" style="display: none" >
             <div class="modal-bg"></div>
             <div class="modal-page">
-                <div class="modal-menu">
+                <div class="modal-menu justify-content-between">
                 <h2>Detail</h2>
                 <div class="close" onclick="closemodal()">
                    <i class="fa-solid fa-xmark"></i>

@@ -20,7 +20,7 @@
 <body> 
     <nav class="px-4 py-0 navbar">
         <div class="logo">
-        <h3><a href="shop">T - B R A N D</a></h3>
+        <h3><a href="route{{'items.index'}}">T - B R A N D</a></h3>
         </div>
 
         <ul class="menu">
@@ -47,7 +47,7 @@
        
         <div class="mt-2 col-xl-4">
             <div class="mb-4 card">
-                <div class="card-header"><h4>เพิ่มข้อมูลสินค้า</h4></div>
+                <div class="card-header"><h4>ข้อมูลสินค้า</h4></div>
                 <div class="card-body">
         <form class="was-validated" action="{{route('items.update',$item->id)}}" method="POST" enctype="multipart/form-data">
             @csrf

@@ -17,7 +17,7 @@
     
 <nav class="px-4 py-0 navbar">
         <div class ="logo">
-         <h3 class="mb-0"><a href="{{route('store.index')}}">T-BRAND</a></h3>
+         <h3 class="mb-0"><a href="{{route('items.index')}}">T-BRAND</a></h3>
         </div>
         <ul class="mb-0 menu">
         
@@ -77,14 +77,14 @@
                 <div class="col-md-3">
                     <i class="bi bi-trash3-fill"></i>
                     
-               <a href="{{route('items.edit',$items->id)}}" class="btn btn-warning custom">edit</a>
+               <a href="{{route('items.edit',$items->id)}}" class="btn btn-warning custom">แก้ไข</a>
               
             </div>
                <br>
                <form method="post" action="{{ route('items.destroy',$items->id) }}">                 
                   @csrf
                   @method('DELETE')                 
-                  <button type="submit" class="btn btn-danger custom">Delete</button>
+                  <button type="submit" class="btn btn-danger custom">ลบ</button>
               </form>
                  
                   {{-- <a href="{{route('items.destroy',$items->id)}}" class="btn btn-danger">delete </a> --}}

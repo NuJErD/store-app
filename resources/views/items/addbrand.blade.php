@@ -18,7 +18,7 @@
 <body> 
     <nav class="px-4 py-0 navbar">
         <div class ="logo">
-         <h3 class="mb-0"><a href="{{route('store.index')}}">T-BRAND</a></h3>
+         <h3 class="mb-0"><a href="{{route('items.index')}}">T-BRAND</a></h3>
         </div>
         <ul class="mb-0 menu">
         

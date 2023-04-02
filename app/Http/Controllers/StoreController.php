@@ -16,14 +16,14 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function test()
-    {
+    // public function test()
+    // {
         
         
-        // return response($products);
-          return view('store.test');
+    //     // return response($products);
+    //       return view('store.test');
        
-    }
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -32,10 +32,10 @@ class StoreController extends Controller
     public function index()
     {
         $products =  DB::table('products')->get();
-        
+        $brand = brand::get();
         
         // return response($products);
-          return view('store.store',compact('products'));
+          return view('store.store',compact('products','brand'));
        
     }
     public function shopindex()

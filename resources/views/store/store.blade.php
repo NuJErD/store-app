@@ -1,4 +1,7 @@
-
+@if (Session::has('user'))
+   <script>window.location = "/shop";</script>
+             
+        @endif
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +42,15 @@
     </nav>
     <div class="container-shop">
         <div class="menu-item">
-            <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
+          <input type="text" class="sidebar-serch" placeholder="Serch" onkeyup="search(this.value)">
+          <br><br>
+          <h1>Brands</h1>
+          <div class="" >
+            <li class="list-brand"  onclick="search()">ALL</li>
+            @foreach($brand as $b)
+              <li class="list-brand" onclick="search('{{$b->name}}')" >{{$b->name}}</li>
+            @endforeach
+        </div>
 
 
             </ul>
@@ -58,8 +69,8 @@
                         <img src="uploadpic/product/{{ $item->picture }}" width="150px" height="150px"><br>
                         <h2>{{ $item->name }}</h2>
                         <p>{{ $item->festival }}</p>
-                        <p >size:    {{$item->size}}</p>
-                        <p>stock:   {{$item->stock}}</p>
+                        <p >Size:    {{$item->size}}</p>
+                        <p>Stock:   {{$item->stock}}</p>
 
 
 

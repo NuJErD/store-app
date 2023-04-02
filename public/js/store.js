@@ -24,21 +24,21 @@ function myFunction(id) {
         
         <div class="modal-detail"> 
             <input type="hidden"  name="id" value="${data.id}" >
-            <p class="text-modal">name:     ${data.name}</p> 
+            <p class="text-modal">Name:     ${data.name}</p> 
             <input type="hidden"  name="name" value="${data.name}" > 
-            <p class="text-modal">festival: ${data.festival}</p>
+            <p class="text-modal">Festival: ${data.festival}</p>
             <input type="hidden"  name="festival" value="${data.festival}" >
-            <p class="text-modal">price:    ${data.price} THB</p> 
+            <p class="text-modal">Price:    ${data.price} THB</p> 
             <input type="hidden"  name="price" value="${data.price}" >
-            <p class="text-modal">brand:    ${data.brand}</p>
+            <p class="text-modal">Brand:    ${data.brand}</p>
             <input type="hidden"  name="brand" value="${data.brand}" >
-            <p class="text-modal">size:     ${data.size}</p>
+            <p class="text-modal">Size:     ${data.size}</p>
             <input type="hidden"  name="size" value="${data.size}" >
-            <p class="text-modal">chest:    ${data.chest}</p>
+            <p class="text-modal">Chest:    ${data.chest}</p>
             <input type="hidden"  name="chest" value="${data.chest}" >
-            <p class="text-modal">lenght:   ${data.lenght}</p>
+            <p class="text-modal">Lenght:   ${data.lenght}</p>
             <input type="hidden"  name="lenght" value="${data.lenght}" >
-            <p class="text-modal">color:    ${data.color}</p>
+            <p class="text-modal">Color:    ${data.color}</p>
             <input type="hidden"  name="color" value="${data.color}" >
                     
         </div>        
@@ -447,13 +447,13 @@ function changePW_add(){
     resetPW = `<div class="mb-3 row gx-3">
     <!-- Form Group (first name)-->
     <div class="col-md-6">
-        <label class="mb-1 small" >Old Password</label>
+        <label class="mb-1 small" >รหัสผ่านเดิม</label>
         <input class="form-control" name="oldpassword" type="password" id="oldpassword" placeholder="Enter your Old Password" >
         <input class="form-control" name="repw" value="repw" type="hidden" >
     </div>
 </div>
-<button class="btn btn-danger" onclick="cancel()"> cancel</button>
-<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> submit</button>
+<button class="btn btn-danger" onclick="cancel()"> ยกเลิก</button>
+<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> ยืนยัน</button>
 `
     $(".formcontrol").css('display','flex')
     $("#card-body-detail").html(resetPW)
@@ -465,21 +465,23 @@ function checkPW(oldpw){
      let newpw = `<div class="mb-3 row gx-3">
     <!-- Form Group (first name)-->
     <div class="col-md-6">
-        <label class="mb-1 small" >New Password</label>
-        <input class="form-control" name="newpassword" type="password" id="newpassword" placeholder="Enter your New Password" >
+        <label class="mb-1 small" >รหัสผ่านใหม่</label>
+        <input class="form-control" name="newpassword" type="password" id="newpassword2" placeholder="Enter your New Password" onkeyup="checkpassword2(this.value); cfpassword2(document.getElementById('cfpassword2').value)">
+        <div id="editpassword-feed"  style="color:#dc3545"></div>
     </div>
     
 </div>
 <div class="mb-3 row gx-3">
     <!-- Form Group (first name)-->
     <div class="col-md-6">
-        <label class="mb-1 small" >Confirm Password</label>
-        <input class="form-control" name="cfpassword" type="password" id="cfpassword" placeholder="Enter Confirm Password" >
+        <label class="mb-1 small" >ยืนยันรหัสผ่าน</label>
+        <input class="form-control" name="cfpassword" type="password" id="cfpassword2" placeholder="Enter Confirm Password" onkeyup="cfpassword2(this.value)" >
+        <div id="editpasswordcf-feed"  style="color:#dc3545"></div>
     </div>
     
 </div>
-<button class="btn btn-danger" onclick="cancel()"> cancel</button>
-<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> Submit</button>
+<button class="btn btn-danger" onclick="cancel()"> ยกเลิก</button>
+<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword2').value,document.getElementById('cfpassword2').value)">ยืนยัน</button>
 `
 
 let resetPW = `<div class="mb-3 row gx-3">
@@ -490,11 +492,12 @@ let resetPW = `<div class="mb-3 row gx-3">
 
     <!-- Form Group (first name)-->
     <div class="col-md-6">
-        <label class="mb-1 small" >Old Password</label>
+        <label class="mb-1 small" >รหัสผ่านเดิม</label>
         <input class="form-control" name="oldpassword" type="password" id="oldpassword" placeholder="Enter your Old Password" >
     </div>
 </div>
-<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> Submit</button>
+<button class="btn btn-danger" onclick="cancel()">ยกเลิก</button>
+<button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> ยืนยัน</button>
 `
     $.ajax({
         
@@ -537,23 +540,25 @@ function changePW(newpw,cfpw){
             <div class="alert alert-danger" id="errorpassword"  >
                ${data}
                 </div>
-
-    <!-- Form Group (first name)-->
-    <div class="col-md-6">
-        <label class="mb-1 small" >New Password</label>
-        <input class="form-control" name="newpassword" type="password" id="newpassword" placeholder="Enter your New Password" >
-    </div>
+                <div class="col-md-6">
+                <label class="mb-1 small" >รหัสผ่านใหม่</label>
+                <input class="form-control" name="newpassword" type="password" id="newpassword2" placeholder="Enter your New Password" onkeyup="checkpassword2(this.value); cfpassword2(document.getElementById('cfpassword2').value)">
+                <div id="editpassword-feed"  style="color:#dc3545"></div>
+            </div>
+   
     
 </div>
 <div class="mb-3 row gx-3">
     <!-- Form Group (first name)-->
     <div class="col-md-6">
-        <label class="mb-1 small" >Confirm Password</label>
-        <input class="form-control" name="cfpassword" type="password" id="cfpassword" placeholder="Enter Confirm Password" >
+        <label class="mb-1 small" >ยืนยันรหัสผ่าน</label>
+        <input class="form-control" name="cfpassword" type="password" id="cfpasswordedit" placeholder="Enter Confirm Password" onkeyup="cfpassword(this.value)">
+        <div id="editpasswordcf-feed"  style="color:#dc3545"></div>
     </div>
     
 </div>
-<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> Submit</button>
+<button class="btn btn-danger" onclick="cancel()">ยกเลิก</button>
+<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> ยืนยัน</button>
 `
         if(data == 'success'){
               location.reload()

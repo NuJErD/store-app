@@ -132,7 +132,7 @@
           <div class="modal-bg"></div>
           <div class="modal-page">
               <div class="modal-menu">
-               <h5>slip</h5>
+              
               <div class="close" onclick="closemodalslip()">
                  <i class="fa-solid fa-xmark"></i>
               </div>

@@ -118,7 +118,7 @@
          <div  class="slip" style="display:  none" >
           <div class="modal-bg"></div>
           <div class="modal-page">
-              <div class="modal-menu">
+              <div class="modal-menu justify-content-end">
                
               <div class="close" onclick="closemodalslip()">
                  <i class="fa-solid fa-xmark"></i>

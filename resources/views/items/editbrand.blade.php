@@ -18,7 +18,7 @@
 <body> 
     <nav class="px-4 py-0 navbar">
         <div class ="logo">
-         <h3 class="mb-0"><a href="{{route('store.index')}}">T-BRAND</a></h3>
+         <h3 class="mb-0"><a href="{{route('items.index')}}">T-BRAND</a></h3>
         </div>
         <ul class="mb-0 menu">
         
@@ -43,7 +43,7 @@
     <div class="additems" >
        
         <div class="mt-4 mb-4 card" style="height:270px">
-            <div class="card-header"><h4>เพิ่มแบรนด์</h4></div>
+            <div class="card-header"><h4>ชื่อแบรนด์</h4></div>
             <div class="card-body">
                 <form class="was-validated" action="{{route('brand.update',$id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -58,7 +58,7 @@
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="mt-4 d-flex">
-                <a class="me-2" href="{{route('brand.index')}}"><input type="submit" value="ยกเลิก" class="btn btn-danger" name="items"></a>
+                <a class="me-2" href="{{route('brand.index')}}"><input type="button" value="ยกเลิก" class="btn btn-danger" ></a>
                 <a><input type="submit" value="ยืนยัน" class="btn btn-dark" name="items"></a>
                 </div>
             </div>
