@@ -81,13 +81,13 @@
                   <div class="mb-3 row gx-3">
                     <div class="col-md-6">
                       <label class="mb-1 small" >รหัสผ่าน</label>
-                      <input id="password" class="form-control" name="password" type="text" placeholder="รหัสผ่าน" onkeyup="checkpassword(this.value); cfpassword(document.getElementById('passwordcf').value)"  required>
+                      <input id="password" class="form-control" name="password" type="password" aria-describedby="passwordHelpBlock" placeholder="รหัสผ่าน" onkeyup="checkpassword(this.value); cfpassword(document.getElementById('passwordcf').value)"  required>
                       <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
                       <div id="password-feed"  style="color:#dc3545"></div>
                   </div>
                   <div class="col-md-6">
                     <label class="mb-1 small" >ยืนยันรหัสผ่าน</label>
-                    <input  id="passwordcf" class="form-control" name="c_password" type="text" placeholder="ยืนยันรหัสผ่าน" onkeyup="cfpassword(this.value)" required>
+                    <input  id="passwordcf" class="form-control" name="c_password" type="password" placeholder="ยืนยันรหัสผ่าน" onkeyup="cfpassword(this.value)" required>
                     <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
                     <div id="passwordcf-feed"  style="color:#dc3545"></div>
                 </div>

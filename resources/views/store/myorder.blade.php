@@ -81,11 +81,11 @@
                </summary>
                <div class="order_out_main">
                 <div class="order-track" >
-                  <h5><p>เลขพัสดุ: 
+                  <h5><p style="margin-bottom: 15px">เลขพัสดุ: 
                     @if($or->status == 2)
                     <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button> </p></h5>
                     @else
-                    -
+                    ยังไม่ได้จัดส่ง
                     @endif
                    </div>
                 <div class="order_out" id="order_out{{$or->id}}" >
@@ -131,7 +131,7 @@
          <div  class="slip" style="display:  none" >
           <div class="modal-bg"></div>
           <div class="modal-page">
-              <div class="modal-menu">
+              <div class="modal-menu justify-content-end">
               
               <div class="close" onclick="closemodalslip()">
                  <i class="fa-solid fa-xmark"></i>

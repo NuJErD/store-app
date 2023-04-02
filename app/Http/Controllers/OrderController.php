@@ -257,10 +257,10 @@ class OrderController extends Controller
                     ]);  
                 }else{
                     $orderckeck->delete();
-                    $orderckeck = $order->order_detail()->get();
-                    
-                    if(isset($orderckeck)){
-                        
+                    $orderckeck = $order->order_detail()->first();
+                   
+                    if(!isset($orderckeck)){
+                       
                          $order->delete();
                          
                          return redirect()->route('cart.index');

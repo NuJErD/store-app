@@ -23,23 +23,44 @@ function myFunction(id) {
         <img src="../../uploadpic/product/${data.picture}" width="200px" height="200px" ></img>
         
         <div class="modal-detail"> 
-            <input type="hidden"  name="id" value="${data.id}" >
-            <p class="text-modal">Name:     ${data.name}</p> 
-            <input type="hidden"  name="name" value="${data.name}" > 
-            <p class="text-modal">Festival: ${data.festival}</p>
-            <input type="hidden"  name="festival" value="${data.festival}" >
-            <p class="text-modal">Price:    ${data.price} THB</p> 
+        <input type="hidden"  name="color" value="${data.color}" >
+        <input type="hidden"  name="lenght" value="${data.lenght}" >
+        <input type="hidden"  name="chest" value="${data.chest}" >
+        <input type="hidden"  name="size" value="${data.size}" >
+        <input type="hidden"  name="brand" value="${data.brand}" >
             <input type="hidden"  name="price" value="${data.price}" >
-            <p class="text-modal">Brand:    ${data.brand}</p>
-            <input type="hidden"  name="brand" value="${data.brand}" >
-            <p class="text-modal">Size:     ${data.size}</p>
-            <input type="hidden"  name="size" value="${data.size}" >
-            <p class="text-modal">Chest:    ${data.chest}</p>
-            <input type="hidden"  name="chest" value="${data.chest}" >
-            <p class="text-modal">Lenght:   ${data.lenght}</p>
-            <input type="hidden"  name="lenght" value="${data.lenght}" >
-            <p class="text-modal">Color:    ${data.color}</p>
-            <input type="hidden"  name="color" value="${data.color}" >
+            <input type="hidden"  name="id" value="${data.id}" >
+            <input type="hidden"  name="festival" value="${data.festival}" >
+            <input type="hidden"  name="name" value="${data.name}" > 
+          <div> 
+          <h4><p class="text-modal">Name:     </p> <h4> 
+
+         <h4> <p class="text-modal">Festival: </p></h4>
+         
+         <h4> <p class="text-modal">Price:     </p> </h4>
+         
+         <h4> <p class="text-modal">Brand:   </p></h4>
+          
+         <h4> <p class="text-modal">Size:     </p></h4>
+        
+         <h4> <p class="text-modal">Chest:    </p></h4>
+         
+        <h4>  <p class="text-modal">Lenght:   </p></h4>
+         
+        <h4> <p class="text-modal">Color:    </p></h4>
+          </div>
+          <div class="modal-i-de">
+          <p>${data.name}</p>
+          <p>${data.festival}</p>
+          <p>${data.price}THB</p>
+          <p>${data.brand}</p>
+          <p>${data.size}</p>
+          <p>${data.chest}</p>
+          <p>${data.lenght}</p>
+          <p>${data.color}</p>
+          </div>  
+           
+            
                     
         </div>        
     </div> `
@@ -85,7 +106,7 @@ function total() {
             }
             console.log(total)
            // document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"
-            document.getElementById("total").innerHTML = "Total:" + ' ' + total + ".00" + " THB"
+            document.getElementById("total").innerHTML = "<h4>Total &nbsp:</h4> &nbsp" + ' ' + total + ".00" + " THB"
             
             document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"  
         }
@@ -197,12 +218,25 @@ function getorder_detail(id){
                 <div class="getdetail-03">
                     <img src="../../uploadpic/product/${data[i].picture}" width="100px" height="100px" ></img>
                 </div>
-                <div class="getdetail-03">   
-                <p>name ${data[i].product_name}</p>
-                <p>Size:    ${data[i].product_size}</p>
-                <p>Price:   ${data[i].product_price}</p>
-                <p>Amount:  ${data[i].amount}</p>
-                </div>
+                <div> 
+          <h4><p >Name:     </p> <h4> 
+
+         <h4> <p >Size: </p></h4>
+         
+         <h4> <p >Price:     </p> </h4>
+         
+         <h4> <p >Amount:   </p></h4>
+          
+        
+          </div>
+          <div class="">
+          <p>${data[i].product_name}</p>
+          <p>${data[i].product_size}</p>
+          <p>${data[i].product_price}THB</p>
+          <p>${data[i].amount}</p>
+          
+          </div> 
+                
                 
             </div>    
            

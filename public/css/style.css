@@ -434,8 +434,9 @@ ul.navadmin  a{
 .itemslist{
     font-size: 16px;
     margin-top: 10px;
-    margin-left: 50px;
-    margin-bottom: 40px;
+    margin-left:30px;
+    margin-right:40px;
+    margin-bottom: 50px;
     height:300px;
     width: 250px;
     cursor: pointer;
@@ -552,7 +553,19 @@ a{
     justify-content: center;
     align-items: center;
 }
-
+.modal-detail{
+    display: flex;
+}
+.it-st-pr{
+    display: flex;
+    justify-content: space-between;
+}
+.modal-i-de p{
+    padding-left: 30px;
+    padding-bottom:20px ;
+    color: black;
+    font-size: 20px;
+}
 .modal-page{
     min-width: 30vw;
     min-height: 10vw;
@@ -736,6 +749,7 @@ div.order{
 }
 .qr{
     cursor: pointer;
+    margin-left: 10px;
 }
 .qrcode{
     width: 100%;
@@ -780,12 +794,18 @@ div.order{
 }
 .qr p{
     margin: 0;
+   
 }
 #total.total1{
 
     display: flex;
     justify-content: start;
     margin: 0;
+    align-items: center;
+ }
+ #total.total1 h4{
+margin: 0%;
+ 
  }
 .checkout-1-1{
     display: flex;

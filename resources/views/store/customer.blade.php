@@ -113,8 +113,11 @@
                         <img src="uploadpic/product/{{ $item->picture }}" width="150px" height="150px"><br>
                         <h2>{{ $item->name }}</h2>
                         <p>{{ $item->festival }}</p>
-                        <p >size:    {{$item->size}}</p>
-                        <p>stock:   {{$item->stock}}</p>
+                        <p >Size:    {{$item->size}}</p>
+                        <div class="it-st-pr" >
+                          <div class="">Stock:   {{$item->stock}}</div>
+                          <div class="">   {{$item->price}} THB</div>
+                        </div>
 
 
 

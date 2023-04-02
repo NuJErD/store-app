@@ -1,7 +1,7 @@
 @if (!Session::has('admin'))
    <script>window.location = "/login";</script>
              
-        @endif
+    @endif
 
 <!DOCTYPE html>
 <html lang="en">

@@ -111,7 +111,7 @@
                      <div class="inputtext">    
                          <div class="col-md-5">
                             <div class="inputtext-de">
-                                  <p>Chest:</p>
+                                  <p>Chest</p>
                                 <input type="text" class="form-control " name="chest" min="0" required>
                                 <div class="invalid-feedback">Please fill out this field.</div>  
                             </div>

@@ -79,7 +79,9 @@
                                         <input type="hidden" name="p_id" value="{{ $item->id }}">
                                         <button>-</button>
                                     </form>
+                                  
                                     <input type="text"  value="{{ $item->amount }}" onchange="checkstock(this.value,{{ $item->amount }},{{ $item->id }},{{ $item->order_id }})"> 
+                                  
                                     <form action="{{ route('orderup', $item->order_id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
