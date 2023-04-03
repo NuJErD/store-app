@@ -201,7 +201,7 @@ function checkstock(amountnew,amount,p_id,order_id){
 
 function getorder_detail(id){
  var id = id 
- 
+ var getdatail_ad =''
  var getdatail = ''
   $.ajax({
     url: '/getdetail/'+ id,
@@ -209,27 +209,24 @@ function getorder_detail(id){
     dataType: 'json',
     success: function(response){
        
-         var data = response.data
+         var data = response[0].data
          var count = Object.keys(data).length;
          for (var i = 0; i < count; i++){
         getdatail += `
-        <div class="getdetail" id="getdetailmain">
-            <div class="getdetail-02">
+        <div class="getdetail" id="getdetailmain"   ">
+            <div class="getdetail-02 mb-4 mt-3" >
+              
                 <div class="getdetail-03">
                     <img src="../../uploadpic/product/${data[i].picture}" width="100px" height="100px" ></img>
                 </div>
-                <div> 
-          <h4><p >Name:     </p> <h4> 
-
-         <h4> <p >Size: </p></h4>
-         
-         <h4> <p >Price:     </p> </h4>
-         
-         <h4> <p >Amount:   </p></h4>
-          
+                <div class="d-flex flex-column"> 
+         <h4><p>Name:</p></h4>
+         <h4><p>Size:</p></h4>
+         <h4><p>Price:</p></h4>
+         <h4><p>Amount:</p></h4>
         
           </div>
-          <div class="">
+          <div class="d-flex flex-column">
           <p>${data[i].product_name}</p>
           <p>${data[i].product_size}</p>
           <p>${data[i].product_price}THB</p>
@@ -240,14 +237,18 @@ function getorder_detail(id){
                 
             </div>    
            
-        </div>                            
-             
-            
-            `
+        </div>`
+
+       
        
          }
-         $("#order_out"+id).html(getdatail)
-        // console.log(getdatail)
+    var  total=` <p class="total-ad" style="font-size:20px">Total: ${response[2]}  THB</p>`    
+         $(".order_out"+id).html(getdatail)
+         $(".order-ad").css('display','flex')
+         $(".order-ad-de").html(getdatail)
+         $(".ordernumber").html(response[1])
+         $(".total-ad").html( total)
+         console.log(response)
          //console.log(data)
     }
    })
@@ -267,6 +268,11 @@ $(".slip").css('display', 'flex')
 function closemodalslip() {
    
     $(".slip").css('display', 'none')
+
+}
+function closemodalorder() {
+   
+    $(".order-ad").css('display', 'none')
 
 }
 // function updatestatus(id) {

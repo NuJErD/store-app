@@ -69,14 +69,16 @@ class MyOrderController extends Controller
      */
     public function getorder_detail(Request $request)
     {
+        $ornum =Order::where('id',$request->id)->value('ordernumber');
+        $total =Order::where('id',$request->id)->value('total');
         $order =OrderDetails::where('order_id',$request->id)
         
        ->join('products','product_id','=','products.id')
        ->select('order_details.*','products.picture')
        ->get();
-        $response['data'] =$order;
+        $response['data']=$order;
        
-        return response()->json($response);
+        return response()->json([$response,$ornum,$total]);
     }
     /**
      * Update the specified resource in storage.

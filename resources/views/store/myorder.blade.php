@@ -88,7 +88,7 @@
                     ยังไม่ได้จัดส่ง
                     @endif
                    </div>
-                <div class="order_out" id="order_out{{$or->id}}" >
+                <div class="order_out{{$or->id}}" id="order_out{{$or->id}}" >
                     
                    
                     
@@ -99,7 +99,7 @@
                  <div class="myorder-total" >
                     <p>Total: {{$or->total}} THB</p>
                     @if($or->status == 2)
-                    <button  class="order-cf1" onclick="order_cf('{{$or->id}}')"><p>ยืนยันการรับสินค้า</p></button>
+                    <button  class="order-cf1" onclick="order_cf('{{$or->id}}')"><p style="font-size: 16px">ยืนยันการรับสินค้า</p></button>
                     @endif
                   </div>
                 </div>

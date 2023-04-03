@@ -85,7 +85,7 @@
         @foreach($order as $or)
             <tr>
             
-            <td> {{$or->ordernumber}}   </td>
+            <td id ="ornum{{$or->id}}"> {{$or->ordernumber}}   </td>
         
             <td id='input-tracking{{$or->id}}'>
                 
@@ -130,14 +130,17 @@
             </td>
             
             <td>
+                <div class="d-flex justify-content-around">
             {{$or->updated_at}}&nbsp; 
             
                
-               
+             <div class="">
          
             <button type="button" class="btn btn-info" onclick="showslip('{{$or->slip}}')">สลิป</button>
             <button type="button" class="btn btn-warning" onclick="tracking('{{$or->id}}')">แก้ไข</button>
-        
+            <button type="button" class="btn btn-success" onclick="getorder_detail('{{$or->id}}')">รายละเอียด</button>
+        </div> 
+     </div>
         </td>
         
         </tr>
@@ -165,6 +168,24 @@
         </div>
     </div>
     
+    <div  class="order-ad" style="display:none  " >
+        <div class="modal-bg"></div>
+        <div class="modal-page-ad">
+            <div class="modal-menu ">
+             <div > <h3 class="ordernumber"></h3></div>
+            <div class="close" onclick="closemodalorder()">
+               <i class="fa-solid fa-xmark"></i>
+            </div>
+           </div>
+           
+               <div class="order-ad-de" ></div>
+        
+               <div class="myorder-total" >
+                <p class="total-ad"></p>
+              </div>
+    
+    </div>
+</div>
  
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
