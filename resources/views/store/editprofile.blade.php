@@ -149,13 +149,13 @@
                                         <!-- Form Group (phone number)-->
                                         <div class="col-md-6">
                                             <label class="mb-1 small" >จังหวัด</label>
-                                            <p class="showedit">{{$user->region}}</p>
-                                            <input class="form-control" style="display:none" name="region" type="tel" placeholder="Enter your region" value="{{$user->region}}">
+                                            <p class="showedit">{{$user->province}}</p>
+                                            <input class="form-control" style="display:none" name="province" type="tel" placeholder="Enter your province" value="{{$user->province}}">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="mb-1 small" >อำเภอ</label>
-                                            <p class="showedit">{{$user->city}}</p>
-                                            <input class="form-control" style="display:none" name="city" type="tel" placeholder="Enter your phone city" value="{{$user->city}}">
+                                            <p class="showedit">{{$user->district}}</p>
+                                            <input class="form-control" style="display:none" name="district" type="tel" placeholder="Enter your phone district" value="{{$user->district}}">
                                         </div>
                                         <!-- Form Group (birthday)-->
                                        

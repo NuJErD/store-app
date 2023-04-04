@@ -11,5 +11,5 @@ class users extends Model
     public $timestamps = false;
     protected $fillable = [
         'firstname','lastname','phonenumber','username','password','address',
-        'region','city','postcode','urole'];
+        'province','city','postcode','urole'];
 }

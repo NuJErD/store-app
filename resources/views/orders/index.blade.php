@@ -75,6 +75,7 @@
         <th><h5>เลขพัสดุ</h5></th>
         <th><h5>วันที่สั่งซื้อ</h5></th>
         <th><h5>ชื่อลูกค้า</h5></th>
+        <th><h5>ที่อยู่จัดส่ง</h5></th>
         <th><h5>จำนวนเงิน</h5></th>
         
         
@@ -92,9 +93,9 @@
             
             <td id ="ornum{{$or->id}}"> {{$or->ordernumber}}   </td>
         
-            <td id='input-tracking{{$or->id}}'>
+            <td id='input-tracking{{$or->id}}' style="width: 250px">
                 
-                <div class="input-tracking{{$or->id}}">
+                <div class="input-tracking{{$or->id}}" >
                      <div class="input-tracking">
                 @if($or->tracking != '-')
                 <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button>
@@ -116,6 +117,7 @@
         
             <td> {{$or->created_at}}   </td>
             <td> {{$or->firstname}} &nbsp; {{$or->lastname}}  </td>
+            <td> {{$or->address}} &nbsp; ต.{{$or->district}} &nbsp; จ.{{$or->province}}  </td>
             <td> {{$or->total}}       </td>
            
             <td>

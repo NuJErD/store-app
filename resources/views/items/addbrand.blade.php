@@ -57,7 +57,7 @@
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="mt-4 d-flex">
-                <a class="me-2" href="{{route('brand.index')}}"><input type="submit" value="ยกเลิก" class="btn btn-danger" name="items"></a>
+                <a class="me-2" href="{{route('brand.index')}}"><input type="button" value="ยกเลิก" class="btn btn-danger" name="items"></a>
                 <a><input type="submit" value="ยืนยัน" class="btn btn-dark" name="items"></a>
                 </div>
             </div>

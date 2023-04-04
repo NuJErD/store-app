@@ -25,7 +25,7 @@ class OrderController extends Controller
          $order =Order::where('status','!=',0)
          ->join('statuses', 'status','=','statuses.idst')
          ->join('users','u_id','users.id')
-         ->select('orders.*','statuses.detail','users.firstname','users.lastname')
+         ->select('orders.*','statuses.detail','users.firstname','users.lastname','users.address','users.province','users.district')
          ->paginate(10);
        
       
@@ -104,11 +104,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {   
         $order =Order::where('u_id',Session('user'))->where('status',0)->first();
-        $user = DB::table('users')->where('id',session('user'))->value('address');
+        $user = DB::table('users')->where('id',session('user'))->first();
         $stock = products::where('id',$request->id)->value('stock');
        if($stock !=0){
         if($order){
             $orderckeck = $order->order_detail()->where('product_id',$request->id)->first();
+            
             if($orderckeck){
               $amount = $orderckeck->amount +1 ;
               if($amount<=$stock){
@@ -139,9 +140,8 @@ class OrderController extends Controller
           
           $order->ordernumber = $ordernumber;
           $order->status = 0;
-          $order->u_address ='bang';
           $order->u_id = Session('user') ;
-          $order->u_address = $user;
+          
           $order->save();
   
           $orderdeatail = new OrderDetails;

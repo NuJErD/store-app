@@ -144,8 +144,8 @@ class UserController extends Controller
             'phonenumber' => $request->phonenumber ,
             
             'address' => $request->address ,
-            'region' => $request->region ,
-            'city' => $request->city ,
+            'province' => $request->province ,
+            'district' => $request->district ,
             'postcode' => $request->postcode
 
                   ]);
@@ -166,8 +166,8 @@ class UserController extends Controller
             'phonenumber' => $request->phonenumber ,
             
             'address' => $request->address ,
-            'region' => $request->region ,
-            'city' => $request->city ,
+            'province' => $request->province ,
+            'district' => $request->district ,
             'postcode' => $request->postcode
 
                   ]);}

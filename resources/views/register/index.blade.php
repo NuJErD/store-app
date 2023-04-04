@@ -81,7 +81,7 @@
                   <div class="mb-3 row gx-3">
                     <div class="col-md-6">
                       <label class="mb-1 small" >รหัสผ่าน</label>
-                      <input id="password" class="form-control" name="password" type="password" aria-describedby="passwordHelpBlock" placeholder="รหัสผ่าน" onkeyup="checkpassword(this.value); cfpassword(document.getElementById('passwordcf').value)"  required>
+                      <input id="password" class="form-control" name="password" type="password"  placeholder="รหัสผ่าน" onkeyup="checkpassword(this.value); cfpassword(document.getElementById('passwordcf').value)"  required>
                       <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
                       <div id="password-feed"  style="color:#dc3545"></div>
                   </div>
@@ -131,13 +131,13 @@
                         <!-- Form Group (first name)-->
                         <div class="col-md-6">
                             <label class="mb-1 small" >จังหวัด</label>
-                            <input class="form-control" name="region" type="text" placeholder="จังหวัด" required>
+                            <input class="form-control" name="province" type="text" placeholder="จังหวัด" required>
                             <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
                         </div>
                         <!-- Form Group (last name)-->
                         <div class="col-md-6">
                             <label class="mb-1 small" >อำเภอ</label>
-                            <input class="form-control" name="city" type="text" placeholder="อำเภอ"  required>
+                            <input class="form-control" name="district" type="text" placeholder="อำเภอ"  required>
                             <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
                         </div>
                     </div>

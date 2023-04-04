@@ -65,8 +65,8 @@ class registerController extends Controller
         $user->username = Str::lower($request->username);
         $user->password = $passwordhashed ;
         $user->address = $request->address ;
-        $user->region = $request->region ;
-        $user->city = $request->city ;
+        $user->province = $request->province ;
+        $user->district = $request->district ;
         $user->postcode = $request->postcode;
         $user->urole = $urole;
         if(isset($request->picture)){

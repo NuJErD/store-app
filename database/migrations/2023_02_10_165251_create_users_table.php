@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('username',100);
             $table->string('password',100);
             $table->string('address',100);
-            $table->string('region',100);
-            $table->string('city',100);
+            $table->string('province',100);
+            $table->string('district',100);
             $table->string('postcode',100);
             $table->char('urole',100);
         });

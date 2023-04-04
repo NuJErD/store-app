@@ -75,7 +75,7 @@
                     <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button> </p></h5>
                    
                    </div>
-                <div class="order_out" id="order_out{{$or->id}}" >
+                <div class="order_out{{$or->id}}" id="order_out{{$or->id}}" >
                     
                    
                     
