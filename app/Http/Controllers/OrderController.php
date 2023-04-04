@@ -8,6 +8,7 @@ use App\Models\products;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use League\CommonMark\Extension\SmartPunct\EllipsesParser;
 use Carbon\Carbon;
 
@@ -207,8 +208,14 @@ class OrderController extends Controller
             //return response()->json('9999');
             
          if($request->checkout == "checkout"){ 
-           
-            //uploadslip
+            $validator = Validator::make($request->all(), [
+                'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|'
+            ]);
+            if ($validator->fails()) {
+                session()->flash('error','โปรดเลือกไฟล์ที่เป็นรูปภาพ (jpg , png , jpeg , gif , svg)');
+                return redirect()->route('checkout.index');
+            }else{
+                 //uploadslip
             $picture = $request->file('picture');
            
             $name_gen = hexdec((uniqid())); 
@@ -226,27 +233,25 @@ class OrderController extends Controller
 
                    ]);
                   
-            $picture->move(public_path('uploadpic/uploadslip'), $picname);   
+            $picture->move(public_path('uploadpic/uploadslip'), $picname); 
 
+             //update stock
+             for($i = 0;$i<$count;$i++){
+                $stock = products::where('id',$orderde["$i"]->product_id)->value('stock');
+                $amount =$orderde["$i"]->amount;
+                $stocknew = $stock-$amount;
+                $affected = DB::table('products')
+               ->where('id', $orderde["$i"]->product_id)
+               ->update([
+                     'stock' =>  $stocknew
+                          ]);
+           
+           
+                        }
             
-            
-                
-            
-                //update stock
-                for($i = 0;$i<$count;$i++){
-                    $stock = products::where('id',$orderde["$i"]->product_id)->value('stock');
-                    $amount =$orderde["$i"]->amount;
-                    $stocknew = $stock-$amount;
-                    $affected = DB::table('products')
-                   ->where('id', $orderde["$i"]->product_id)
-                   ->update([
-                         'stock' =>  $stocknew
-                              ]);
-               
-               
-                            }
-                
-                    return redirect()->route('myorder.index');
+                return redirect()->route('myorder.index');
+            }
+        
         }else{
             
             if($request->decrease == "decrease"){
@@ -354,6 +359,13 @@ class OrderController extends Controller
      */
     
      public function addtrack(Request $request, Order $order){
+        $validator = Validator::make($request->all(), [
+            'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|'
+        ]);
+        if ($validator->fails()) {
+            session()->flash('error','โปรดเลือกไฟล์ที่เป็นรูปภาพ (jpg , png , jpeg , gif , svg)');
+        }else{
+
         $picture = $request->file('picture');
         $name_gen = hexdec((uniqid())); 
         $name_type = strtolower($picture->getClientOriginalExtension());
@@ -364,15 +376,18 @@ class OrderController extends Controller
         } else{
             unlink("uploadpic/tracking/".$order->tracking);
             $picture->move(public_path('uploadpic/tracking'), $picname);
-        }   
-       
-        
-        $affected = DB::table('orders')
+         }   
+         $affected = DB::table('orders')
          ->where('id', $order->id)
          ->update([
                'tracking' => $picname,
                'status'   => 2
                    ]);
+    }
+        
+       
+        
+       
          
         return redirect()->route('orders.index');
      }

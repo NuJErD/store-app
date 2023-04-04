@@ -37,6 +37,7 @@ Route::resource('checkout',CheckoutController::class);
 Route::resource('myorder',MyOrderController::class);
 Route::resource('user',UserController::class);
 Route::resource('brand',BrandController::class);
+Route::resource('checkout',CheckoutController::class);
 
 
 

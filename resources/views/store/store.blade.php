@@ -26,18 +26,12 @@
 <body>
     <nav class="navbar" >
         <div class="logo">
-            <h3><a href="{{ route('shop') }}">T - B R A N D</a></h3>
+            <h3><a href="store">T - B R A N D</a></h3>
         </div>
 
-        <ul class="menu" >
-          
-                
-           
-            
-            
-
-           
-            <li><a href="{{ route('login.index') }}"><p style="color: white">Login</p></a></li>
+        <ul class="menu" >     
+        <li><a href="login"><p style="color: white">Login</p></a></li>
+        <li><a href="register"><p style="color: white">Sign up</p></a></li>
         </ul>
     </nav>
     <div class="container-shop">

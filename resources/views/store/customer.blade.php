@@ -44,7 +44,7 @@
                 
             </div>
                 <div class="order-list"> 
-                    <li><a href="{{route('myorder.index')}}"><p style="color: white">Myorder</p></a></li>
+                    <li><a href="{{route('myorder.index')}}"><p style="color: white">My Order</p></a></li>
                 </div>
                 
            
@@ -55,7 +55,7 @@
                 
             </div>
             <div class="order-list"> 
-                <li><a href="{{route('myorder.index')}}"><p style="color: white">Myorder</p></a></li>
+                <li><a href="{{route('myorder.index')}}"><p style="color: white">My Order</p></a></li>
             </div>
             @endif
            

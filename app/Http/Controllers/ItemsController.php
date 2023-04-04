@@ -6,6 +6,8 @@ use App\Models\brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\products;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use session;
 
 class ItemsController extends Controller
@@ -74,7 +76,15 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
+           
+        $validator = Validator::make($request->all(), [
+        'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|'
+    ]);
+         if ($validator->fails()) {
+        session()->flash('error','โปรดเลือกไฟล์ที่เป็นรูปภาพ (jpg , png , jpeg , gif , svg)');
+           return redirect()->back();
+         }else{
             $items = new products;
             
             $items->name = $request->name;
@@ -95,6 +105,8 @@ class ItemsController extends Controller
             $items->picture = $picname;    
             $picture->move(public_path('uploadpic/product/'), $picname); //set uploat floder path
             $items->save();
+         }
+           
             return redirect('items');
             
         
@@ -132,29 +144,41 @@ class ItemsController extends Controller
      */
     public function update(Request $request, products $item)
     {   
+       
         $picname = $item->picture;
-       if(isset($request->picture)){
-        unlink("./uploadpic/product/".$picname);
+        if(isset($request->picture)){
+            $validator = Validator::make($request->all(), [
+                'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|'
+            ]);
 
-        $picture = $request->file('picture');
-        $name_gen = hexdec((uniqid())); 
-        $name_type = strtolower($picture->getClientOriginalExtension());
-        $picname = $name_gen.'.'.$name_type;
-        $picture->move(public_path('uploadpic/product'), $picname); //set uploat floder path
-       }
+            if ($validator->fails()) {
+                session()->flash('error','โปรดเลือกไฟล์ที่เป็นรูปภาพ (jpg , png , jpeg , gif , svg)');
+                return redirect()->route('items.edit',$item->id);
+            
+            }else{
+
+                unlink("./uploadpic/product/".$picname);  
+                $picture = $request->file('picture');
+                $name_gen = hexdec((uniqid())); 
+                $name_type = strtolower($picture->getClientOriginalExtension());
+                $picname = $name_gen.'.'.$name_type;
+                $picture->move(public_path('uploadpic/product'), $picname); //set uploat floder path
+            }
+        }
+        
         $affected = DB::table('products')
-              ->where('id', $item->id)
-              ->update([
-                    'name' => $request->name,
-                    'festival' => $request->festival,
-                    'price' => $request->price,
-                    'brand' => $request->brand,
-                    'size' => $request->size,
-                    'chest' => $request->chest,
-                    'lenght' => $request->lenght,
-                    'color' => $request->color,
-                    'picture' => $picname
-                ]);
+        ->where('id', $item->id)
+        ->update([
+              'name' => $request->name,
+              'festival' => $request->festival,
+              'price' => $request->price,
+              'brand' => $request->brand,
+              'size' => $request->size,
+              'chest' => $request->chest,
+              'lenght' => $request->lenght,
+              'color' => $request->color,
+              'picture' => $picname
+          ]);
 
         return redirect()->route('items.index');
     }

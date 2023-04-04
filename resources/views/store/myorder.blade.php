@@ -44,7 +44,12 @@
           </ul>
               </div>
               <div class="myorder-main ">
-               
+                @if ($error = Session::get('success'))
+                            <div class="alert alert-success" id="errorpassword"  >
+                               {{$error}}
+                            </div>
+        
+                            @endif
               </div>
        
             <div class="myorder-main">
@@ -84,8 +89,8 @@
                   <h5><p style="margin-bottom: 15px">เลขพัสดุ: 
                     @if($or->status == 2)
                     <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button> </p></h5>
-                    @else
-                    ยังไม่ได้จัดส่ง
+            
+                  
                     @endif
                    </div>
                 <div class="order_out{{$or->id}}" id="order_out{{$or->id}}" >

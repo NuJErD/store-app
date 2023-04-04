@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use App\Models\users;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -185,32 +185,36 @@ class UserController extends Controller
      */
     public function editpic(Request $request, users $user)
     {  
-        
-        $oldpic = users::where('id',$user->id)->value('picture');
+         $oldpic = users::where('id',$user->id)->value('picture');
+            $validator = Validator::make($request->all(), [
+                'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|'
+            ]);
             
-            if(isset($oldpic)){
+            if ($validator->fails()) {
+                session()->flash('error','โปรดเลือกไฟล์ที่เป็นรูปภาพ (jpg , png , jpeg , gif , svg)');
+            } else {
+               
+                if(isset($oldpic)){
                 unlink("./uploadpic/uploadpicProfile/".$oldpic);
-            }
-            
-            
-             
-             
-           
+                }
+
              $picture = $request->file('picture');
              $name_gen = hexdec((uniqid())); 
              $name_type = strtolower($picture->getClientOriginalExtension());
              $picname = $name_gen.'.'.$name_type;
-             $affected = DB::table('users')
+            
+                $affected = DB::table('users')
              ->where('id', $user->id)
              ->update([
                  'picture' => $picname
                 
      
                        ]);
-             
-               
-             $picture->move(public_path('uploadpic/uploadpicProfile'), $picname); //set uploat floder path
-             session()->flash('success','อัพโหลดรูปเรียบร้อย');
+                $picture->move(public_path('uploadpic/uploadpicProfile'), $picname); //set uploat floder path
+                session()->flash('success','อัพโหลดรูปเรียบร้อย');
+
+            }     
+  
              return redirect()->route('user.edit',$user->id);   
         
        

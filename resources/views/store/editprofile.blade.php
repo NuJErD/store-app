@@ -96,6 +96,9 @@
                                 {{$error}}
                              </div>
                             @endif
+                           
+                               
+                           
                             
                             
                             <div class="card-body" id="card-body-detail">

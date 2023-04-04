@@ -630,7 +630,7 @@ function deletepic(pic){
 }
 
 function editpic(){
-   var button = `<button class="btn btn-success"  type="submit">Save Change</button>`
+   var button = `<button class="btn btn-success"  type="submit">บันทึก</button>`
 //    $("#editupload").attr('class', 'btn btn-success');
 //    $("#editupload").attr('type', 'submit');
     $("#editupload").attr('style', "display:none");
@@ -640,7 +640,7 @@ function editpic(){
 }
 
 function AddSavebtn(){
-     let savebtn =`<button class="btn btn-success me-1" type="submit" >Save changes</button>`
+     let savebtn =`<button class="btn btn-success me-1" type="submit" >บันทึก</button>`
     $(".SaveEdit").html(savebtn)
     $(".form-control").css('display', 'flex')
    

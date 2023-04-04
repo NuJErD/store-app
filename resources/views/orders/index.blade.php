@@ -65,6 +65,11 @@
           </div>
    </div>
    <thead class="table-dark">
+    @if($error = Session::get('error'))
+    <div class="alert alert-danger" id="errorpassword"  >
+          {{$error}}
+   </div>
+ @endif 
        <tr>
         <th><h5>เลขคำสั่งซื้อ</h5></th>
         <th><h5>เลขพัสดุ</h5></th>

@@ -46,6 +46,11 @@
     <div class="additems">
        
         <div class="mt-2 col-xl-4">
+            @if($error = Session::get('error'))
+            <div class="alert alert-danger" id="errorpassword"  >
+                  {{$error}}
+           </div>
+         @endif  
             <div class="mb-4 card">
                 <div class="card-header"><h4>ข้อมูลสินค้า</h4></div>
                 <div class="card-body">

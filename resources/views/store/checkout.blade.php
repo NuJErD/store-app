@@ -54,12 +54,17 @@
     </div>
     <div class="checkout-out">
       
-     <div class="checkout-main">   
+     <div class="checkout-main"> 
+      @if($error = Session::get('error'))
+      <div class="alert alert-danger" id="errorpassword"  >
+            {{$error}}
+     </div>
+   @endif  
      <div class="checkout-1">
         <div class="">
            <img src="../../uploadpic/kbank-thailand-logo.png" width="40px" height="40px">         
        </div>
-       
+      
        <div class="qr">
         <p>222-222-222</p>
      </div>
