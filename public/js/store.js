@@ -563,6 +563,7 @@ let resetPW = `<div class="mb-3 row gx-3">
 }
 
 function changePW(newpw,cfpw){
+    console.log('aaa')
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -575,37 +576,37 @@ function changePW(newpw,cfpw){
         },
         dataType: 'json',
         success: function(data){
+            
 
             let newpw = `<div class="mb-3 row gx-3">
             <div class="alert alert-danger" id="errorpassword"  >
                ${data}
                 </div>
-                <div class="col-md-6">
+            <div class="col-md-6">
                 <label class="mb-1 small" >รหัสผ่านใหม่</label>
                 <input class="form-control" name="newpassword" type="password" id="newpassword2" placeholder="Enter your New Password" onkeyup="checkpassword2(this.value); cfpassword2(document.getElementById('cfpassword2').value)">
                 <div id="editpassword-feed"  style="color:#dc3545"></div>
             </div>
-   
-    
-</div>
-<div class="mb-3 row gx-3">
-    <!-- Form Group (first name)-->
-    <div class="col-md-6">
-        <label class="mb-1 small" >ยืนยันรหัสผ่าน</label>
-        <input class="form-control" name="cfpassword" type="password" id="cfpasswordedit" placeholder="Enter Confirm Password" onkeyup="cfpassword(this.value)">
-        <div id="editpasswordcf-feed"  style="color:#dc3545"></div>
-    </div>
-    
-</div>
-<button class="btn btn-danger" onclick="cancel()">ยกเลิก</button>
-<button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword').value,document.getElementById('cfpassword').value)"> ยืนยัน</button>
-`
+            
+        </div>
+        <div class="mb-3 row gx-3">
+            <!-- Form Group (first name)-->
+            <div class="col-md-6">
+                <label class="mb-1 small" >ยืนยันรหัสผ่าน</label>
+                <input class="form-control" name="cfpassword" type="password" id="cfpassword2" placeholder="Enter Confirm Password" onkeyup="cfpassword2(this.value)" >
+                <div id="editpasswordcf-feed"  style="color:#dc3545"></div>
+            </div>
+            
+        </div>
+        <button class="btn btn-danger" onclick="cancel()"> ยกเลิก</button>
+        <button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword2').value,document.getElementById('cfpassword2').value)">ยืนยัน</button>
+        `
         if(data == 'success'){
               location.reload()
         }else
         $("#card-body-detail").html(newpw)
             
-        }
+         }
     })
 }
 
