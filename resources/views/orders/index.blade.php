@@ -115,7 +115,7 @@
                 </td>
             
         
-            <td> {{$or->created_at}}   </td>
+            <td> {{$or->updated_at}}  </td>
             <td> {{$or->firstname}} &nbsp; {{$or->lastname}}  </td>
             <td> {{$or->address}} &nbsp; ต.{{$or->district}} &nbsp; จ.{{$or->province}}  </td>
             <td> {{$or->total}}       </td>
@@ -138,7 +138,7 @@
             
             <td>
                 <div class="d-flex justify-content-around">
-            {{$or->updated_at}}&nbsp; 
+          
             
                
              <div class="">
