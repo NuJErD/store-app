@@ -96,9 +96,11 @@ class UserController extends Controller
    
                       ]);
             
-            $request->session()->flash('success','เปลี่ยนรหัสผ่านสำเร็จ');
+            $request->session()->flash('success','เปลี่ยนรหัสผ่านสำเร็จ'); 
+            return response()->json('success');
         }
-        return response()->json('success');
+       
+        
          
     }
     /**
