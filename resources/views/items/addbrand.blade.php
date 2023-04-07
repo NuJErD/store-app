@@ -27,7 +27,7 @@
         
     </nav>
 <div id="frame">
-    <div class="menu">
+    <div class="menu" style="height: 125vh">
         <ul class="navadmin">
             <a href="{{route('items.index')}}"><li>จัดการสินค้า  </li> </a>
           
@@ -51,10 +51,10 @@
                 <div class="inputtext">
                     <div class="col-md-9">
                 <div class="inputtext-de">
-                    <p>Brand:</p>
+                    <label class="d-flex"><p>Brand<div class="check-value" >**</div></p></label>
                 
                     <input class="form-control " type="text" class="form-control" name="name"  required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="mt-2" style="color:#dc3545">**กรุณากรอกข้อมูล</div>
                 </div>
                 <div class="mt-4 d-flex">
                 <a class="me-2" href="{{route('brand.index')}}"><input type="button" value="ยกเลิก" class="btn btn-danger" name="items"></a>

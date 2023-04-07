@@ -26,11 +26,11 @@
 <body>
 <nav class="px-4 py-0 navbar">
         <div class ="logo">
-         <h3 class="mb-0"><a href="{{route('store.index')}}">T - B R A N D</a></h3>
+         <h3 class="mb-0"><a href="{{route('items.index')}}">T - B R A N D</a></h3>
         </div>
         <ul class="menu">
         
-         <li><a href="{{route('logout')}}">Logout</a></li>
+         
      </ul>
         
     </nav>
@@ -117,7 +117,7 @@
         
             <td> {{$or->updated_at}}  </td>
             <td> {{$or->firstname}} &nbsp; {{$or->lastname}}  </td>
-            <td> {{$or->address}} &nbsp; ต.{{$or->district}} &nbsp; จ.{{$or->province}}  </td>
+            <td> {{$or->address}} &nbsp; อ.{{$or->district}} &nbsp; จ.{{$or->province}}  </td>
             <td> {{$or->total}}       </td>
            
             <td>
@@ -137,7 +137,7 @@
             </td>
             
             <td>
-                <div class="d-flex justify-content-around">
+                <div class="d-flex justify-content-around " style="width: 230px">
           
             
                

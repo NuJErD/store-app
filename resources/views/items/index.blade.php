@@ -26,7 +26,7 @@
         
     </nav>
     
- 
+ <div class="">
         <div class="menu " >
             <ul class="navadmin">
             
@@ -100,6 +100,7 @@
  </table>
  {{ $products->links('pagination::bootstrap-4') }}
  </div>
+</div>
 
  
 

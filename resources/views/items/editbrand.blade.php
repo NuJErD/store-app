@@ -27,7 +27,7 @@
         
     </nav>
 <div id="frame">
-    <div class="menu">
+    <div class="menu" style="height: 125vh">
         <ul class="navadmin">
             <a href="{{route('items.index')}}"><li>จัดการสินค้า  </li> </a>
           

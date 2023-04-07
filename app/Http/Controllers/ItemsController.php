@@ -20,7 +20,7 @@ class ItemsController extends Controller
     public function index()
     {   
         
-        $products =  DB::table('products')->paginate(6);
+        $products =  DB::table('products')->paginate(5);
         
         
         return view('items.index',compact('products'));

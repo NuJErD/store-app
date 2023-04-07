@@ -27,7 +27,7 @@
         
     </nav>
 
-    <div class="menu">
+    <div class="menu" style="height: 125vh">
         <ul class="navadmin">
             <a href="{{route('items.index')}}"><li>จัดการสินค้า  </li> </a>
           
@@ -60,34 +60,34 @@
                             
                     
                             <div class="inputtext-de">
-                                <p>Name</p>
+                                <label class="d-flex"><p>Name <div class="check-value">**</div></p></label>
                                 <input type="text" class="form-control " name="name"  required>
-                                <div class="invalid-feedback">Please fill out this field.</div>
+                                
                             </div>
                     
                        
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        
                     
                     
                 </div>
                 <div class="col-md-5">
                     <div class="inputtext-de">
-                        <p>Festival</p>
+                        <label class="d-flex"><p>Festival <div class="check-value" >**</div></p></label>
                         <input type="text" class="form-control " name="festival" required>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        
                     </div>  
                 </div>
                     </div> 
                     <div class="inputtext">
                         <div class="col-md-5">
                     <div class="inputtext-de">
-                        <p>Price</p>
+                      <label class="d-flex"> <p>Price <div class="check-value" >**</div></p></label> 
                         <input type="number" class="form-control " name="price" step="0.1" min="0" required>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        
                     </div >
                 </div>
                 <div class="col-md-5">
-                    <p style="margin: 0%">Brand</p>
+                    <label class="d-flex"><p style="margin: 0%">Brand <div class="check-value" >**</div></p></p></label>
                     
                     <select class="form-select" name="brand" required >
                       <option value=""> Select Brand</option>
@@ -96,12 +96,12 @@
                       @endforeach
                     </select>
                 
-                    <div class="invalid-feedback"> invalid select </div>
+                   
                   </div>
                     </div> 
                     
                         <div class="mb-3">
-                            <p style="margin: 0%">Size</p>
+                            <label class="d-flex"><p style="margin: 0%">Size <div class="check-value" >**</div></p></label>
                             
                             <select class="form-select" name="size" required >
                               <option value=""> Select Size</option>
@@ -111,45 +111,46 @@
                               <option value="XL">XL</option>
                             </select>
                         
-                            <div class="invalid-feedback"> invalid select </div>
+                            
                           </div>
                      <div class="inputtext">    
                          <div class="col-md-5">
                             <div class="inputtext-de">
-                                  <p>Chest</p>
+                                <label class="d-flex"><p>Chest <div class="check-value" >**</div></p></label>
                                 <input type="text" class="form-control " name="chest" min="0" required>
-                                <div class="invalid-feedback">Please fill out this field.</div>  
+                                  
                             </div>
                     </div>
                        
                     <div class="col-md-5">
                         <div class="inputtext-de">
-                        <p>Lenght</p>
+                            <label class="d-flex"><p>Lenght <div class="check-value" >**</div></p></label> 
                         <input type="text" class="form-control " name="lenght" required>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        
                         </div>
                     </div>
                 </div>
                 <div class="inputtext">
                     <div class="col-md-5">
                         <div class="inputtext-de">
-                        <p>Color</p>
+                            <label class="d-flex"><p>Color <div class="check-value" >**</div></p></label>
                         <input type="text" class="form-control " name="color" required>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        
                         </div>
                     </div> 
                     <div class="col-md-5">
                         <div class="inputtext-de">
-                        <p>Stock</p>
+                            <label class="d-flex"><p>Stock <div class="check-value" >**</div></p></label>
                         <input type="number" class="form-control " name="stock" min="0" required>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        
                         </div>
                     </div> 
                 </div>
                     
-                    <p>Picture</p>
+                    <label class="d-flex"><p>Picture <div class="check-value" >**</div></p></label>
                     <input type="file" class="form-control " name="picture" required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="mt-2" style="color:#dc3545">**กรุณากรอกข้อมูล</div>
+                    
                     <a href="{{route('items.index')}}"><input type="button" value="ยกเลิก" class="btn-cancel" name="items"></a>
                     <input type="submit" value="ยืนยัน" class="btn-submitadd" name="items">
                     

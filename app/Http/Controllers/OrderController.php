@@ -26,7 +26,7 @@ class OrderController extends Controller
          ->join('statuses', 'status','=','statuses.idst')
          ->join('users','u_id','users.id')
          ->select('orders.*','statuses.detail','users.firstname','users.lastname','users.address','users.province','users.district')
-         ->paginate(10);
+         ->paginate(8);
        
       
         

@@ -164,47 +164,7 @@
                   </div>
         </div>
         </form>
-           
-      
-             {{-- <div class="">
-            <p class="greyy">First name</p>
-            <input type="text" class=textbox name="firstname" required>
-            <p class="greyy">Last name</p>
-            <input type="text" class=textbox name="lastname" required>
-            <p class="greyy">Phone number</p>
-            <input type="text" class=textbox name="phonenumber" required>
-            <p class="greyy">Username</p>
-            <input type="text" class=textbox name="username" required>
-            <p class="greyy">Password</p>
-            <input type="password" class=textbox name="password" required>
-            <p class="greyy">Comfirm password</p>
-            <input type="text" class=textbox name="c_password" required>
-           
-               
 
-            </div>
-            <div class="">
-             
-             
-             
-            <p class="greyy">Address</p>
-            <input type="text" class=textbox name="address" required>
-            <p class="greyy">Region</p>
-            <input type="text" class=textbox name="region" required>
-            <p class="greyy">City</p>
-            <input type="text" class=textbox name="city" required>
-            <p class="greyy">Postcode</p>
-            <input type="text" class=textbox name="postcode" required>
-            <br>
-            <br>
-            <p class="greyy">Profile Picture:<input type="file" class="" name="picture"></p>
-          </div>
-            <br>
-             --}}  
-            
-   
-    {{-- <input class=btn-submit type=submit name="signup" value="Sign UP">   --}}
-  </form> 
   </div>  
 
   <footer class="footer-distributed">

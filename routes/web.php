@@ -52,7 +52,7 @@ Route::put('/order/{order}',[OrderController::class,'update'])->name('orderup');
 Route::put('/orderup2/{order}',[OrderController::class,'updatecart']);
 Route::put('/cf_order/{order}',[MyOrderController::class,'cf_order']);
 Route::put('/track/{order}',[OrderController::class,'addtrack'])->name('addtrack');
-Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/logout/',[LoginController::class,'logout'])->name('logout');
 Route::get('/shop',[StoreController::class,'shopindex'])->name('shop');
 Route::get('/store/detail',[StoreController::class,'itemDetail'])->name('detail');
 Route::get('/getdetail/{id?}',[MyOrderController::class,'getorder_detail']);

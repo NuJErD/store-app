@@ -29,7 +29,7 @@
         </ul>
     </nav>
 
-    <div class="menu">
+    <div class="menu" style="height: 125vh">
         <ul class="navadmin">
         
             <a href="{{route('items.index')}}"><li>จัดการสินค้า  </li> </a>
@@ -54,7 +54,7 @@
             <div class="mb-4 card">
                 <div class="card-header"><h4>ข้อมูลสินค้า</h4></div>
                 <div class="card-body">
-        <form class="was-validated" action="{{route('items.update',$item->id)}}" method="POST" enctype="multipart/form-data">
+        <form class="was-validated" action="{{route('items.update',$item->name)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
         

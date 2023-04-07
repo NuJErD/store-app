@@ -31,6 +31,7 @@
              </ul>
                 
             </nav>
+            
             <div class="menu " >
               <ul class="mt-3 navadmin">
               
@@ -133,6 +134,8 @@
             </div>
         </div>
          </div>
+        
+
          <div  class="slip" style="display:  none" >
           <div class="modal-bg"></div>
           <div class="modal-page">
