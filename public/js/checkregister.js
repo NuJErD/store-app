@@ -17,7 +17,7 @@ function checkuser(name){
           }else if(data == 'success'){
             $("#username").css("border-color","#198754")
           }else{
-            $("#username").css("border-color","#dc3545")
+            $("#username").removeAttr('style')
           }
            
         }  

@@ -55,9 +55,9 @@
                                 
                   <!-- Form Group (username)-->
                   <div class="mb-3">
-                      <label class="mb-1 small">ขื่อผู้ใช้งาน</label>
+                      <label class="mb-1 small d-flex">ขื่อผู้ใช้งาน<div class="check-value" >**</div></label>
                       <input id="username" class="form-control" name="username" type="text" placeholder="ชื่อผู้ใช้งาน" onkeyup="checkuser(this.value)" required>
-                      <div id="usercheck-feed" class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                     
                       <div id="usercheck"  style="color:#dc3545"></div>
                       
                   </div>
@@ -65,30 +65,30 @@
                   <div class="mb-3 row gx-3">
                       <!-- Form Group (first name)-->
                       <div class="col-md-6">
-                          <label class="mb-1 small" >ชื่อ</label>
+                          <label class="mb-1 small d-flex" >ชื่อ<div class="check-value" >**</div></label>
                           <input class="form-control" name="firstname" type="text" placeholder="ชื่อ"required >
-                          <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                         
                       
                       </div>
                       <!-- Form Group (last name)-->
                       <div class="col-md-6">
-                          <label class="mb-1 small" >นามสกุล</label>
+                          <label class="mb-1 small d-flex" >นามสกุล<div class="check-value" >**</div></label>
                           <input class="form-control" name="lastname" type="text" placeholder="นามสกุล" required>
-                          <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                         
                       </div>
                   </div>
                   <!-- Form Row        -->
                   <div class="mb-3 row gx-3">
                     <div class="col-md-6">
-                      <label class="mb-1 small" >รหัสผ่าน</label>
+                      <label class="mb-1 small d-flex" >รหัสผ่าน<div class="check-value" >**</div></label>
                       <input id="password" class="form-control" name="password" type="password"  placeholder="รหัสผ่าน" onkeyup="checkpassword(this.value); cfpassword(document.getElementById('passwordcf').value)"  required>
-                      <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                     
                       <div id="password-feed"  style="color:#dc3545"></div>
                   </div>
                   <div class="col-md-6">
-                    <label class="mb-1 small" >ยืนยันรหัสผ่าน</label>
+                    <label class="mb-1 small d-flex" >ยืนยันรหัสผ่าน<div class="check-value" >**</div></label>
                     <input  id="passwordcf" class="form-control" name="c_password" type="password" placeholder="ยืนยันรหัสผ่าน" onkeyup="cfpassword(this.value)" required>
-                    <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                   
                     <div id="passwordcf-feed"  style="color:#dc3545"></div>
                 </div>
                       
@@ -100,15 +100,16 @@
                   <div class="mb-3 row gx-3">
                       <!-- Form Group (phone number)-->
                       <div class="col-md-6">
-                        <label class="mb-1 small" >เบอร์โทร</label>
-                        <input class="form-control" name="phonenumber" type="text" placeholder="เบอร์โทร" required>
-                        <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                        <label class="mb-1 small d-flex" >เบอร์โทร<div class="check-value" >**</div></label>
+                        <input class="form-control" name="phonenumber" type="number" placeholder="เบอร์โทร" required>
+                       
                     </div>
                     <p>Picture</p>
-                    <input type="file" class="form-control " name="picture" >
+                    <input type="file" class="form-control " name="picture" style="border-color: #c5ccd6">
                       <!-- Form Group (birthday)-->
-                   
+                      
                   </div>
+      <div class="" style="color:#dc3545">**กรุณากรอกข้อมูล</div>
                 </div>
                  </div>
                 </div>
@@ -122,37 +123,37 @@
                                 
                     <!-- Form Group (username)-->
                     <div class="mb-3">
-                        <label class="mb-1 small" >ที่อยู่</label>
+                        <label class="mb-1 small d-flex" >ที่อยู่<div class="check-value" >**</div></label>
                         <input class="form-control" name="address" type="text" placeholder="ที่อยู่" required>
-                        <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                       
                     </div>
                     <!-- Form Row-->
                     <div class="mb-3 row gx-3">
                         <!-- Form Group (first name)-->
                         <div class="col-md-6">
-                            <label class="mb-1 small" >จังหวัด</label>
+                            <label class="mb-1 small d-flex" >จังหวัด<div class="check-value" >**</div></label>
                             <input class="form-control" name="province" type="text" placeholder="จังหวัด" required>
-                            <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                           
                         </div>
                         <!-- Form Group (last name)-->
                         <div class="col-md-6">
-                            <label class="mb-1 small" >อำเภอ</label>
+                            <label class="mb-1 small d-flex" >อำเภอ<div class="check-value" >**</div></label>
                             <input class="form-control" name="district" type="text" placeholder="อำเภอ"  required>
-                            <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                           
                         </div>
                     </div>
                     <!-- Form Row        -->
                     <div class="mb-3 row gx-3">
                         <!-- Form Group (organization name)-->
                         <div class="col-md-6">
-                            <label class="mb-1 small" >รหัสไปรษณีย์</label>
+                            <label class="mb-1 small d-flex" >รหัสไปรษณีย์<div class="check-value" >**</div></label>
                             <input class="form-control" name="postcode" type="text" placeholder="รหัสไปรษณีย์" required>
-                            <div class="invalid-feedback">กรุณากรอกข้อมูล</div>
+                            
                         </div>
-                    
+                       
                      
                     </div>
-                     
+                    <div class="" style="color:#dc3545">**กรุณากรอกข้อมูล</div>
                     <!-- Form Row-->
                          
                   </div>

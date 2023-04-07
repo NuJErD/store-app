@@ -11,15 +11,23 @@ body *{
     -moz-box-sizing:border-box;
     box-sizing:border-box;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.check-value{
+    color:#dc3545;
+}
 .feedback{
     color: rgb(236, 43, 43);
     font-size: 14px;
 }
-#usercheck{
+/* #usercheck{
     color: rgb(236, 43, 43);
     font-size: 14px;
     margin-top:5px;
-}
+} */
 .form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"], .was-validated .form-select:valid:not([multiple]):not([size]), .was-validated .form-select:valid:not([multiple])[size="1"]{
     background-image:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
    
@@ -41,6 +49,7 @@ body *{
   
 .form-control.is-invalid, .was-validated .form-control:invalid {
     background-image: none;
+    border-color: #c5ccd6;
    
   }
   .form-select.is-invalid, .was-validated .form-select:invalid {

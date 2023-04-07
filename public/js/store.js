@@ -646,8 +646,8 @@ function AddSavebtn(){
     $(".form-control").css('display', 'flex')
    
     $(".showedit").css('display', 'none')
-    $("#deletepic").css('display', 'flex')
-    $("#newpic").css('display', 'flex')
+    
+    
     
 }
 

@@ -27,7 +27,7 @@
                 </div>
                 <ul class="menu">
                 
-                 <li><a href="{{route('logout')}}">Logout</a></li>
+                 
              </ul>
                 
             </nav>
@@ -36,8 +36,8 @@
               
                 <h3 style="color: white " class="mb-5">My Orders</h3>
             
-              <a href="{{route('myorder.index')}}"><li class="mb-4">ที่ต้องได้รับ</li> </a>
-              <a href="{{route('ordersuccess')}}"><li class="mb-4">ที่สำเร็จ</li> </a>
+              <a href="{{route('myorder.index')}}"><li class="mb-4">สินค้าที่ต้องได้รับ</li> </a>
+              <a href="{{route('ordersuccess')}}"><li class="mb-4">ประวัติคำสั่งซื้อ</li> </a>
               <a href="{{route('shop')}}"><li  class="mb-3">กลับหน้าหลัก</li> </a>
              
              
