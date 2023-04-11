@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\brand;
+use App\Models\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -98,7 +99,13 @@ class BrandController extends Controller
      */
     public function destroy(brand $brand)
     {
-        DB::table('brands')->where('id', $brand->id)->delete();
+        $check = products::where('brand',$brand->id)->first();
+        if(isset($check)){
+            session()->flash('error','ไม่สามารถลบสินค้านี้ได้');
+        }else{
+           DB::table('brands')->where('id', $brand->id)->delete();
+        
+        }
         return redirect('brand');
     }
 }

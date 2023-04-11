@@ -92,7 +92,7 @@ class MyOrderController extends Controller
         $affected = DB::table('orders')
          ->where('id', $order->id)
          ->update([
-               'status' => '3'
+               'status' => 3
                    ]);
                    return response()->json("success");
     }

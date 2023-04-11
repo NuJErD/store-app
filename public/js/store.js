@@ -1,21 +1,18 @@
-
-
-
 function myFunction(id) {
     $("#modalopen").css('display', 'flex')
     $("#modalopen-store").css('display', 'flex')
     var $id = id
-    
+
     //;
     $.ajax({
-        
-        url: '/modal/'+id,
-        type: 'get',        
+
+        url: '/modal/' + id,
+        type: 'get',
         dataType: 'json',
-        success: function (response) {
+        success: function(response) {
             // $('#modal-list').empty();        
             var data = response.data[0];
-            
+
             console.log(response)
 
             var detail = '';
@@ -76,44 +73,44 @@ function OpenCartnull() {
 
 
 function total() {
-   
+
     var total = 0
     $.ajax({
-        
+
         url: 'cartget',
         type: 'get',
         dataType: 'json',
-        success: function (response) {
-        
+        success: function(response) {
+
             console.log(response)
             var data = response.data
-            //var length = lenght     
-            
+                //var length = lenght     
+
             var total2 = ''
-            // var checkout = ''
+                // var checkout = ''
             var count = Object.keys(data).length;
 
             //console.log(count)
-            
+
             for (var i = 0; i < count; i++) {
 
                 total += parseInt(data[i].price * data[i].amount)
                 var amount = data[i].amount
                 var id = data[i].id
-                
+
                 console.log(data[i].price)
-                
+
             }
             console.log(total)
-           // document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"
+                // document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"
             document.getElementById("total").innerHTML = "<h4>Total &nbsp:</h4> &nbsp" + ' ' + total + ".00" + " THB"
-            
-            document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"  
+
+            document.getElementById("totalsum").innerHTML = "<input type='hidden'  name='totalsum' value='" + total + "' ></input>"
         }
     })
-    
-    
-   
+
+
+
 }
 //  function csrf(csrf){
 //     var $csrf = csrf
@@ -126,7 +123,7 @@ function closemodal() {
     $('#modal-list').empty();
     $(".modal").css('display', 'none')
 
-    
+
 }
 
 
@@ -134,22 +131,22 @@ function closemodal() {
 function cartcount() {
     var countitems = 0
     $.ajax({
-        
+
         url: 'cartget',
         type: 'get',
         dataType: 'json',
-        success: function (response) {
+        success: function(response) {
             var data = response.data;
             //var length = lenght;     
             var cart = ''
             var count = Object.keys(data).length;
 
-              
+
 
             for (var i = 0; i < count; i++) {
 
-                countitems ++
-                
+                countitems++
+
             }
             document.getElementById("cartcount").innerHTML = countitems
 
@@ -159,60 +156,60 @@ function cartcount() {
 
 }
 
-function checkstock(amountnew,amount,p_id,order_id){
+function checkstock(amountnew, amount, p_id, order_id) {
     var type = ''
     var order_id = order_id
     console.log(order_id)
-    if(amountnew !=0){
-        if(amountnew < amount){
+    if (amountnew != 0) {
+        if (amountnew < amount) {
             type = "decrease"
-           // alert(type+amountnew+amount+p_id);
-    }else{
-          type ="increase"
+                // alert(type+amountnew+amount+p_id);
+        } else {
+            type = "increase"
+        }
+    } else {
+
+        type = "delete"
     }
-    }else{
-        
-         type = "delete"
-    }
-    
-   
+
+
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/orderup2/'+ order_id,
+        url: '/orderup2/' + order_id,
         type: 'put',
-        data: { amountnew:amountnew , amount: amount, p_id:p_id, type:type},
+        data: { amountnew: amountnew, amount: amount, p_id: p_id, type: type },
         dataType: 'json',
-        success: function(data){
-          //  console.log(data)
+        success: function(data) {
+            //  console.log(data)
             location.reload();
         }
-           
-        
-           
 
-        
+
+
+
+
 
     })
-    type= ''
-    //alert(type+amountnew+amount+p_id);
+    type = ''
+        //alert(type+amountnew+amount+p_id);
 }
 
-function getorder_detail(id){
- var id = id 
- var getdatail_ad =''
- var getdatail = ''
-  $.ajax({
-    url: '/getdetail/'+ id,
-    type: 'get',
-    dataType: 'json',
-    success: function(response){
-       
-         var data = response[0].data
-         var count = Object.keys(data).length;
-         for (var i = 0; i < count; i++){
-        getdatail += `
+function getorder_detail(id) {
+    var id = id
+    var getdatail_ad = ''
+    var getdatail = ''
+    $.ajax({
+        url: '/getdetail/' + id,
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
+
+            var data = response[0].data
+            var count = Object.keys(data).length;
+            for (var i = 0; i < count; i++) {
+                getdatail += `
         <div class="getdetail" id="getdetailmain"   ">
             <div class="getdetail-02 mb-4 mt-3" >
               
@@ -239,44 +236,45 @@ function getorder_detail(id){
            
         </div>`
 
-       
-       
-         }
-    var  total=` <p class="total-ad" style="font-size:20px">Total: ${response[2]}  THB</p>`    
-         $(".order_out"+id).html(getdatail)
-         $(".order-ad").css('display','flex')
-         $(".order-ad-de").html(getdatail)
-         $(".ordernumber").html(response[1])
-         $(".total-ad").html( total)
-         console.log(response)
-         //console.log(data)
-    }
-   })
+
+
+            }
+            var total = ` <p class="total-ad" style="font-size:20px">Total: ${response[2]}  THB</p>`
+            $(".order_out" + id).html(getdatail)
+            $(".order-ad").css('display', 'flex')
+            $(".order-ad-de").html(getdatail)
+            $(".ordernumber").html(response[1])
+            $(".total-ad").html(total)
+            console.log(response)
+                //console.log(data)
+        }
+    })
 }
 
 
-function showslip(picname){
-$(".slip").css('display', 'flex')
- console.log(picname)
-  var data=''
-  data=`<td><img src="../../uploadpic/uploadslip/${picname}" width=500px" height="500px" ></td>`
-  
+function showslip(picname) {
+    $(".slip").css('display', 'flex')
+    console.log(picname)
+    var data = ''
+    data = `<td><img src="../../uploadpic/uploadslip/${picname}" width=500px" height="500px" ></td>`
+
     $('.slippic').html(data)
 }
 
 
 function closemodalslip() {
-   
+
     $(".slip").css('display', 'none')
 
 }
+
 function closemodalorder() {
-   
+
     $(".order-ad").css('display', 'none')
 
 }
 // function updatestatus(id) {
-    
+
 //     $.ajax({
 //         headers: {
 //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -287,51 +285,86 @@ function closemodalorder() {
 //         success: function(data){
 //             //console.log(data)
 //             location.reload()
-            
+
 //         }
 //     })
-    
-    
+
+
 // }
 
-function qrcode(){
+function qrcode() {
     $(".qrcode").css('display', 'flex')
     var qr = `<img src="../../uploadpic/qrcode.jpg" width="500vw" height="500vw">`
-     $('.qrcode-show').html(qr)
+    $('.qrcode-show').html(qr)
 }
+
 function closemodalqrcode() {
-   
+
     $(".qrcode").css('display', 'none')
 
 }
 
-function tracking(id){
+function tracking(id) {
     var id = id
     input = `
     
-    <input type="file" class="form-control " name="picture" id="trackdata`+id+`" required><br>
+    <input type="file" class="form-control " name="picture" id="trackdata` + id + `" required><br>
     <button type="button" class="btn btn-danger" onclick="cancel()" >ยกเลิก</button>
     <button type="submit" class="btn btn-success"  >บันทึก</button>
     
     `
-    $(".input-tracking"+id).html('')
-    $("#tracking"+id).html(input)
-     
-}
-function showtrack(picname){
-    $(".slip").css('display', 'flex')
-     console.log(picname)
-      var data=''
-      data=`<td><img src="../../uploadpic/tracking/${picname}" width250px" height="200px" ></td>`
-      
-        $('.slippic').html(data)
-    }
+    $(".input-tracking" + id).html('')
+    $("#tracking" + id).html(input)
 
-function upload(picture){
-   console.log(picture)
+}
+
+function tracking2(id) {
+    console.log(id)
+    var id = id
+    input = `
+    
+    <input type="file" class="form-control " name="picture" id="trackdata` + id + `" required><br>
+    <button type="button" class="btn btn-danger" onclick="cancel()" >ยกเลิก</button>
+    <button type="submit" class="btn btn-success" onclick="addt(${id})" >บันooooทึก</button>
+    
+    `
+    $(".input-tracking" + id).html('')
+    $("#tracking" + id).html(input)
+
+}
+
+function addt(id) {
+    var picture = document.getElementById('trackdata' + id).files
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '' + id,
+        type: 'put',
+        dataType: 'json',
+        success: function(data) {
+            location.reload()
+
+
+        }
+
+    })
+}
+
+function showtrack(picname) {
+    $(".slip").css('display', 'flex')
+    console.log(picname)
+    var data = ''
+    data = `<td><img src="../../uploadpic/tracking/${picname}" width250px" height="200px" ></td>`
+
+    $('.slippic').html(data)
+}
+
+function upload(picture) {
+    console.log(picture)
 }
 // function tracksuccess(id,data){
-    
+
 //     var datatrack =data
 //     $.ajax({
 //         headers: {
@@ -342,67 +375,81 @@ function upload(picture){
 //         type: 'put',
 //         dataType: 'json',
 //         success: function(response){
-          
+
 //             location.reload()
 //         }
 //     })
-  
-    
 
-function cancel(){
+
+
+function cancel() {
     location.reload()
 }
+
 function closemodal_order() {
-    
+
     $(".modal").css('display', 'none')
 
-    
+
 }
-function order_cf(id){
+
+function order_cf(id) {
     $(".modal").css('display', 'flex')
     var data = `<button class="order-cf2" onclick="closemodal_order()"><p>ยกเลิก</p></button>
-    <button class="order-cf2" onclick="cf_order(`+id+`)"><p>ยืนยัน</p></button>`
+    <button class="order-cf2" onclick="cf_order(` + id + `)"><p>ยืนยัน</p></button>`
     $(".order-cf-cf").html(data)
 }
 
-function cf_order(id){
+function cf_order(id) {
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/cf_order/'+ id,
+        url: '/cf_order/' + id,
         type: 'put',
         dataType: 'json',
-        success: function(data){
+        success: function(data) {
             location.reload()
-            
-            
+
+
         }
     })
-   
+
 }
-function searchorder(search){
+
+function searchorder(search) {
     var search = search
+
+
     $.ajax({
         url: '/searchorder/',
         type: 'get',
-        data: { search:search},
+        data: { search: search },
         dataType: 'json',
-        success: function(data){
+        success: function(data) {
             console.log(data)
-           
-             if(Object.keys(data).length > 0){
-                 var order =  data.map(function(order){
-                    let tracking =''
-                    if(order.tracking != '-'){
+
+            if (Object.keys(data).length > 0) {
+                var order = data.map(function(order) {
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    console.log(csrfToken)
+                    let tracking = ''
+                    if (order.tracking != '-') {
                         tracking = `<button type="button" class="btn btn-info" onclick="showtrack('${order.tracking}')">กดดู</button>`
-                    }else{
+                    } else {
                         tracking = '-'
                     }
-                     return `<tr>            
+                    return `<tr>            
                      <td> ${order.ordernumber}   </td>
                  
-                    <td>`+tracking+`</td>
+                    <td>` + tracking + `
+                    <form  action="http://127.0.0.1:8000/track/${order.id}" class="was-validated"  method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="${csrfToken}">   
+                    <input type="hidden" name="_method" value="PUT">
+                    <div id="tracking${order.id}">
+
+                    </div>
+                    </td>
                      
                  
                      <td> ${order.created_at}   </td>
@@ -414,38 +461,58 @@ function searchorder(search){
                      </td>
                      <td>
                      ${order.updated_at}&nbsp; 
-                     <button type="button" class="btn btn-info" onclick="showslip('${order.slip}')">สลิป</button>
+                     
+                     
+                 </td>
+                 <td>
+                 <div class="d-flex justify-content-around " style="width: 230px">
+          
+            
+               
+             <div class="">
+         
+            <button type="button" class="btn btn-info" onclick="showslip('${order.slip}')">สลิป</button>
+            <button type="button" class="btn btn-warning" onclick="tracking('${order.id}')">แก้ไข</button>
+            <button type="button" class="btn btn-success" onclick="getorder_detail('${order.id}')">รายละเอียด</button>
+        </div> 
+        </form>
+     </div>
+               
                  </td>
                  </tr>`
-                 })  
-                 
+                })
+
                 $("#order-detail").html('')
-                 $.each(order, function(indexInArray,valueOforder){
-                     $("#order-detail").append(valueOforder)
-                 })
-             }else{ 
-                 $("#order-detail").html('')
-               $("#order").append('<div class="searchnull"><h6>ไม่พบคำสั่งซื้อ</h6></div>')
-             }
+                $.each(order, function(indexInArray, valueOforder) {
+                    $("#order-detail").append(valueOforder)
+                })
+            } else {
+                $("#order-detail").html('')
+                $("#order").append('<div class="searchnull"><h6>ไม่พบคำสั่งซื้อ</h6></div>')
+            }
             console.log()
-            
+
         }
     })
-    
+
 }
 
-function search(search){
+function addtrack2() {
+
+}
+
+function search(search) {
     var search = search
     $.ajax({
         url: '/search/',
         type: 'get',
-        data: { search:search},
+        data: { search: search },
         dataType: 'json',
-        success: function(data){
-             
-           
-            if(Object.keys(data).length > 0){
-                var items =  data.map(function(product){
+        success: function(data) {
+
+
+            if (Object.keys(data).length > 0) {
+                var items = data.map(function(product) {
                     return `<div class="itemslist" onclick="myFunction('${product.id}')">
 
                     <div class="itemslist">
@@ -464,24 +531,24 @@ function search(search){
                     </div>
 
                 </div>`
-                })  
+                })
                 console.log(items)
                 $(".items").html('')
-                $.each(items, function(indexInArray,valueOfitems){
+                $.each(items, function(indexInArray, valueOfitems) {
                     $(".items").append(valueOfitems)
                 })
-            }else{ 
+            } else {
                 $(".items").html('')
                 $(".items").append('<div class="searchnull"><h3>ไม่พบสินค้า</h3></div>')
             }
-           // console.log(response.data)
-            
+            // console.log(response.data)
+
         }
     })
-    
+
 }
 
-function changePW_add(){
+function changePW_add() {
     $("#card-body-detail").html('')
 
     resetPW = `<div class="mb-3 row gx-3">
@@ -495,14 +562,14 @@ function changePW_add(){
 <button class="btn btn-danger" onclick="cancel()"> ยกเลิก</button>
 <button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> ยืนยัน</button>
 `
-    $(".formcontrol").css('display','flex')
+    $(".formcontrol").css('display', 'flex')
     $("#card-body-detail").html(resetPW)
 }
 
 
-function checkPW(oldpw){
- 
-     let newpw = `<div class="mb-3 row gx-3">
+function checkPW(oldpw) {
+
+    let newpw = `<div class="mb-3 row gx-3">
     <!-- Form Group (first name)-->
     <div class="col-md-6">
         <label class="mb-1 small" >รหัสผ่านใหม่</label>
@@ -524,7 +591,7 @@ function checkPW(oldpw){
 <button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword2').value,document.getElementById('cfpassword2').value)">ยืนยัน</button>
 `
 
-let resetPW = `<div class="mb-3 row gx-3">
+    let resetPW = `<div class="mb-3 row gx-3">
     
     <div class="alert alert-danger" id="errorpassword"  >
     รหัสผ่านเดิมไม่ถูกต้อง
@@ -540,29 +607,29 @@ let resetPW = `<div class="mb-3 row gx-3">
 <button class="btn btn-primary" onclick="checkPW(document.getElementById('oldpassword').value)"> ยืนยัน</button>
 `
     $.ajax({
-        
-        url: '/checkpw/'+oldpw,
+
+        url: '/checkpw/' + oldpw,
         type: 'get',
         dataType: 'json',
-        success: function(data){
-             
-            
+        success: function(data) {
+
+
             console.log(data)
 
-            
-           if(data == 'success'){
-            $("#card-body-detail").html(newpw)
-           }else{
-            //$("#errorpassword").css('display','flex')
-            $("#card-body-detail").html(resetPW)
-           }
-           
+
+            if (data == 'success') {
+                $("#card-body-detail").html(newpw)
+            } else {
+                //$("#errorpassword").css('display','flex')
+                $("#card-body-detail").html(resetPW)
+            }
+
         }
     })
-    
+
 }
 
-function changePW(newpw,cfpw){
+function changePW(newpw, cfpw) {
     console.log('aaa')
     $.ajax({
         headers: {
@@ -570,13 +637,13 @@ function changePW(newpw,cfpw){
         },
         url: '/newpw',
         type: 'post',
-        data:{
-            newpw:newpw,
-            cfpw:cfpw
+        data: {
+            newpw: newpw,
+            cfpw: cfpw
         },
         dataType: 'json',
-        success: function(data){
-            
+        success: function(data) {
+
 
             let newpw = `<div class="mb-3 row gx-3">
             <div class="alert alert-danger" id="errorpassword"  >
@@ -601,16 +668,16 @@ function changePW(newpw,cfpw){
         <button class="btn btn-danger" onclick="cancel()"> ยกเลิก</button>
         <button class="btn btn-primary" onclick="changePW(document.getElementById('newpassword2').value,document.getElementById('cfpassword2').value)">ยืนยัน</button>
         `
-        if(data == 'success'){
-              location.reload()
-        }else
-        $("#card-body-detail").html(newpw)
-            
-         }
+            if (data == 'success') {
+                location.reload()
+            } else
+                $("#card-body-detail").html(newpw)
+
+        }
     })
 }
 
-function deletepic(pic){
+function deletepic(pic) {
 
     $.ajax({
         headers: {
@@ -618,37 +685,35 @@ function deletepic(pic){
         },
         url: '/deletepic',
         type: 'post',
-        data:{
-           pic:pic
+        data: {
+            pic: pic
         },
         dataType: 'json',
-        success: function(data){
+        success: function(data) {
             console.log(data)
             location.reload()
         }
     })
-   
+
 }
 
-function editpic(){
-   var button = `<button class="btn btn-success"  type="submit">บันทึก</button>`
-//    $("#editupload").attr('class', 'btn btn-success');
-//    $("#editupload").attr('type', 'submit');
+function editpic() {
+    var button = `<button class="btn btn-success"  type="submit">บันทึก</button>`
+        //    $("#editupload").attr('class', 'btn btn-success');
+        //    $("#editupload").attr('type', 'submit');
     $("#editupload").attr('style', "display:none");
-   $("#newpic").html(button)
-   
-   
+    $("#newpic").html(button)
+
+
 }
 
-function AddSavebtn(){
-     let savebtn =`<button class="btn btn-success me-1" type="submit" >บันทึก</button>`
+function AddSavebtn() {
+    let savebtn = `<button class="btn btn-success me-1" type="submit" >บันทึก</button>`
     $(".SaveEdit").html(savebtn)
     $(".form-control").css('display', 'flex')
-   
+
     $(".showedit").css('display', 'none')
-    
-    
-    
+
+
+
 }
-
-

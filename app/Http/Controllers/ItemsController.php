@@ -20,8 +20,12 @@ class ItemsController extends Controller
     public function index()
     {   
         
-        $products =  DB::table('products')->paginate(5);
-        
+        $products =  DB::table('products')
+        ->join('brands','brand','=','brands.id')
+        ->select('products.*', 'brands.namebrand')
+        ->paginate(5);
+       
+       
         
         return view('items.index',compact('products'));
        
@@ -191,7 +195,7 @@ class ItemsController extends Controller
      */
     public function destroy(Request $request,products $item)
     {
-         
+           
         unlink("./uploadpic/product/".$item->picture);
         DB::table('products')->where('id', $item->id)->delete();
         return redirect('items');

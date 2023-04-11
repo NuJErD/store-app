@@ -46,7 +46,11 @@
     
        
     <thead class="table-dark">
-      
+        @if($error = Session::get('error'))
+        <div class="alert alert-danger" id="errorpassword"  >
+              {{$error}}
+       </div>
+     @endif  
         <td class="w-50"><h5>brand</h5></td>
         
         <td  class="w-25">
@@ -59,7 +63,7 @@
          @foreach ($brand as $b)
             <tr >
             
-            <td >{{$b->name}}</td>
+            <td >{{$b->namebrand}}</td>
             
             <td class="d-flex flex-column align-items-center">
                 <div class="mb-2 ">

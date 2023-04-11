@@ -92,7 +92,7 @@
                     <select class="form-select" name="brand" required >
                       <option value=""> Select Brand</option>
                       @foreach($brand as $b)
-                      <option value="{{$b->name}}">{{$b->name}}</option>
+                      <option value="{{$b->id}}">{{$b->name}}</option>
                       @endforeach
                     </select>
                 

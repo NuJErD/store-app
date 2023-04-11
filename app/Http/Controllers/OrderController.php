@@ -25,7 +25,8 @@ class OrderController extends Controller
          $order =Order::where('status','!=',0)
          ->join('statuses', 'status','=','statuses.idst')
          ->join('users','u_id','users.id')
-         ->select('orders.*','statuses.detail','users.firstname','users.lastname','users.address','users.province','users.district')
+         
+         ->select('orders.*','statuses.detail','users.firstname','users.lastname','users.address','users.province','users.district',)
          ->paginate(8);
        
       
@@ -343,7 +344,7 @@ class OrderController extends Controller
             $affected = DB::table('orders')
          ->where('id', $order->id)
          ->update([
-               'status' => '2'
+               'status' => 2
                    ]);
         }  
 
@@ -391,6 +392,7 @@ class OrderController extends Controller
          
         return redirect()->route('orders.index');
      }
+     
     /**
      * Remove the specified resource from storage.
      *

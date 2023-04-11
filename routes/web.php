@@ -57,7 +57,7 @@ Route::get('/shop',[StoreController::class,'shopindex'])->name('shop');
 Route::get('/store/detail',[StoreController::class,'itemDetail'])->name('detail');
 Route::get('/getdetail/{id?}',[MyOrderController::class,'getorder_detail']);
 Route::get('/test',[StoreController::class,'test'])->name('test');
-Route::get('/search/{search?}',[StoreController::class,'search']);
+Route::get('/search/{order?}',[StoreController::class,'search']);
 Route::get('/searchorder/{search?}',[OrderController::class,'searchorder']);
 Route::get('/checkpw/{pw?}',[UserController::class,'checkpw']);
 Route::post('/newpw',[UserController::class,'newpw']);

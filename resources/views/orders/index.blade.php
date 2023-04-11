@@ -95,7 +95,7 @@
         
             <td id='input-tracking{{$or->id}}' style="width: 250px">
                 
-                <div class="input-tracking{{$or->id}}" >
+                <div class="input-tracking{{$or->id}} d-flex" style="justify-content: center">
                      <div class="input-tracking">
                 @if($or->tracking != '-')
                 <button type="button" class="btn btn-info" onclick="showtrack('{{$or->tracking}}')">กดดู</button>

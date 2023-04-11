@@ -66,7 +66,7 @@
             <td>{{$items->name}}</td>
             <td>{{$items->festival}}</td>
             <td>{{$items->price}}</td>
-            <td>{{$items->brand}}</td>
+            <td>{{$items->namebrand}}</td>
             <td>{{$items->size}}</td>
             <td>{{$items->chest}}</td>
             <td>{{$items->lenght}}</td>
