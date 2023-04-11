@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 09:07 PM
+-- Generation Time: Apr 11, 2023 at 10:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -29,20 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `namebrand` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`id`, `name`) VALUES
-(1, 'DEPT'),
-(2, 'YEW'),
-(3, 'พราว'),
-(4, 'T_047'),
+INSERT INTO `brands` (`id`, `namebrand`) VALUES
 (5, 'Safeplanet'),
-(6, 'Whal & Dolph');
+(6, 'Whal & Dolph'),
+(11, 'DEPT');
 
 -- --------------------------------------------------------
 
@@ -80,7 +77,7 @@ CREATE TABLE `orders` (
   `u_id` int(11) NOT NULL,
   `ordernumber` varchar(255) NOT NULL,
   `tracking` varchar(255) NOT NULL DEFAULT '-',
-  `status` varchar(255) NOT NULL,
+  `status` int(255) NOT NULL,
   `total` decimal(8,2) NOT NULL DEFAULT 0.00,
   `slip` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -92,18 +89,21 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `u_id`, `ordernumber`, `tracking`, `status`, `total`, `slip`, `created_at`, `updated_at`) VALUES
-(2040, 3, 'TB-202303317508', '1761823786502442.png', '3', '5265.00', '1761823259295939.png', '2023-03-31 02:42:27', '2023-03-31 02:46:32'),
-(2041, 3, 'TB-202303319398', '1761825635224944.png', '3', '955.00', '1761824329864373.png', '2023-03-31 03:03:23', '2023-03-31 03:03:33'),
-(2042, 3, 'TB-202303318135', '1762008725034685.png', '3', '2010.00', '1762008686417907.png', '2023-03-31 03:51:50', '2023-04-02 03:53:49'),
-(2043, 5, 'TB-202304026260', '1762059081306030.png', '3', '500.00', '1762059025624529.png', '2023-04-02 17:13:04', '2023-04-02 17:13:56'),
-(2044, 3, 'TB-202304027839', '1762094406708336.png', '3', '2775.00', '1762066571640899.png', '2023-04-02 19:13:12', '2023-04-02 19:13:53'),
-(2053, 3, 'TB-202304039077', '1762239210819897.png', '3', '5050.00', '1762092770878327.png', '2023-04-03 01:54:30', '2023-04-03 02:10:18'),
-(2054, 3, 'TB-202304032118', '1762287439329138.png', '3', '2000.00', '1762161768991459.png', '2023-04-03 20:26:38', '2023-04-03 20:27:00'),
-(2058, 3, 'TB-202304054838', '1762354083095507.png', '3', '1150.00', '1762287618418504.png', '2023-04-05 05:47:08', '2023-04-05 05:47:19'),
-(2059, 3, 'TB-202304055939', '1762413928940397.png', '3', '1820.00', '1762413838567536.png', '2023-04-05 17:37:14', '2023-04-06 15:13:32'),
-(2060, 3, 'TB-202304065097', '-', '1', '1435.00', '1762429440992908.png', '2023-04-06 18:10:20', '2023-04-06 19:21:32'),
-(2061, 3, 'TB-202304065793', '-', '1', '1090.00', '1762507592327913.png', '2023-04-06 23:44:25', '2023-04-07 16:03:43'),
-(2062, 3, 'TB-202304071394', '-', '0', '0.00', NULL, '2023-04-07 16:04:09', '2023-04-07 16:04:09');
+(2040, 3, 'TB-202303317508', '1761823786502442.png', 3, '5265.00', '1761823259295939.png', '2023-03-31 02:42:27', '2023-03-31 02:46:32'),
+(2041, 3, 'TB-202303319398', '1761825635224944.png', 3, '955.00', '1761824329864373.png', '2023-03-31 03:03:23', '2023-03-31 03:03:33'),
+(2042, 3, 'TB-202303318135', '1762008725034685.png', 3, '2010.00', '1762008686417907.png', '2023-03-31 03:51:50', '2023-04-02 03:53:49'),
+(2043, 5, 'TB-202304026260', '1762059081306030.png', 3, '500.00', '1762059025624529.png', '2023-04-02 17:13:04', '2023-04-02 17:13:56'),
+(2044, 3, 'TB-202304027839', '1762094406708336.png', 3, '2775.00', '1762066571640899.png', '2023-04-02 19:13:12', '2023-04-02 19:13:53'),
+(2053, 3, 'TB-202304039077', '1762239210819897.png', 3, '5050.00', '1762092770878327.png', '2023-04-03 01:54:30', '2023-04-03 02:10:18'),
+(2054, 3, 'TB-202304032118', '1762287439329138.png', 3, '2000.00', '1762161768991459.png', '2023-04-03 20:26:38', '2023-04-03 20:27:00'),
+(2058, 3, 'TB-202304054838', '1762354083095507.png', 3, '1150.00', '1762287618418504.png', '2023-04-05 05:47:08', '2023-04-05 05:47:19'),
+(2059, 3, 'TB-202304055939', '1762413928940397.png', 3, '1820.00', '1762413838567536.png', '2023-04-05 17:37:14', '2023-04-06 15:13:32'),
+(2060, 3, 'TB-202304065097', '1762586480934728.png', 2, '1435.00', '1762429440992908.png', '2023-04-06 18:10:20', '2023-04-06 19:21:32'),
+(2061, 3, 'TB-202304065793', '1762586626229095.png', 2, '1090.00', '1762507592327913.png', '2023-04-06 23:44:25', '2023-04-07 16:03:43'),
+(2062, 3, 'TB-202304071394', '1762577941088725.png', 2, '6085.00', '1762549119370465.png', '2023-04-07 16:04:09', '2023-04-08 03:03:46'),
+(2063, 3, 'TB-202304087927', '1762575029685010.png', 3, '455.00', '1762574992941276.png', '2023-04-08 09:54:52', '2023-04-08 09:55:01'),
+(2064, 3, 'TB-202304082568', '1762586606463448.png', 2, '910.00', '1762578580195313.png', '2023-04-08 10:50:42', '2023-04-08 10:52:02'),
+(2065, 3, 'TB-202304083717', '1762586743427931.png', 2, '455.00', '1762586682248405.png', '2023-04-08 10:52:40', '2023-04-08 13:00:49');
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,16 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `product_name`, `pr
 (250, 2060, 41, 'THUNDER DEPT', 'L', '490.00', 2, '2023-04-06 12:20:07', '2023-04-06 12:20:46'),
 (251, 2061, 36, 'Whal & Dolph', 'L', '600.00', 1, '2023-04-06 16:44:25', '2023-04-07 09:03:35'),
 (252, 2061, 41, 'THUNDER DEPT', 'L', '490.00', 1, '2023-04-06 16:57:44', '2023-04-07 09:03:32'),
-(253, 2062, 36, 'Whal & Dolph', 'L', '600.00', 1, '2023-04-07 09:04:09', '2023-04-07 09:04:09');
+(253, 2062, 36, 'Whal & Dolph', 'L', '600.00', 1, '2023-04-07 09:04:09', '2023-04-07 09:04:09'),
+(254, 2062, 35, 'T_047', 'M', '455.00', 2, '2023-04-07 17:38:44', '2023-04-07 17:47:32'),
+(255, 2062, 40, 'DEPT จะครองโลก', 'M', '590.00', 1, '2023-04-07 17:38:46', '2023-04-07 17:38:46'),
+(256, 2062, 42, 'Dept T-Shirt', 'L', '500.00', 4, '2023-04-07 17:38:49', '2023-04-07 17:58:34'),
+(257, 2062, 41, 'THUNDER DEPT', 'L', '490.00', 2, '2023-04-07 17:38:52', '2023-04-07 17:47:27'),
+(258, 2062, 33, '33', 'L', '455.00', 1, '2023-04-07 17:38:55', '2023-04-07 17:38:55'),
+(259, 2062, 37, 'YEWTOPIA', 'L', '550.00', 1, '2023-04-07 17:47:35', '2023-04-07 17:47:35'),
+(260, 2063, 35, 'T_047', 'M', '455.00', 1, '2023-04-08 02:54:52', '2023-04-08 02:54:52'),
+(261, 2064, 33, 'พราว', 'L', '455.00', 2, '2023-04-08 03:50:42', '2023-04-08 03:51:50'),
+(262, 2065, 35, 'T_047', 'M', '455.00', 1, '2023-04-08 03:52:40', '2023-04-08 03:52:40');
 
 -- --------------------------------------------------------
 
@@ -201,7 +210,7 @@ CREATE TABLE `products` (
   `name` varchar(255) NOT NULL,
   `festival` varchar(255) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `brand` varchar(255) NOT NULL,
+  `brand` int(255) NOT NULL,
   `size` varchar(10) NOT NULL,
   `chest` varchar(10) NOT NULL,
   `lenght` varchar(10) NOT NULL,
@@ -215,14 +224,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `festival`, `price`, `brand`, `size`, `chest`, `lenght`, `color`, `picture`, `stock`) VALUES
-(33, '33', 'Cat T-Shirt 6', '455.00', 'พราว', 'L', '44', '30', 'white', '1762238909608423.png', 18),
-(34, 'Safeboy The Cats', 'Cat T-Shirt 6', '500.00', 'Safeplanet', 'L', '44', '30', 'black', '1761811811020649.png', 0),
-(35, 'T_047', 'Cat T-Shirt 6', '455.00', 'T_047', 'M', '40', '29', 'White', '1761811945487492.jpg', 6),
-(36, 'Whal & Dolph', 'Cat T-Shirt 6', '600.00', 'Whal & Dolph', 'L', '42', '29', 'black', '1761812017913595.jpg', 7),
-(37, 'YEWTOPIA', 'Cat-Tshirt7', '550.00', 'YEW', 'L', '44', '30', 'navy blue', '1761813699485139.jpg', 5),
-(40, 'DEPT จะครองโลก', 'CAT T-SHIRT7', '590.00', 'DEPT', 'M', '40', '29', 'white', '1762415628277051.jpg', 20),
-(41, 'THUNDER DEPT', '-', '490.00', 'DEPT', 'L', '44', '30', 'black', '1762415746154837.jpg', 7),
-(42, 'Dept T-Shirt', 'Cat Expo 5', '500.00', 'DEPT', 'L', '42', '30', 'white', '1762415915576555.jpg', 15);
+(34, 'Safeboy The Cats', 'Cat T-Shirt 6', '500.00', 5, 'L', '44', '30', 'black', '1761811811020649.png', 0),
+(36, 'Whal & Dolph', 'Cat T-Shirt 6', '600.00', 6, 'L', '42', '29', 'black', '1761812017913595.jpg', 6),
+(40, 'DEPT จะครองโลก', 'CAT T-SHIRT7', '590.00', 11, 'M', '40', '29', 'white', '1762415628277051.jpg', 19),
+(41, 'THUNDER DEPT', '-', '490.00', 11, 'L', '44', '30', 'black', '1762415746154837.jpg', 5),
+(42, 'Dept T-Shirt', 'Cat Expo 5', '500.00', 11, 'L', '42', '30', 'white', '1762415915576555.jpg', 11);
 
 -- --------------------------------------------------------
 
@@ -231,7 +237,7 @@ INSERT INTO `products` (`id`, `name`, `festival`, `price`, `brand`, `size`, `che
 --
 
 CREATE TABLE `statuses` (
-  `idst` int(20) UNSIGNED NOT NULL,
+  `idst` int(20) NOT NULL,
   `detail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -271,10 +277,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `phonenumber`, `username`, `password`, `address`, `province`, `district`, `postcode`, `picture`, `urole`) VALUES
 (2, 'admin', 'admin', '0000000', 'admin', '$2y$10$JS3A1RmZkzRb7iVVVbg6eO6Cm014fX1csSAFwrFEJ8I4Q.q/zwS/W', '20/20 ต.แสนสุข', '-', '-', '-', NULL, 'admin'),
-(3, 'frameqq', 'tee', '0999991111', 'framee', '$2y$10$SvMIP2yZReeuq6Em.YnTJONueuuneNpWSRYoZthn3vukl0uDyrYA2', '20/1', 'ชลบุรี', 'เมือง', '20001', '1762507854374882.jpg', 'user'),
-(5, 'องอาจ', 'อาจอง', '0889997777', 'NuJErD', '$2y$10$WKh/G/GSqQBkWCFlWT5GOeLcFj5OeYMRdqYFHdHVpWNdbO.OxGzg6', '20/20 ต.แสนสุขa', 'ชลบุรี', 'เมือง', '2000', '1762059205067580.jpg', 'user'),
-(6, 'มานอน', 'หลงหลง', '0889997777', 'nujerdzzzzzzzz', '$2y$10$QAIeSrS/SlDYgunOMYSYM.Xh75aN8jtNSX.LLRknBAfoTXAOw/x62', '20/20 ต.แสนสุขa', 'ชลบุรี', 'เมือง', '20003', '1762065026789563.jpg', 'user'),
-(7, 'abcd', 'หลงหลง', '0889997777', 'nujerd2', '$2y$10$JZZsvF/srphWg6TY11nnY.Zny.WmS3jWPLgXsuuMWNRkIo.4SzLAG', '20/20 ต.แสนสุขa', 'ชลบุรี', 'ssasa', '20003', '1762491284780537.jpg', 'user');
+(3, 'frameqq', 'tee', '0999991111', 'framee', '$2y$10$SvMIP2yZReeuq6Em.YnTJONueuuneNpWSRYoZthn3vukl0uDyrYA2', '20/1 ต.แสนสุข', 'ชลบุรี', 'เมืองชลบุรี', '20001', '1762574962599746.jpg', 'user'),
+(5, 'องอาจ', 'อาจอง', '0889997777', 'NuJErD', '$2y$10$WKh/G/GSqQBkWCFlWT5GOeLcFj5OeYMRdqYFHdHVpWNdbO.OxGzg6', '20/20 ต.แสนสุข', 'ชลบุรี', 'เมือง', '2000', '1762059205067580.jpg', 'user'),
+(6, 'มานอน', 'หลงหลง', '0889997777', 'nujerdzzzzzzzz', '$2y$10$QAIeSrS/SlDYgunOMYSYM.Xh75aN8jtNSX.LLRknBAfoTXAOw/x62', '20/20 ต.แสนสุข', 'ชลบุรี', 'เมืองชลบุรี', '20003', '1762065026789563.jpg', 'user'),
+(7, 'abcd', 'หลงหลง', '0889997777', 'nujerd2', '$2y$10$JZZsvF/srphWg6TY11nnY.Zny.WmS3jWPLgXsuuMWNRkIo.4SzLAG', '20/20 ต.แสนสุข', 'ชลบุรี', 'เมืองชลบุรี', '20003', '1762491284780537.jpg', 'user'),
+(8, 'frame', 'nunnu', '0999999999', 'frame', '$2y$10$Hq/QyG3d7qQlaEU99j7ykerMSCd02iDhTYcUxdxQs.6kGcujclk6G', '20/1', 'ชลบุรี', 'พานทอง', '20160', '1762578427166666.jpg', 'user');
 
 --
 -- Indexes for dumped tables
@@ -296,7 +303,8 @@ ALTER TABLE `migrations`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `order_details`
@@ -322,7 +330,8 @@ ALTER TABLE `personal_access_tokens`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `brand` (`brand`);
 
 --
 -- Indexes for table `statuses`
@@ -344,7 +353,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -356,13 +365,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2063;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2066;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -374,19 +383,35 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `statuses`
 --
 ALTER TABLE `statuses`
-  MODIFY `idst` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idst` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `status` FOREIGN KEY (`status`) REFERENCES `statuses` (`idst`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`brand`) REFERENCES `brands` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
